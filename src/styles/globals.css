@@ -1,0 +1,95 @@
+@import "tailwindcss";
+@import "./typography.css";
+@import "./fonts.css";
+
+@theme {
+
+  /* primitives */
+  --color-primary-1:  #F0F4F0;
+  --color-primary-2:  #E0EFEB;
+  --color-primary-3:  #D1EDE7;
+  --color-primary-4:  #C2E9E3;
+  --color-primary-5:  #B2E5DD;
+  --color-primary-6:  #A2E2D8;
+  --color-primary-7:  #93DED4;
+  --color-primary-8:  #7FC0B7;
+  --color-primary-9:  #6BA099;
+  --color-primary-10: #56827D;
+  --color-primary-11: #42645F;
+  --color-primary-12: #2E4442;
+  --color-primary-13: #1A2624;
+
+  --color-secondary-1:  #F0F7ED;
+  --color-secondary-2:  #E0F7E4;
+  --color-secondary-3:  #D1FADB;
+  --color-secondary-4:  #C2FBD3;
+  --color-secondary-5:  #B3FCC9;
+  --color-secondary-6:  #A3FDC0;
+  --color-secondary-7:  #94FEB7;
+  --color-secondary-8:  #80DB9F;
+  --color-secondary-9:  #6CB785;
+  --color-secondary-10: #56946D;
+  --color-secondary-11: #427153;
+  --color-secondary-12: #2E4C3B;    
+  --color-secondary-13: #1A2921;    
+
+  --color-tertiary-1:  #F5F6F0;
+  --color-tertiary-2:  #ECF4EB;
+  --color-tertiary-3:  #E5F5E7;
+  --color-tertiary-4:  #DDF4E3;
+  --color-tertiary-5:  #D5F3DE;
+  --color-tertiary-6:  #CCF3D9;
+  --color-tertiary-7:  #C5F2D5;
+  --color-tertiary-8:  #A9D1B8;
+  --color-tertiary-9:  #8EAE9A;
+  --color-tertiary-10: #718D7D;
+  --color-tertiary-11: #566C5F;
+  --color-tertiary-12: #3A4942;
+  --color-tertiary-13: #1F2824;
+
+  --color-gray-1:  #FCFCFC;
+  --color-gray-2:  #F0F0F0;
+  --color-gray-3:  #E4E5E5;
+  --color-gray-4:  #CCCECD;
+  --color-gray-5:  #B5B6B6;
+  --color-gray-6:  #9C9E9E;
+  --color-gray-7:  #838482;
+  --color-gray-8:  #6B6D6B;
+  --color-gray-9:  #535755;
+  --color-gray-10: #3C3F3F;
+  --color-gray-11: #242928;
+  --color-gray-12: #181E1C;
+  --color-gray-13: #0C1211;
+
+  /* tokens */
+  --color-gray-13-alpha-0: #0C121100;
+  --color-gray-13-alpha-48: #0C12117A;
+  --color-gray-13-alpha-64: #0C1211A3;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* html[lang="en"] {
+  --font-primary: "Inter", system-ui, sans-serif;
+}
+
+html[lang="ar"] {
+  --font-primary: "Cairo", "IBM Plex Sans Arabic", sans-serif;
+}
+
+body {
+  font-family: var(--font-primary);
+} */

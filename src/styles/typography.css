@@ -1,0 +1,384 @@
+/* Mobile */
+html[lang="en"] {
+  --headline-01-size: 48px;
+  --headline-01-line: 53px;
+  --headline-01-weight: 400;
+  
+  --headline-02-size: 46px;
+  --headline-02-line: 51px;
+  --headline-02-weight: 400;
+
+  --headline-03-size: 43px;
+  --headline-03-line: 47px;
+  --headline-03-weight: 400;
+
+  --headline-04-size: 40px;
+  --headline-04-line: 44px;
+  --headline-04-weight: 400;
+
+  --headline-05-size: 37px;
+  --headline-05-line: 41px;
+  --headline-05-weight: 700;
+
+  --headline-06-size: 32px;
+  --headline-06-line: 35px;
+  --headline-06-weight: 700;
+
+  --subtitle-01-size: 32px;
+  --subtitle-01-line: 38px;
+  --subtitle-01-weight: 400;
+
+  --subtitle-02-size: 28px;
+  --subtitle-02-line: 34px;
+  --subtitle-02-weight: 400;
+
+  --subtitle-03-size: 24px;
+  --subtitle-03-line: 29px;
+  --subtitle-03-weight: 400;
+
+  --subtitle-04-size: 18px;
+  --subtitle-04-line: 22px;
+  --subtitle-04-weight: 600;
+
+  --button-01-size: 18px;
+  --button-01-line: 18px;
+  --button-01-weight: 420;
+
+  --body-01-size: 22px;
+  --body-01-line: 27px;
+  --body-01-weight: 400;
+
+  --body-02-size: 20px;
+  --body-02-line: 24px;
+  --body-02-weight: 350;
+  
+  --body-03-size: 18px;
+  --body-03-line: 22px;
+  --body-03-weight: 420;
+
+  --caption-01-size: 15px;
+  --caption-01-line: 18px;
+  --caption-01-weight: 420;
+}
+
+/* Mobile */
+html[lang="ar"] {
+  --headline-01-size: 48px;
+  --headline-01-line: 53px;
+  --headline-01-weight: 500;
+  
+  --headline-02-size: 46px;
+  --headline-02-line: 51px;
+  --headline-02-weight: 500;
+
+  --headline-03-size: 43px;
+  --headline-03-line: 47px;
+  --headline-03-weight: 400;
+
+  --headline-04-size: 43px;
+  --headline-04-line: 47px;
+  --headline-04-weight: 500;
+
+  --headline-05-size: 37px;
+  --headline-05-line: 41px;
+  --headline-05-weight: 600;
+
+  --headline-06-size: 32px;
+  --headline-06-line: 35px;
+  --headline-06-weight: 600;
+
+  --subtitle-01-size: 32px;
+  --subtitle-01-line: 38px;
+  --subtitle-01-weight: 350;
+
+  --subtitle-02-size: 28px;
+  --subtitle-02-line: 34px;
+  --subtitle-02-weight: 350;
+
+  --subtitle-03-size: 24px;
+  --subtitle-03-line: 29px;
+  --subtitle-03-weight: 350;
+
+  --subtitle-04-size: 18px;
+  --subtitle-04-line: 22px;
+  --subtitle-04-weight: 400;
+
+  --button-01-size: 18px;
+  --button-01-line: 18px;
+  --button-01-weight: 380;
+
+  --body-01-size: 22px;
+  --body-01-line: 27px;
+  --body-01-weight: 350;
+
+  --body-02-size: 20px;
+  --body-02-line: 24px;
+  --body-02-weight: 300;
+  
+  --body-03-size: 18px;
+  --body-03-line: 22px;
+  --body-03-weight: 380;
+
+  --caption-01-size: 16px;
+  --caption-01-line: 20px;
+  --caption-01-weight: 380;
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+html[lang="ar"] {
+    --headline-01-size: 100px;
+    --headline-01-line: 110px;
+    --headline-01-weight: 500;
+
+    --headline-02-size: 80px;
+    --headline-02-line: 88px;
+    --headline-02-weight: 500;
+      
+    --headline-03-size: 72px;
+    --headline-03-line: 80px;
+    --headline-03-weight: 500;
+
+    --headline-04-size: 64px;
+    --headline-04-line: 70px;
+    --headline-04-weight: 500;
+
+    --headline-05-size: 48px;
+    --headline-05-line: 53px;
+    --headline-05-weight: 600;
+
+    --headline-06-size: 40px;
+    --headline-06-line: 48px;
+    --headline-06-weight: 600;
+
+    --subtitle-01-size: 64px;
+    --subtitle-01-line: 77px;
+    --subtitle-01-weight: 350;
+
+    --subtitle-02-size: 48px;
+    --subtitle-02-line: 58px;
+    --subtitle-02-weight: 350;
+
+    --subtitle-03-size: 32px;
+    --subtitle-03-line: 38px;
+    --subtitle-03-weight: 350;
+
+    --subtitle-04-size: 20px;
+    --subtitle-04-line: 24px;
+    --subtitle-04-weight: 400;
+
+    --button-01-size: 20px;
+    --button-01-line: 20px;
+    --button-01-weight: 380;
+
+    --body-01-size: 24px;
+    --body-01-line: 29px;
+    --body-01-weight: 350;
+
+    --body-02-size: 22px;
+    --body-02-line: 26px;
+    --body-02-weight: 300;
+
+    --body-03-size: 20px;
+    --body-03-line: 24px;
+    --body-03-weight: 380;
+
+    --caption-01-size: 16px;
+    --caption-01-line: 20px;
+    --caption-01-weight: 380;
+  }
+
+  html[lang="en"] {
+    --headline-01-size: 100px;
+    --headline-01-line: 110px;
+    --headline-01-weight: 400;
+
+    --headline-02-size: 80px;
+    --headline-02-line: 88px;
+    --headline-02-weight: 400;
+      
+    --headline-03-size: 72px;
+    --headline-03-line: 80px;
+    --headline-03-weight: 400;
+
+    --headline-04-size: 64px;
+    --headline-04-line: 70px;
+    --headline-04-weight: 400;
+
+    --headline-05-size: 48px;
+    --headline-05-line: 53px;
+    --headline-05-weight: 700;
+
+    --headline-06-size: 40px;
+    --headline-06-line: 48px;
+    --headline-06-weight: 700;
+
+    --subtitle-01-size: 64px;
+    --subtitle-01-line: 77px;
+    --subtitle-01-weight: 400;
+
+    --subtitle-02-size: 48px;
+    --subtitle-02-line: 58px;
+    --subtitle-02-weight: 400;
+
+    --subtitle-03-size: 32px;
+    --subtitle-03-line: 38px;
+    --subtitle-03-weight: 400;
+
+    --subtitle-04-size: 20px;
+    --subtitle-04-line: 24px;
+    --subtitle-04-weight: 600;
+
+    --button-01-size: 20px;
+    --button-01-line: 20px;
+    --button-01-weight: 420;
+
+    --body-01-size: 24px;
+    --body-01-line: 29px;
+    --body-01-weight: 400;
+
+    --body-02-size: 22px;
+    --body-02-line: 26px;
+    --body-02-weight: 350;
+
+    --body-03-size: 20px;
+    --body-03-line: 24px;
+    --body-03-weight: 420;
+
+    --caption-01-size: 16px;
+    --caption-01-line: 20px;
+    --caption-01-weight: 420;
+  }
+}
+
+/* =========================
+   Headlines
+========================= */
+
+.headline-01 {
+  font-size: var(--headline-01-size);
+  line-height: var(--headline-01-line);
+  font-weight: var(--headline-01-weight);
+}
+
+.headline-02 {
+  font-size: var(--headline-02-size);
+  line-height: var(--headline-02-line);
+  font-weight: var(--headline-02-weight);
+}
+
+.headline-03 {
+  font-size: var(--headline-03-size);
+  line-height: var(--headline-03-line);
+  font-weight: var(--headline-03-weight);
+}
+
+.headline-04 {
+  font-size: var(--headline-04-size);
+  line-height: var(--headline-04-line);
+  font-weight: var(--headline-04-weight);
+}
+
+.headline-05 {
+  font-size: var(--headline-05-size);
+  line-height: var(--headline-05-line);
+  font-weight: var(--headline-05-weight);
+}
+
+.headline-06 {
+  font-size: var(--headline-06-size);
+  line-height: var(--headline-06-line);
+  font-weight: var(--headline-06-weight);
+}
+
+/* =========================
+   Subtitles
+========================= */
+
+.subtitle-01 {
+  font-size: var(--subtitle-01-size);
+  line-height: var(--subtitle-01-line);
+  font-weight: var(--subtitle-01-weight);
+}
+
+.subtitle-02 {
+  font-size: var(--subtitle-02-size);
+  line-height: var(--subtitle-02-line);
+  font-weight: var(--subtitle-02-weight);
+}
+
+.subtitle-03 {
+  font-size: var(--subtitle-03-size);
+  line-height: var(--subtitle-03-line);
+  font-weight: var(--subtitle-03-weight);
+}
+
+.subtitle-04 {
+  font-size: var(--subtitle-04-size);
+  line-height: var(--subtitle-04-line);
+  font-weight: var(--subtitle-04-weight);
+}
+
+/* =========================
+   Body text
+========================= */
+
+.body-01 {
+  font-size: var(--body-01-size);
+  line-height: var(--body-01-line);
+  font-weight: var(--body-01-weight);
+}
+
+.body-02 {
+  font-size: var(--body-02-size);
+  line-height: var(--body-02-line);
+  font-weight: var(--body-02-weight);
+}
+
+.body-03 {
+  font-size: var(--body-03-size);
+  line-height: var(--body-03-line);
+  font-weight: var(--body-03-weight);
+}
+
+/* =========================
+   Buttons
+========================= */
+
+.button-01 {
+  font-size: var(--button-01-size);
+  line-height: var(--button-01-line);
+  font-weight: var(--button-01-weight);
+}
+
+/* =========================
+   Captions
+========================= */
+
+.caption-01 {
+  font-size: var(--caption-01-size);
+  line-height: var(--caption-01-line);
+  font-weight: var(--caption-01-weight);
+}
+
+html[lang="en"] [class^="headline-"] {
+  font-family: 'Zodiak', sans-serif;
+}
+
+html[lang="en"] [class^="subtitle-"],
+html[lang="en"] [class^="body-"],
+html[lang="en"] [class^="button-"],
+html[lang="en"] [class^="caption-"] {
+  font-family: 'ClashGrotesk', sans-serif;
+}
+
+html[lang="ar"] [class^="headline-"] {
+  font-family: 'Pelak', sans-serif;
+}
+
+html[lang="ar"] [class^="subtitle-"],
+html[lang="ar"] [class^="body-"],
+html[lang="ar"] [class^="button-"],
+html[lang="ar"] [class^="caption-"] {
+  font-family: 'YekanBakhFaNumVF', sans-serif;
+}
