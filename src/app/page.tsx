@@ -1,5 +1,5 @@
-import { Sample } from '../components/icons/Sample';
 import { useTranslations } from 'next-intl';
+import { GoogleColorIcon } from '../components/icons/GoogleColorIcon';
 
 export default function Home() {
   const t = useTranslations();
@@ -10,7 +10,7 @@ export default function Home() {
         <span className="headline-01">{t('title')}</span>
         <span className="headline-02">{t('description')}</span>
         <span className="body-01 text-zinc-600">description</span>
-        <Sample size={48} color="#111827" />
+        <GoogleColorIcon size={40} color="#111827" />
       </main>
     </div>
   );
