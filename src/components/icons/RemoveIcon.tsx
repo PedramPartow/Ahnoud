@@ -10,7 +10,7 @@ export function RemoveIcon({
   }: IconProps) {
     return (
         <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 13.0001V11.0001H19V13.0001H5Z" fill={color}/>
+        <path d="M5 13.0001V11.0001H19V13.0001H5Z" fill={color || "currentColor"}/>
         </svg>
     );
 }
