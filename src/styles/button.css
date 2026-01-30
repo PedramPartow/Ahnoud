@@ -1,0 +1,93 @@
+.btn {
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+}
+
+/* sizes */
+.btn.sm {
+    width: 100%;
+    height: 40px;
+    gap: 6px;
+    padding: 8px;
+}
+  
+.btn.md {
+    width: 100%;
+    height: 48px;
+    gap: 8px;
+    padding: 12px;
+}
+  
+.btn.lg {
+    width: 100%;
+    height: 64px;
+    gap: 8px;
+    padding: 20px 24px;
+}
+
+/* colors */
+.btn.primary {
+    background-color: var(--color-primary-7);
+    color: var(--color-gray-13);
+}
+
+.btn.primary:not(:disabled):hover {
+    background-color: var(--color-primary-8);
+}
+
+.btn.dark {
+    background-color: var(--color-gray-13);
+    color: var(--color-gray-1);
+}
+
+.btn.dark:not(:disabled):hover {
+    background-color: var(--color-gray-11);
+}
+
+.btn.blur-gray {
+    background-color: var(--color-gray-13-alpha-48);
+    color: var(--color-gray-1);
+    backdrop-filter: blur(8px);
+}
+
+.btn.blur-gray:not(:disabled):hover {
+    background-color: var(--color-gray-13-alpha-64);
+}
+
+.btn.outline-gray {
+    background-color: var(--color-gray-13);
+    /* background-color: transparent; */
+    color: var(--color-gray-1);
+    border: 1px solid var(--color-gray-10) !important;
+}
+
+.btn.outline-gray:not(:disabled):hover {
+    background-color: var(--color-gray-11);
+    /* background-color: transparent; */
+    color: var(--color-gray-1);
+    border: 1px solid var(--color-tertiary-11) !important;
+}
+
+.btn:disabled,
+.btn.disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn.block {
+    width: 100%;
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--color-primary-7);
+    outline-offset: 2px;
+}
+
+.btn svg {
+    color: currentColor;
+}
