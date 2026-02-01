@@ -1,58 +1,57 @@
 /* fonts */
 
 @font-face {
-  font-family: 'ClashGrotesk-Extralight';
+  font-family: 'ClashGrotesk';
   src: url('/fonts/ClashGrotesk/ClashGrotesk-Extralight.woff2') format('woff2');
   font-weight: 200;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
-  font-family: 'ClashGrotesk-Light';
+  font-family: 'ClashGrotesk';
   src: url('/fonts/ClashGrotesk/ClashGrotesk-Light.woff2') format('woff2');
   font-weight: 300;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
-  font-family: 'ClashGrotesk-Regular';
+  font-family: 'ClashGrotesk';
   src: url('/fonts/ClashGrotesk/ClashGrotesk-Regular.woff2') format('woff2');
   font-weight: 400;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
-  font-family: 'ClashGrotesk-Medium';
+  font-family: 'ClashGrotesk';
   src: url('/fonts/ClashGrotesk/ClashGrotesk-Medium.woff2') format('woff2');
   font-weight: 500;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
-  font-family: 'ClashGrotesk-Semibold';
+  font-family: 'ClashGrotesk';
   src: url('/fonts/ClashGrotesk/ClashGrotesk-Semibold.woff2') format('woff2');
   font-weight: 600;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
-  font-family: 'ClashGrotesk-Bold';
+  font-family: 'ClashGrotesk';
   src: url('/fonts/ClashGrotesk/ClashGrotesk-Bold.woff2') format('woff2');
   font-weight: 700;
   font-display: swap;
   font-style: normal;
 }
 
-
 @font-face {
-  font-family: 'Zodiak-Thin';
+  font-family: 'Zodiak';
   src: url('/fonts/ZodiakVariable/Zodiak-Thin.woff2') format('woff2');
   font-weight: 100;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Zodiak-ThinItalic';
+  font-family: 'Zodiak';
   src: url('/fonts/ZodiakVariable/Zodiak-ThinItalic.woff2') format('woff2');
   font-weight: 100;
   font-display: swap;
@@ -66,65 +65,181 @@
   font-style: normal;
 }
 @font-face {
-  font-family: 'Zodiak-LightItalic';
+  font-family: 'Zodiak';
   src: url('/fonts/ZodiakVariable/Zodiak-LightItalic.woff2') format('woff2');
   font-weight: 300;
   font-display: swap;
   font-style: italic;
 }
 @font-face {
-  font-family: 'Zodiak-Regular';
+  font-family: 'Zodiak';
   src: url('/fonts/ZodiakVariable/Zodiak-Regular.woff2') format('woff2');
   font-weight: 400;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Zodiak-Italic';
+  font-family: 'Zodiak';
   src: url('/fonts/ZodiakVariable/Zodiak-Italic.woff2') format('woff2');
   font-weight: 400;
   font-display: swap;
   font-style: italic;
 }
 @font-face {
-  font-family: 'Zodiak-Bold';
+  font-family: 'Zodiak';
   src: url('/fonts/ZodiakVariable/Zodiak-Bold.woff2') format('woff2');
   font-weight: 700;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Zodiak-BoldItalic';
+  font-family: 'Zodiak';
   src: url('/fonts/ZodiakVariable/Zodiak-BoldItalic.woff2') format('woff2');
   font-weight: 700;
   font-display: swap;
   font-style: italic;
 }
 @font-face {
-  font-family: 'Zodiak-Extrabold';
+  font-family: 'Zodiak';
   src: url('/fonts/ZodiakVariable/Zodiak-Extrabold.woff2') format('woff2');
     font-weight: 800;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Zodiak-ExtraboldItalic';
+  font-family: 'Zodiak';
   src: url('/fonts/ZodiakVariable/Zodiak-ExtraboldItalic.woff2') format('woff2');
   font-weight: 800;
   font-display: swap;
   font-style: italic;
 }
 @font-face {
-  font-family: 'Zodiak-Black';
+  font-family: 'Zodiak';
   src: url('/fonts/ZodiakVariable/Zodiak-Black.woff2') format('woff2');
   font-weight: 900;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Zodiak-BlackItalic';
+  font-family: 'Zodiak';
   src: url('/fonts/ZodiakVariable/Zodiak-BlackItalic.woff2') format('woff2');
   font-weight: 900;
   font-display: swap;
   font-style: italic;
+}
+
+/* Pelak */
+@font-face {
+  font-family: 'Pelak';
+  src: url('/fonts/Pelak/Pelak-Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pelak';
+  src: url('/fonts/Pelak/Pelak-light.woff2') format('woff2');
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pelak';
+  src: url('/fonts/Pelak/Pelak-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pelak';
+  src: url('/fonts/Pelak/Pelak-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pelak';
+  src: url('/fonts/Pelak/Pelak-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pelak';
+  src: url('/fonts/Pelak/Pelak-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pelak';
+  src: url('/fonts/Pelak/Pelak-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pelak';
+  src: url('/fonts/Pelak/Pelak-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+/* YekanBakhFaNum */
+@font-face {
+  font-family: 'YekanBakhFaNum';
+  src: url('/fonts/YekanBakhFaNum/YekanBakhFaNum-Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'YekanBakhFaNum';
+  src: url('/fonts/YekanBakhFaNum/YekanBakhFaNum-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'YekanBakhFaNum';
+  src: url('/fonts/YekanBakhFaNum/YekanBakhFaNum-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'YekanBakhFaNum';
+  src: url('/fonts/YekanBakhFaNum/YekanBakhFaNum-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'YekanBakhFaNum';
+  src: url('/fonts/YekanBakhFaNum/YekanBakhFaNum-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'YekanBakhFaNum';
+  src: url('/fonts/YekanBakhFaNum/YekanBakhFaNum-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'YekanBakhFaNum';
+  src: url('/fonts/YekanBakhFaNum/YekanBakhFaNum-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'YekanBakhFaNum';
+  src: url('/fonts/YekanBakhFaNum/YekanBakhFaNum-ExtraBlack.woff2') format('woff2');
+  font-weight: 950;
+  font-display: swap;
+  font-style: normal;
 }

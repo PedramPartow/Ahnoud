@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 // Adjust these to your real auth routes
-const PUBLIC_AUTH_PATHS = ["/login", "/register"];
+const PUBLIC_AUTH_PATHS = ["/auth"];
 
 function isPublicAuthPath(pathname: string) {
   return PUBLIC_AUTH_PATHS.includes(pathname);
