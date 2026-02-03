@@ -19,7 +19,7 @@ export default function AuthLayout({
       <div className="absolute inset-0 bg-black/50" />
       <div className="relative z-10 flex min-h-screen items-center justify-center">
           <Image
-            src="/svgلهف/Logo.svg"
+            src="/svg/Logo.svg"
             alt="logo"
             width={40}
             height={48}
