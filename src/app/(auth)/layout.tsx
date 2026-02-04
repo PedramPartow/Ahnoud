@@ -1,10 +1,13 @@
-import Image from "next/image";
+import AuthHeader from "@/components/auth/AuthHeader";
+import { getTranslations } from "next-intl/server";
 
-export default function AuthLayout({
-    children,
-  }: {
-    children: React.ReactNode
-  }) {
+export default async function AuthLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const t = await getTranslations();
+
   return (
     <div className="relative min-h-screen overflow-hidden">
       <video
@@ -17,15 +20,20 @@ export default function AuthLayout({
         <source src="/videos/SmokedWizard.mp4" type="video/mp4" />
       </video>
       <div className="absolute inset-0 bg-black/50" />
-      <div className="relative z-10 flex min-h-screen items-center justify-center">
-          <Image
-            src="/svg/Logo.svg"
-            alt="logo"
-            width={40}
-            height={48}
-          />
-        <div className="w-full max-w-xl bg-gray-13">
-          {children}
+      <div className="relative z-10 flex min-h-screen w-full flex-col md:px-20 pt-6">
+        <AuthHeader />
+        <div className="flex-1 flex items-center justify-center">
+          <div className="flex justify-between items-center w-full">
+            <span className="subtitle-04 text-gray-1">
+              {t("account_title")}
+            </span>
+            <div className="w-full max-w-xl bg-gray-13 my-16">
+              {children}
+            </div>
+            <span className="subtitle-04 text-gray-1">
+              {t("account_subtitle")}
+            </span>
+          </div>
         </div>
       </div>
     </div>

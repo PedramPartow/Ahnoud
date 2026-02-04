@@ -18,11 +18,11 @@ html[lang="en"] {
 
   --headline-05-size: 37px;
   --headline-05-line: 41px;
-  --headline-05-weight: 700;
+  --headline-05-weight: 540;
 
   --headline-06-size: 32px;
   --headline-06-line: 35px;
-  --headline-06-weight: 700;
+  --headline-06-weight: 540;
 
   --subtitle-01-size: 32px;
   --subtitle-01-line: 38px;
@@ -38,11 +38,11 @@ html[lang="en"] {
 
   --subtitle-04-size: 18px;
   --subtitle-04-line: 22px;
-  --subtitle-04-weight: 600;
+  --subtitle-04-weight: 500;
 
   --button-01-size: 18px;
   --button-01-line: 18px;
-  --button-01-weight: 420;
+  --button-01-weight: 400;
 
   --body-01-size: 22px;
   --body-01-line: 27px;
@@ -54,11 +54,11 @@ html[lang="en"] {
   
   --body-03-size: 18px;
   --body-03-line: 22px;
-  --body-03-weight: 420;
+  --body-03-weight: 400;
 
   --caption-01-size: 15px;
   --caption-01-line: 18px;
-  --caption-01-weight: 420;
+  --caption-01-weight: 400;
 }
 
 /* Mobile */
@@ -73,7 +73,7 @@ html[lang="ar"] {
 
   --headline-03-size: 43px;
   --headline-03-line: 47px;
-  --headline-03-weight: 400;
+  --headline-03-weight: 500;
 
   --headline-04-size: 43px;
   --headline-04-line: 47px;
@@ -207,11 +207,11 @@ html[lang="ar"] {
 
     --headline-05-size: 48px;
     --headline-05-line: 53px;
-    --headline-05-weight: 700;
+    --headline-05-weight: 540;
 
     --headline-06-size: 40px;
     --headline-06-line: 48px;
-    --headline-06-weight: 700;
+    --headline-06-weight: 540;
 
     --subtitle-01-size: 64px;
     --subtitle-01-line: 77px;
@@ -227,11 +227,11 @@ html[lang="ar"] {
 
     --subtitle-04-size: 20px;
     --subtitle-04-line: 24px;
-    --subtitle-04-weight: 600;
+    --subtitle-04-weight: 500;
 
     --button-01-size: 20px;
     --button-01-line: 20px;
-    --button-01-weight: 420;
+    --button-01-weight: 400;
 
     --body-01-size: 24px;
     --body-01-line: 29px;
@@ -243,11 +243,11 @@ html[lang="ar"] {
 
     --body-03-size: 20px;
     --body-03-line: 24px;
-    --body-03-weight: 420;
+    --body-03-weight: 400;
 
     --caption-01-size: 16px;
     --caption-01-line: 20px;
-    --caption-01-weight: 420;
+    --caption-01-weight: 400;
   }
 }
 

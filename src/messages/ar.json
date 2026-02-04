@@ -1,4 +1,15 @@
 {
-  "title": "عنوان ۰۱",
-  "description": "هذا هو موقعنا"
+  "account_title": "حسابك.",
+  "account_subtitle": "فخامتك.",
+  "account_btn": "الصفحة الرئيسية",
+  "login_or_join_title": "تسجيل الدخول أو إنشاء حساب",
+  "login_or_join_subtitle": "سواء كنت عميلاً جديدًا أو سابقًا، أهنود تقدم لك الفخامة بلا حدود.",
+  "login_button": "تسجيل الدخول",
+  "register_button": "تسجيل",
+  "full_name_label": "الاسم الكامل",
+  "email_label": "بريد إلكتروني",
+  "password_label": "كلمة المرور",
+  "or_label": "أو",
+  "google_label": "جوجل",
+  "apple_label": "أبل"
 }

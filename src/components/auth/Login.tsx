@@ -6,6 +6,7 @@ import { EyeIcon } from "@/components/icons/EyeIcon";
 import { EyeSlashIcon } from "@/components/icons/EyeSlashIcon";
 import { GoogleIcon } from "@/components/icons/GoogleIcon";
 import { AppleIcon } from "@/components/icons/AppleIcon";
+import Input from "@/components/general/Input";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -13,40 +14,37 @@ export default function Login() {
   return (
     <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
       {/* Email */}
-      <label className="flex flex-col gap-1">
-        <span className="text-sm text-gray-5">Email</span>
-        <input
-          type="email"
-          name="email"
-          placeholder=" "
-          className="w-full bg-transparent border-0 border-b border-gray-8 pb-2 text-gray-1 placeholder:text-transparent focus:border-primary-5 focus:outline-none focus:ring-0 transition-colors"
-        />
-      </label>
+      <Input
+        label="Email"
+        name="email"
+        type="email"
+        placeholder="you@example.com"
+        description="Use the email you signed up with."
+      />
 
       {/* Password with eye toggle */}
-      <label className="flex flex-col gap-1">
-        <span className="text-sm text-gray-5">Password</span>
-        <div className="relative flex items-center border-b border-gray-8 focus-within:border-primary-5 transition-colors">
-          <input
-            type={showPassword ? "text" : "password"}
-            name="password"
-            placeholder=" "
-            className="w-full flex-1 bg-transparent border-0 pb-2 pr-10 text-gray-1 placeholder:text-transparent focus:outline-none focus:ring-0"
-          />
-          <button
-            type="button"
-            onClick={() => setShowPassword((prev) => !prev)}
-            className="absolute right-0 bottom-2 p-1 text-gray-5 hover:text-gray-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-5 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-13"
-            aria-label={showPassword ? "Hide password" : "Show password"}
-          >
-            {showPassword ? (
-              <EyeSlashIcon size={20} className="text-current" />
-            ) : (
-              <EyeIcon size={20} className="text-current" />
-            )}
-          </button>
-        </div>
-      </label>
+      <div className="relative">
+        <Input
+          label="Password"
+          name="password"
+          type={showPassword ? "text" : "password"}
+          placeholder="••••••••"
+          description="At least 8 characters."
+          className="pr-10"
+        />
+        <button
+          type="button"
+          onClick={() => setShowPassword((prev) => !prev)}
+          className="absolute right-0 bottom-3 p-1 text-gray-5 hover:text-gray-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-5 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-13"
+          aria-label={showPassword ? "Hide password" : "Show password"}
+        >
+          {showPassword ? (
+            <EyeSlashIcon size={20} className="text-current" />
+          ) : (
+            <EyeIcon size={20} className="text-current" />
+          )}
+        </button>
+      </div>
 
       {/* Helper links */}
       <div className="flex items-center justify-between text-sm">

@@ -1,4 +1,15 @@
 {
-  "title": "Welcome",
-  "description": "This is our website"
+  "account_title": "Your Account.",
+  "account_subtitle": "Your Luxury.",
+  "account_btn": "Back to Home",
+  "login_or_join_title": "Log In or Join",
+  "login_or_join_subtitle": "Returning or new, Ahnoud offers you unmatched luxury.",
+  "login_button": "Log In",
+  "register_button": "Register",
+  "full_name_label": "Full Name",
+  "password_label": "Password",
+  "email_label": "Email",
+  "or_label": "Or",
+  "google_label": "Google",
+  "apple_label": "Apple"
 }

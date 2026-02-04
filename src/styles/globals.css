@@ -70,6 +70,7 @@
   --color-gray-13-alpha-0: #0C121100;
   --color-gray-13-alpha-48: #0C12117A;
   --color-gray-13-alpha-64: #0C1211A3;
+  --color-gray-1-alpha-10: #FCFCFC1A;
 }
 
 :root {
@@ -80,7 +81,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-}gi
+}
 
 /* ============================================
    Base Reset
@@ -122,10 +123,6 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
 }
 
 button {
