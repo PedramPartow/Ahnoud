@@ -114,7 +114,6 @@ body {
   min-height: 100dvh;
   background-color: var(--background);
   color: var(--foreground);
-  font-family: "ClashGrotesk", system-ui, sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -149,18 +148,4 @@ svg {
   display: block;
   max-width: 100%;
   height: auto;
-}
-
-/* ============================================
-   Accessibility
-   ============================================ */
-
-:focus-visible {
-  outline: 2px solid var(--color-primary-7);
-  outline-offset: 2px;
-}
-
-::selection {
-  background-color: var(--color-primary-4);
-  color: var(--color-gray-13);
 }

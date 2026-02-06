@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import "../styles/globals.css";
 import { env } from "process";
+import MuiProvider from './mui-provider';
 
 export const metadata: Metadata = {
   title: "Ahnoud",
@@ -16,9 +17,11 @@ export default async function RootLayout({
   return (
     <html lang={env.LANG} dir={env.LANG === 'ar' ? 'rtl' : 'ltr'}>
       <body>
-        <NextIntlClientProvider>
-          {children}
-        </NextIntlClientProvider>
+        <MuiProvider>
+          <NextIntlClientProvider>
+            {children}
+          </NextIntlClientProvider>
+        </MuiProvider>
       </body>
     </html>
   );
