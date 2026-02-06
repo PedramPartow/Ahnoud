@@ -11,5 +11,7 @@
   "password_label": "كلمة المرور",
   "or_label": "أو",
   "google_label": "جوجل",
-  "apple_label": "أبل"
+  "apple_label": "أبل",
+  "need_help_label": "هل تحتاج إلى مساعدة؟",
+  "reset_password_label": "إعادة تعيين كلمة المرور"
 }

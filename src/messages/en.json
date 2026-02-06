@@ -11,5 +11,7 @@
   "email_label": "Email",
   "or_label": "Or",
   "google_label": "Google",
-  "apple_label": "Apple"
+  "apple_label": "Apple",
+  "need_help_label": "Do you need help?",
+  "reset_password_label": "Reset Password"
 }
