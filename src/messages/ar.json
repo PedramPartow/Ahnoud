@@ -13,5 +13,15 @@
   "google_label": "جوجل",
   "apple_label": "أبل",
   "need_help_label": "هل تحتاج إلى مساعدة؟",
-  "reset_password_label": "إعادة تعيين كلمة المرور"
+  "reset_password_label": "إعادة تعيين كلمة المرور",
+  "verify_email_title": "تحقق من بريدك الإلكتروني",
+  "verify_email_subtitle": "لقد أرسلنا رابط التحقق إلى بريدك الإلكتروني. انقر عليه لإكمال التسجيل.",
+  "Didnot_get_email_subtitle": "لم تستلم البريد الإلكتروني؟ تحقق من مجلد الرسائل غير المرغوب فيها أو أعد إرسال الرابط.",
+  "resend_label": "إعادة الإرسال",
+  "enter_your_email_title": "أدخل بريدك الإلكتروني",
+  "enter_your_email_subtitle": "أدخل بريدك الإلكتروني لاستلام رابط إعادة التعيين واستعادة الوصول إلى حسابك.",
+  "receive_reset_link_button": "تلقي رابط إعادة الضبط",
+  "set_new_password_title": "تعيين كلمة مرور جديدة",
+  "set_new_password_subtitle": "احمِ حسابك باختيار كلمة مرور قوية وفريدة.",
+  "enter_new_password_label": "أدخل كلمة المرور الجديدة"
 }

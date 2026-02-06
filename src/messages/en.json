@@ -13,5 +13,15 @@
   "google_label": "Google",
   "apple_label": "Apple",
   "need_help_label": "Do you need help?",
-  "reset_password_label": "Reset Password"
+  "reset_password_label": "Reset Password",
+  "verify_email_title": "Verify Your Email",
+  "verify_email_subtitle": "We've sent a verification link to your email. Click it to complete your registration.",
+  "Didnot_get_email_subtitle": "Didn't receive the email? Check your spam folder or resend the link.",
+  "resend_label": "Resend",
+  "enter_your_email_title": "Enter Your Email",
+  "enter_your_email_subtitle": "Enter your email to receive a reset link and regain access to your account.",
+  "receive_reset_link_button": "Receive Reset Link",
+  "set_new_password_title": "Set New Password",
+  "set_new_password_subtitle": "Protect your account by choosing a strong, unique password.",
+  "enter_new_password_label": "Enter New Password"
 }

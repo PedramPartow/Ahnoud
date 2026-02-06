@@ -27,7 +27,7 @@ export default async function AuthLayout({
             <span className="subtitle-04 text-gray-1">
               {t("account_title")}
             </span>
-            <div className="w-full max-w-xl bg-gray-13 my-16">
+            <div className="w-full max-w-xl">
               {children}
             </div>
             <span className="subtitle-04 text-gray-1">

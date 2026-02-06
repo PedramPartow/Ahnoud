@@ -4,22 +4,32 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import { useTranslations } from 'next-intl';
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import EyeIcon from '../icons/EyeIcon';
 import EyeSlashIcon from '../icons/EyeSlashIcon';
 
-export default function Register() {
+interface RegisterProps {
+  setVerifyRegister: (value: boolean) => void;
+}
+
+export default function Register({ setVerifyRegister }: RegisterProps) {
   const t = useTranslations();
   const [showPassword, setShowPassword] = useState(false);
 
   const handleToggle = () => setShowPassword((prev) => !prev);
 
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setVerifyRegister(true);
+  }
+
   return (
-    <form className="flex flex-col gap-12" onSubmit={(e) => e.preventDefault()}>
+    <form className="flex flex-col gap-12" onSubmit={handleSubmit}>
       <div className="flex flex-col gap-8">
-        <TextField id="FullName" label={t('full_name_label')} variant="standard" />
-        <TextField id="Email" label={t('email_label')} variant="standard" />
+        <TextField autoComplete="off" id="FullName" label={t('full_name_label')} variant="standard" />
+        <TextField autoComplete="off" id="Email" label={t('email_label')} variant="standard" />
         <TextField
+          autoComplete="off"
           id="Password"
           label={t('password_label')}
           variant="standard"
