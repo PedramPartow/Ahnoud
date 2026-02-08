@@ -13,12 +13,20 @@ const AuthHeader = () => {
         <Image
             src="/svg/Logo.svg"
             alt="ahnoud logo"
+            className='hidden md:block'
             width={40}
             height={48}
         />
+        <Image
+            src="/svg/Logo.svg"
+            alt="ahnoud logo"
+            className='block md:hidden'
+            width={33}
+            height={40}
+        />
         <Button className="blur-gray md" href="/home">
             <HomeIcon size={24} />
-            {t("account_btn")}
+            <span className="hidden md:inline">{t("account_btn")}</span>
         </Button>
     </div>
   );

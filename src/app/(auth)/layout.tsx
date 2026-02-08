@@ -9,28 +9,28 @@ export default async function AuthLayout({
   const t = await getTranslations();
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden bg-gray-13">
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover"
+        className="hidden md:block absolute inset-0 w-full h-full object-cover"
       >
         <source src="/videos/SmokedWizard.mp4" type="video/mp4" />
       </video>
-      <div className="absolute inset-0 bg-black/50" />
-      <div className="relative z-10 flex min-h-screen w-full flex-col md:px-20 pt-6">
+      <div className="hidden md:block absolute inset-0 bg-black/50" />
+      <div className="relative z-10 flex min-h-screen w-full flex-col px-5 md:px-20 pt-6">
         <AuthHeader />
-        <div className="flex-1 flex items-center justify-center">
+        <div className="flex-1 flex items-start md:items-center justify-center">
           <div className="flex justify-between items-center w-full">
-            <span className="subtitle-04 text-gray-1">
+            <span className="hidden md:inline subtitle-04 text-gray-1 text-center">
               {t("account_title")}
             </span>
-            <div className="w-full max-w-xl">
+            <div className="w-full md:max-w-xl">
               {children}
             </div>
-            <span className="subtitle-04 text-gray-1">
+            <span className="hidden md:inline subtitle-04 text-gray-1 text-center">
               {t("account_subtitle")}
             </span>
           </div>

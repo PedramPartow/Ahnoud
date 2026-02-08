@@ -8,19 +8,27 @@ import { useState } from 'react';
 import EyeIcon from '../icons/EyeIcon';
 import EyeSlashIcon from '../icons/EyeSlashIcon';
 
-export default function Login() {
+interface ResetProps {
+  setResetPassword: (value: boolean) => void;
+}
+
+export default function Login({ setResetPassword }: ResetProps) {
   const t = useTranslations();
   const [loginShowPassword, setLoginShowPassword] = useState(false);
 
   const handleToggle = () => setLoginShowPassword((prev) => !prev);
+
+  const handleSubmit = () => {
+    setResetPassword(true);
+  }
   
   return (
-    <form className="flex flex-col gap-12" onSubmit={(e) => e.preventDefault()}>
+    <form className="flex flex-col gap-12" onSubmit={(e)=> e.preventDefault()}>
         <div className="flex flex-col gap-8">
-          <TextField autoComplete="off" id="Email" label={t('email_label')} variant="standard" />
+          <TextField autoComplete="nope" id="Email" label={t('email_label')} variant="standard" />
           <div className="flex flex-col gap-4">
             <TextField
-              autoComplete="off"
+              autoComplete="new-password"
               id="Password"
               label={t('password_label')}
               variant="standard"
@@ -42,7 +50,7 @@ export default function Login() {
             />
             <div className='flex justify-between items-center'>
               <span className='text-gray-7 body-03'>{t("need_help_label")}</span>
-              <span className='button-01 text-gray-1'>{t("reset_password_label")}</span>
+              <span onClick={handleSubmit} className='button-01 text-gray-1 cursor-pointer'>{t("reset_password_label")}</span>
             </div>
           </div>
         </div>

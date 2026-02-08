@@ -23,5 +23,6 @@
   "receive_reset_link_button": "تلقي رابط إعادة الضبط",
   "set_new_password_title": "تعيين كلمة مرور جديدة",
   "set_new_password_subtitle": "احمِ حسابك باختيار كلمة مرور قوية وفريدة.",
-  "enter_new_password_label": "أدخل كلمة المرور الجديدة"
+  "enter_new_password_label": "أدخل كلمة المرور الجديدة",
+  "back_label": "رجوع"
 }

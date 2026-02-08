@@ -26,10 +26,10 @@ export default function Register({ setVerifyRegister }: RegisterProps) {
   return (
     <form className="flex flex-col gap-12" onSubmit={handleSubmit}>
       <div className="flex flex-col gap-8">
-        <TextField autoComplete="off" id="FullName" label={t('full_name_label')} variant="standard" />
-        <TextField autoComplete="off" id="Email" label={t('email_label')} variant="standard" />
+        <TextField autoComplete="nope" id="FullName" label={t('full_name_label')} variant="standard" />
+        <TextField autoComplete="nope" id="Email" label={t('email_label')} variant="standard" />
         <TextField
-          autoComplete="off"
+          autoComplete="new-password"
           id="Password"
           label={t('password_label')}
           variant="standard"

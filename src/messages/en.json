@@ -23,5 +23,6 @@
   "receive_reset_link_button": "Receive Reset Link",
   "set_new_password_title": "Set New Password",
   "set_new_password_subtitle": "Protect your account by choosing a strong, unique password.",
-  "enter_new_password_label": "Enter New Password"
+  "enter_new_password_label": "Enter New Password",
+  "back_label": "Back"
 }

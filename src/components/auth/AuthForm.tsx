@@ -10,25 +10,38 @@ import GoogleIcon from "../icons/GoogleIcon";
 import Login from "./Login";
 import Register from "./Register";
 import VerifyEmail from './VerifyEmail';
+import ResetPassword from './ResetPassword';
 
 const AuthForm = () => {
   const t = useTranslations();
   const [activeTab, setActiveTab] = useState<"register" | "login">("register");
   const [verifyRegister, setVerifyRegister] = useState<boolean>(false);
+  const [resetPassword, setResetPassword] = useState(false);
 
   if (verifyRegister) {
     return (
-        <div className="flex flex-col gap-4 my-16">
-            <Button className="blur-gray md w-12!" onClick={() => setVerifyRegister((prev) => !prev)}><ArrowLeftTailIcon size={24}/></Button>
-            <div className="flex flex-col p-16 bg-gray-13">
+        <div className="flex flex-col gap-4 my-6 md:my-16">
+            <Button className="blur-gray md md:w-12!" onClick={() => setVerifyRegister((prev) => !prev)}><ArrowLeftTailIcon size={24}/><span className="md:hidden">{t("back_label")}</span></Button>
+            <div className="flex flex-col md:p-16 bg-gray-13">
                 <VerifyEmail />
             </div>
         </div>
     );
   }
 
+  if (resetPassword) {
+    return (
+        <div className="flex flex-col gap-4 my-6 md:my-16">
+            <Button className="blur-gray md md:w-12!" onClick={() => setResetPassword((prev) => !prev)}><ArrowLeftTailIcon size={24}/><span className="md:hidden">{t("back_label")}</span></Button>
+            <div className="flex flex-col md:p-16 bg-gray-13">
+                <ResetPassword />
+            </div>
+        </div>
+    );
+  }
+
   return (
-    <div className="flex flex-col p-16 bg-gray-13 my-16">
+    <div className="flex flex-col md:p-16 bg-gray-13 my-6 md:my-16">
         <div className="flex flex-col items-stretch gap-8">
             <div className="flex flex-col justify-center items-center gap-3 text-center">
                 <h1 className="headline-06 text-gray-1">{t("login_or_join_title")}</h1>
@@ -44,7 +57,7 @@ const AuthForm = () => {
             />
             <div className="flex flex-col gap-8">
                 {activeTab === "login" ? (
-                <Login />
+                    <Login setResetPassword={setResetPassword} />
                 ) : (
                     <Register setVerifyRegister={setVerifyRegister} />
                 )}

@@ -140,16 +140,6 @@ select {
   font-size: inherit;
 }
 
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
 input:-webkit-autofill {
   transition: background-color 5000s ease-in-out 0s;
 }
