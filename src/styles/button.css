@@ -29,6 +29,21 @@
     padding: 20px 24px;
 }
 
+.btn.sm-md {
+    width: 100%;
+    height: 40px;
+    gap: 6px;
+    padding: 8px;
+}
+
+@media (min-width: 768px) {
+    .btn.sm-md {
+        height: 48px;
+        gap: 8px;
+        padding: 12px;
+    }
+}
+
 /* colors */
 .btn.primary {
     background-color: var(--color-primary-7);

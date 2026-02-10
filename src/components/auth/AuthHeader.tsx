@@ -2,8 +2,8 @@
 
 import { useTranslations } from 'next-intl';
 import Image from "next/image";
+import HomeIcon from "@/icons/HomeIcon";
 import Button from "../general/Button";
-import HomeIcon from "../icons/HomeIcon";
 
 const AuthHeader = () => {
   const t = useTranslations();
@@ -11,20 +11,13 @@ const AuthHeader = () => {
   return (
     <div className="flex justify-between align-center">
         <Image
-            src="/svg/Logo.svg"
+            src="/images/Logo.svg"
             alt="ahnoud logo"
-            className='hidden md:block'
+            className='w-[33px] h-[40px] md:w-[40px] md:h-[48px]'
             width={40}
             height={48}
         />
-        <Image
-            src="/svg/Logo.svg"
-            alt="ahnoud logo"
-            className='block md:hidden'
-            width={33}
-            height={40}
-        />
-        <Button className="blur-gray md" href="/home">
+        <Button className="blur-gray sm-md" href="/home">
             <HomeIcon size={24} />
             <span className="hidden md:inline">{t("account_btn")}</span>
         </Button>

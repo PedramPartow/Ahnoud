@@ -3,14 +3,14 @@
 import Tabs from "@/components/general/Tabs";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+import AppleIcon from "@/icons/AppleIcon";
+import ArrowLeftTailIcon from "@/icons/ArrowLeftTailIcon";
+import GoogleIcon from "@/icons/GoogleIcon";
 import Button from "../general/Button";
-import AppleIcon from "../icons/AppleIcon";
-import ArrowLeftTailIcon from "../icons/ArrowLeftTailIcon";
-import GoogleIcon from "../icons/GoogleIcon";
 import Login from "./Login";
 import Register from "./Register";
-import VerifyEmail from './VerifyEmail';
 import ResetPassword from './ResetPassword';
+import VerifyEmail from './VerifyEmail';
 
 const AuthForm = () => {
   const t = useTranslations();
@@ -21,7 +21,7 @@ const AuthForm = () => {
   if (verifyRegister) {
     return (
         <div className="flex flex-col gap-4 my-6 md:my-16">
-            <Button className="blur-gray md md:w-12!" onClick={() => setVerifyRegister((prev) => !prev)}><ArrowLeftTailIcon size={24}/><span className="md:hidden">{t("back_label")}</span></Button>
+            <Button className="blur-gray sm-md md:w-12!" onClick={() => setVerifyRegister((prev) => !prev)}><ArrowLeftTailIcon size={24}/><span className="md:hidden">{t("back_label")}</span></Button>
             <div className="flex flex-col md:p-16 bg-gray-13">
                 <VerifyEmail />
             </div>
@@ -32,7 +32,7 @@ const AuthForm = () => {
   if (resetPassword) {
     return (
         <div className="flex flex-col gap-4 my-6 md:my-16">
-            <Button className="blur-gray md md:w-12!" onClick={() => setResetPassword((prev) => !prev)}><ArrowLeftTailIcon size={24}/><span className="md:hidden">{t("back_label")}</span></Button>
+            <Button className="blur-gray sm-md md:w-12!" onClick={() => setResetPassword((prev) => !prev)}><ArrowLeftTailIcon size={24}/><span className="md:hidden">{t("back_label")}</span></Button>
             <div className="flex flex-col md:p-16 bg-gray-13">
                 <ResetPassword />
             </div>
@@ -68,11 +68,11 @@ const AuthForm = () => {
                     </span>
                 </div>
                 <div className="grid grid-cols-2 gap-6">
-                    <Button className="outline-gray md">
+                    <Button className="outline-gray sm-md">
                         <GoogleIcon size={24} />
                         {t('google_label')}
                     </Button>
-                    <Button className="outline-gray md">
+                    <Button className="outline-gray sm-md">
                         <AppleIcon size={24} />
                         {t('apple_label')}
                     </Button>

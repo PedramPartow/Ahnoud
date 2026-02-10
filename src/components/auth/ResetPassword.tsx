@@ -28,7 +28,7 @@ const ResetPassword = () => {
       </div>
       <div className="flex flex-col items-stretch gap-12">
         <TextField autoComplete="nope" id="Email" label={t('email_label')} variant="standard" />
-        <Button className="primary block md" onClick={handleIt}>{t("receive_reset_link_button")}</Button>
+        <Button className="primary block sm-md" onClick={handleIt}>{t("receive_reset_link_button")}</Button>
       </div>
     </div>
   );

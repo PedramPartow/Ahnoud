@@ -24,5 +24,7 @@
   "set_new_password_title": "تعيين كلمة مرور جديدة",
   "set_new_password_subtitle": "احمِ حسابك باختيار كلمة مرور قوية وفريدة.",
   "enter_new_password_label": "أدخل كلمة المرور الجديدة",
-  "back_label": "رجوع"
+  "back_label": "رجوع",
+  "home_label": "رئيسية",
+  "products_label": "منتجات"
 }

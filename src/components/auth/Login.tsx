@@ -1,12 +1,13 @@
 "use client";
 
+import EyeIcon from '@/icons/EyeIcon';
+import EyeSlashIcon from '@/icons/EyeSlashIcon';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
-import EyeIcon from '../icons/EyeIcon';
-import EyeSlashIcon from '../icons/EyeSlashIcon';
+import Button from '../general/Button';
 
 interface ResetProps {
   setResetPassword: (value: boolean) => void;
@@ -54,9 +55,9 @@ export default function Login({ setResetPassword }: ResetProps) {
             </div>
           </div>
         </div>
-        <button type="submit" className="btn button-01 primary md block">
+        <Button type="submit" className="primary sm-md block">
           {t('login_button')}
-        </button>
+        </Button>
     </form>
   );
 };

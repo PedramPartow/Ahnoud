@@ -5,9 +5,9 @@ import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import { useTranslations } from "next-intl";
 import { useState } from 'react';
+import EyeIcon from '@/icons/EyeIcon';
+import EyeSlashIcon from '@/icons/EyeSlashIcon';
 import Button from "../general/Button";
-import EyeIcon from '../icons/EyeIcon';
-import EyeSlashIcon from '../icons/EyeSlashIcon';
 
 const SetNewPassword = () => {
     const [newPasswordShow, setNewPasswordShow] = useState(false);
@@ -44,7 +44,7 @@ const SetNewPassword = () => {
                     ),
                     }}
                 />
-                <Button className="primary block md">{t("reset_password_label")}</Button>
+                <Button className="primary block sm-md">{t("reset_password_label")}</Button>
             </div>
         </div>
     );
