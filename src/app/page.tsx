@@ -5,9 +5,9 @@ export default function HomePage() {
   return (
     <div className="h-screen overflow-y-auto snap-y snap-mandatory">
       <section 
-        className="min-h-screen snap-start snap-always grid bg-gray-13 pt-2 md:pt-6 overflow-hidden"
+        className="min-h-screen snap-start snap-always bg-gray-13 pt-2 md:pt-6 overflow-hidden"
       >
-        <div className="self-start z-20 w-full px-5 md:px-20">
+        <div className="relative z-20 w-full block px-5 md:px-20">
           <HomeHeaderSection />
         </div>
       </section>

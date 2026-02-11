@@ -19,7 +19,7 @@ export default async function RootLayout({
   const locale = store.get('locale')?.value || 'en';
 
   return (
-    <html lang={env.LANG} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       <body>
         <MuiProvider direction={locale === 'ar' ? 'rtl' : 'ltr'}>
           <NextIntlClientProvider>

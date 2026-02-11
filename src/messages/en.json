@@ -27,7 +27,8 @@
   "back_label": "Back",
   "home_label": "Home",
   "products_label": "Products",
-  "luxury_section_label": "Luxury in<br /> Every Detail.",
-  "authenticity_section_label": "Authenticity in<br />Every Bite.",
-  "hero_subtitle": "<brand>At Ahnoud</brand>, tradition meets modern luxury. From Dubai to the world, we craft premium saffron, pistachios, and dates for those who value excellence."
+  "luxury_section_label": "Luxury in<br></br> Every Detail.",
+  "authenticity_section_label": "Authenticity in<br></br>Every Bite.",
+  "hero_subtitle": "<brand>At Ahnoud</brand>, tradition meets modern luxury. From Dubai to the world, we craft premium saffron, pistachios, and dates for those who value excellence.",
+  "scroll_to_learn_more_label": "Scroll to<br></br> Learn More"
 }

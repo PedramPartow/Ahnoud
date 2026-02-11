@@ -361,24 +361,24 @@ html[lang="ar"] {
   font-weight: var(--caption-01-weight);
 }
 
-html[lang="en"] [class^="headline-"] {
+html[lang="en"] [class*="headline-"] {
   font-family: 'Zodiak', sans-serif;
 }
 
-html[lang="en"] [class^="subtitle-"],
-html[lang="en"] [class^="body-"],
-html[lang="en"] [class^="button-"],
-html[lang="en"] [class^="caption-"] {
+html[lang="en"] [class*="subtitle-"],
+html[lang="en"] [class*="body-"],
+html[lang="en"] [class*="button-"],
+html[lang="en"] [class*="caption-"] {
   font-family: 'ClashGrotesk', sans-serif;
 }
 
-html[lang="ar"] [class^="headline-"] {
+html[lang="ar"] [class*="headline-"] {
   font-family: 'Pelak', sans-serif;
 }
 
-html[lang="ar"] [class^="subtitle-"],
-html[lang="ar"] [class^="body-"],
-html[lang="ar"] [class^="button-"],
-html[lang="ar"] [class^="caption-"] {
+html[lang="ar"] [class*="subtitle-"],
+html[lang="ar"] [class*="body-"],
+html[lang="ar"] [class*="button-"],
+html[lang="ar"] [class*="caption-"] {
   font-family: 'YekanBakhFaNum', sans-serif;
 }
