@@ -17,7 +17,7 @@ const AuthHeader = () => {
             width={40}
             height={48}
         />
-        <Button className="blur-gray sm-md" href="/home">
+        <Button className="blur-gray sm-md" href="/">
             <HomeIcon size={24} />
             <span className="hidden md:inline">{t("account_btn")}</span>
         </Button>
