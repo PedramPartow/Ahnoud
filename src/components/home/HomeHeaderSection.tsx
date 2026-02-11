@@ -4,12 +4,20 @@ import ArrowDownIcon from "@/icons/ArrowDownIcon";
 import ArrowDownTailIcon from "@/icons/ArrowDownTailIcon";
 import MenuIcon from "@/icons/MenuIcon";
 import ShoppingBagIcon from "@/icons/ShoppingBagIcon";
+import UserCircleIcon from "@/icons/UserCircleIcon";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Button from "../general/Button";
 
+function getAuthToken(): string | undefined {
+    if (typeof document === "undefined") return undefined;
+    const match = document.cookie.match(/(?:^|;\s*)auth_token=([^;]*)/);
+    return match ? decodeURIComponent(match[1]) : undefined;
+}
+
 const HomeHeaderSection = () => {
     const t = useTranslations();
+    const isLoggedIn = !!getAuthToken();
 
     return (
         <>
@@ -32,9 +40,16 @@ const HomeHeaderSection = () => {
                         </Button>
                     </div>
                     <div className="flex items-center justify-center gap-4">
-                        <Button className="outline-gray sm-md">
-                            <ShoppingBagIcon />
-                        </Button>
+                        {isLoggedIn ? (
+                            <Button className="outline-gray sm-md">
+                                <ShoppingBagIcon />
+                            </Button>
+                        ) : (
+                            <>
+                                <Button className="hidden! md:block! primary sm-md">{t('join_or_login_button')}</Button>
+                                <Button className="md:hidden! primary sm-md"><UserCircleIcon size={24} /></Button>
+                            </>
+                        )}
                         <Button className="outline-gray sm-md">
                             <MenuIcon />
                         </Button>
@@ -42,7 +57,7 @@ const HomeHeaderSection = () => {
                 </div>
             </div>
             <div className="place-self-center relative mt-16 md:mt-24 mb-40">
-                <span className="headline-01 text-gray-1 absolute top-0 md:top-[10%] z-10 w-max left-1/2 -translate-x-1/2 text-center md:text-start md:left-[-450px] md:translate-x-0">
+                <span className="headline-01 text-gray-1 absolute top-0 md:top-[10%] z-10 w-max left-1/2 -translate-x-1/2 text-center md:text-start md:left-[max(-450px,calc(-50vw_+_300px))] md:translate-x-0">
                     {t.rich('luxury_section_label', {
                         br: () => <br />
                     })}
@@ -55,7 +70,7 @@ const HomeHeaderSection = () => {
                     className="h-[326px] w-[246px] md:h-[756px] md:w-[570px] object-cover brightness-50" 
                     priority
                 />
-                <span className="headline-01 text-gray-1 absolute bottom-0 md:bottom-[10%] z-10 w-max left-1/2 -translate-x-1/2 text-center md:text-end md:left-auto md:right-[-450px] md:translate-x-0">
+                <span className="headline-01 text-gray-1 absolute bottom-0 md:bottom-[10%] z-10 w-max left-1/2 -translate-x-1/2 text-center md:text-start md:left-auto md:right-[max(-450px,calc(-50vw_+_300px))] md:translate-x-0">
                     {t.rich('authenticity_section_label', {
                         br: () => <br />
                     })}
