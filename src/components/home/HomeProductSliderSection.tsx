@@ -1,14 +1,14 @@
 "use client";
 
 import ArrowRightUpIcon from "@/icons/ArrowRightUpIcon";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useCallback, useRef, useState } from "react";
 import type { Swiper as SwiperType } from "swiper";
-import { Autoplay, EffectFade } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-
 import "swiper/css";
 import "swiper/css/effect-fade";
+import { Autoplay, EffectFade } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import Button from "../general/Button";
 
 type Product = {
@@ -43,6 +43,7 @@ const products: Product[] = [
 ];
 
 const HomeProductSliderSection = () => {
+  const t = useTranslations();
   const swiperRef = useRef<SwiperType | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -52,65 +53,64 @@ const HomeProductSliderSection = () => {
   return (
     <div className="w-full min-h-screen flex flex-col items-center justify-center py-16 md:py-20">
       <div className="w-full grid grid-cols-12">
+        <span className="hidden md:block text-gray-1 subtitle-04 absolute left-20 top-1/2">{t('our_products_label')}</span>
         <Swiper
               modules={[Autoplay, EffectFade]}
               effect="fade"
               fadeEffect={{ crossFade: true }}
               autoplay={{ delay: 5000, disableOnInteraction: false }}
               speed={600}
-              // loop
-              className="px-4! md:px-10! py-4! md:py-10! w-full bg-gray-1 col-span-12 md:col-span-4 col-start-1 md:col-start-5"
+              loop
+              className="px-4! md:px-10! py-4! md:py-10! w-full bg-gray-1 col-span-12 md:col-span-5 col-start-1 md:col-start-5"
               onSwiper={(swiper) => (swiperRef.current = swiper)}
               onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
             >
               {products.map((product) => (
                 <SwiperSlide key={product.id}>
-                  <div className="flex flex-col items-center gap-4! md:gap-8!">
+                  <div className="flex flex-col items-center gap-4! md:gap-8! relative">
                     <div className="flex items-center justify-center">
                       <span className="body-03 text-gray-13">
                         {String(activeIndex + 1).padStart(2, "0")}
-                      </span>
-                      <span className="body-03 text-gray-5">
-                        / {String(products.length).padStart(2, "0")}
+                        &nbsp;
+                        <span className="body-03 text-gray-5">
+                         / {String(products.length).padStart(2, "0")}
+                        </span>
                       </span>
                     </div>
                     <h2 className="headline-05 text-gray-13 text-center">
                       {product.name}
                     </h2>
-
-                    <div className="relative w-full flex items-center justify-center">
-                      <div className="relative w-[260px] h-[200px] md:w-[480px] md:h-[340px]">
-                        <Image
-                          src={product.image}
-                          alt={product.name}
-                          fill
-                          sizes="(max-width: 768px) 260px, 480px"
-                          className="object-contain"
-                        />
-                      </div>
-                      <div className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 ltr:right-0 rtl:left-0">
-                        <Button className="blur-gray sm-md">
-                          
-                          <ArrowRightUpIcon />
-                        </Button>
-                      </div>
+                    <div className="w-full h-full ">
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        width={303}
+                        height={170}
+                        className="object-cover w-full h-full md:w-[489px] md:h-[275px]"
+                      />
                     </div>
-                    {/* <div className="flex md:hidden mb-8">
-                      <Button className="blur-gray sm-md">
-                        Discover More
-                        <ArrowRightIcon size={20} />
-                      </Button>
-                    </div> */}
                     <p className="body-02 text-gray-13 text-center">
                       {product.description}
                     </p>
+                    <div className="block md:hidden flex justify-center w-full">
+                      <Button className="dark sm-md" href="/">
+                        {t('discover_more_button')}
+                        <ArrowRightUpIcon />
+                      </Button>
+                    </div>
                   </div>
                 </SwiperSlide>
               ))}
         </Swiper>
+        <div className="hidden md:block absolute right-0 top-1/2 -translate-x-[170%] -translate-y-1/2 z-10">
+          <Button className="blur-gray sm-md" href="/">
+            {t('discover_more_button')}
+            <ArrowRightUpIcon />
+          </Button>
+        </div>
+        <span className="hidden md:block text-gray-1 subtitle-04 absolute right-20 top-1/2">{t('our_pride_label')}</span>
       </div>
-{/* 
-      <div className="flex items-center gap-6 mt-10">
+      {/* <div className="flex items-center gap-6 mt-10">
         <button
           onClick={handlePrev}
           aria-label="Previous slide"
