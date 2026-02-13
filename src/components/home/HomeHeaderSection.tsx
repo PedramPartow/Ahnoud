@@ -93,7 +93,7 @@ const HomeHeaderSection = () => {
                 <ArrowDownTailIcon size={24} color="var(--color-gray-1)" />
             </div>
             <div className="w-full grid grid-cols-12 mb-12 md:mb-40">
-                <span className="col-span-12 md:col-span-9 col-start-1 md:col-start-3 subtitle-01 text-gray-10 text-center md:text-start">{t.rich('hero_subtitle', {
+                <span className="col-span-12 md:col-span-9 col-start-1 md:col-start-3 subtitle-01 text-gray-10 text-start md:text-center md:text-start">{t.rich('hero_subtitle', {
                     brand: (chunks) => <span className="text-gray-1">{chunks}</span>
                 })}</span>
             </div>

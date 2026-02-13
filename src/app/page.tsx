@@ -1,3 +1,4 @@
+import HomeBrandFeaturesSection from "@/components/home/HomeBrandFeaturesSection";
 import HomeHeaderSection from "@/components/home/HomeHeaderSection";
 import HomeProductSliderSection from "@/components/home/HomeProductSliderSection";
 import Image from "next/image";
@@ -9,7 +10,7 @@ export default function HomePage() {
       <section 
         className="min-h-screen snap-start snap-always bg-gray-13 pt-2 md:pt-6 overflow-hidden"
       >
-        <div className="relative z-10 w-full block px-5 md:px-20">
+        <div className="relative z-10 w-full block px-5 md:px-10 lg:px-20">
           <HomeHeaderSection />
         </div>
       </section>
@@ -25,13 +26,15 @@ export default function HomePage() {
             className="object-cover brightness-50"
           />
         </div>
-        <div className="relative z-10 w-full block px-5 md:px-20">
+        <div className="relative z-10 w-full block px-5 md:px-10 lg:px-20">
           <HomeProductSliderSection />
         </div>
       </section>
 
-      <section className="h-screen snap-start snap-always flex items-center justify-center bg-gray-11">
-        <span className="headline-06 text-gray-1">Section 3</span>
+      <section className="min-h-screen snap-start snap-always relative overflow-hidden bg-gray-13">
+        <div className="relative z-10 w-full block px-5 md:px-10 lg:px-20">
+          <HomeBrandFeaturesSection />
+        </div>
       </section>
 
       <section className="h-screen snap-start snap-always flex items-center justify-center bg-gray-12">

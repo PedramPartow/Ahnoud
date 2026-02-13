@@ -62,7 +62,7 @@ const HomeProductSliderSection = () => {
           autoplay={{ delay: 5000, disableOnInteraction: false }}
           speed={600}
           loop
-          className="px-4! md:px-10! py-4! md:py-10! w-full bg-gray-1 col-span-12 md:col-span-6 lg:col-span-5 md:col-start-4 lg:col-start-5"
+          className="px-4! md:px-10! py-4! md:py-10! w-full bg-gray-1 col-span-12 md:col-span-6 md:col-start-4 lg:col-span-5 lg:col-start-5"
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
         >
