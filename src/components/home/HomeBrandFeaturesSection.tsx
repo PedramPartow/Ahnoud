@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import HomeFaqSection from "./HomeFaqSection";
+import HomeProductsList from "./HomeProductsList";
 
 const features = [
   {
@@ -36,12 +37,11 @@ const HomeBrandFeaturesSection = () => {
                 </h2>
             </div>
         </div>
-
         <div className="col-span-12 md:col-span-6 md:col-start-7 flex flex-col md:gap-12">
           {features.map((feature, index) => (
             <div 
                 key={index} 
-                className="flex items-end md:items-start flex-row-reverse py-6 md:py-0
+                className="flex items-end justify-between md:justify-start md:items-center flex-row-reverse py-6 md:py-0
                 md:flex-row gap-5 md:gap-6 border-t border-t-tertiary-13 last:border-b last:border-b-tertiary-13 md:border-t-0 md:last:border-b-0"
             >
               <div className="shrink-0 w-[80px] h-[80px] md:w-[220px] md:h-[220px] relative">
@@ -49,7 +49,7 @@ const HomeBrandFeaturesSection = () => {
                   src={feature.image}
                   alt={t(feature.titleKey)}
                   fill
-                  sizes="80px"
+                  sizes="(min-width: 768px) 220px, 80px"
                   className="object-cover"
                 />
               </div>
@@ -86,7 +86,6 @@ const HomeBrandFeaturesSection = () => {
             />
           </div>
         </div>
-
         <div className="col-span-12 md:col-span-4 md:col-start-9 flex items-center">
           <p className="subtitle-03 text-gray-1">
             {t("global_reach_desc")}
@@ -95,6 +94,13 @@ const HomeBrandFeaturesSection = () => {
       </div>
       <div className="-mx-5 md:-mx-10 lg:-mx-20 h-[1px] bg-tertiary-11"></div>
       <HomeFaqSection />
+      <div className="products">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 md:mb-16">
+          <span className="subtitle-04 text-gray-1">{t('overview_products_label')}</span>
+          <span className="subtitle-04 text-gray-1">{t('discover_their_details_label')}</span>
+        </div>
+        <HomeProductsList />
+      </div>
     </div>
   );
 };

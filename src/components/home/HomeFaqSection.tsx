@@ -20,7 +20,7 @@ const HomeFaqSection = () => {
   };
 
   return (
-    <div className="w-full grid grid-cols-12 gap-y-10 md:gap-y-0">
+    <div className="w-full grid grid-cols-12 gap-y-12 md:gap-y-0">
       <div className="col-span-12 md:col-span-6 flex flex-col md:flex-row items-start gap-6">
         <span className="subtitle-04 text-gray-1 shrink-0">
           {t("faqs_label")}
@@ -36,12 +36,12 @@ const HomeFaqSection = () => {
           return (
             <div
               key={index}
-              className="border-t border-t-tertiary-13 last:border-b last:border-b-tertiary-13"
+              className="border-b border-b-tertiary-13 [&:not(:first-child)]:pt-4 [&:not(:first-child)]:md:pt-8"
             >
               <button
                 type="button"
                 onClick={() => toggle(index)}
-                className="w-full flex items-center justify-between gap-4 py-5 md:py-6 cursor-pointer"
+                className="w-full flex items-center justify-between gap-4 pb-4 md:pb-6 cursor-pointer"
               >
                 <span
                   className={`subtitle-03 text-start transition-colors duration-300 ${
@@ -60,7 +60,7 @@ const HomeFaqSection = () => {
                 }`}
               >
                 <div className="overflow-hidden">
-                  <p className="body-01 text-gray-1 pb-5 md:pb-6">
+                  <p className="body-01 text-gray-1 pb-4 md:pb-6">
                     {t(faq.a)}
                   </p>
                 </div>

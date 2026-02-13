@@ -22,7 +22,7 @@ const products: Product[] = [
   {
     id: 1,
     name: "Pistachios",
-    image: "/images/home-production.png",
+    image: "/images/Pistachios.png",
     description:
       "Ahnoud pistachios are handpicked, perfectly roasted, and available in luxurious packaging of various sizes to suit every occasion. Enjoy unmatched quality and flavor in every bite.",
   },

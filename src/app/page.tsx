@@ -1,4 +1,6 @@
 import HomeBrandFeaturesSection from "@/components/home/HomeBrandFeaturesSection";
+import HomeContactSection from "@/components/home/HomeContactSection";
+import HomeFooter from "@/components/home/HomeFooter";
 import HomeHeaderSection from "@/components/home/HomeHeaderSection";
 import HomeProductSliderSection from "@/components/home/HomeProductSliderSection";
 import Image from "next/image";
@@ -37,12 +39,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="h-screen snap-start snap-always flex items-center justify-center bg-gray-12">
-        <span className="headline-06 text-gray-1">Section 4</span>
-      </section>
-
-      <section className="h-screen snap-start snap-always flex items-center justify-center bg-gray-13">
-        <span className="headline-06 text-gray-1">Section 5</span>
+      <section className="min-h-screen snap-start snap-always flex flex-col">
+        <HomeContactSection />
+        <HomeFooter />
       </section>
     </div>
   );
