@@ -2,6 +2,7 @@
 
 import TextField from "@mui/material/TextField";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import Button from "../general/Button";
 
 const darkFieldSx = {
@@ -37,21 +38,33 @@ const HomeContactSection = () => {
   const t = useTranslations();
 
   return (
-    <div className="w-full bg-primary-7 relative overflow-hidden">
-      <div className="relative z-10 px-5 md:px-10 lg:px-20 py-16 md:py-24">
-        <div className="grid grid-cols-12 gap-y-12 md:gap-x-12">
-          <div className="col-span-12 md:col-span-6 flex flex-col gap-6">
+    <div className="w-full flex-1 bg-primary-7 relative overflow-hidden">
+      <div className="absolute bottom-0 left-5 w-[335px] h-[335px] translate-y-[5%] opacity-10">
+        <Image
+          src="/images/vector-2.png"
+          alt=""
+          fill
+          sizes="(min-width: 768px) 335px, 200px"
+          className="object-contain"
+          aria-hidden="true"
+        />
+      </div>
+
+      <div className="relative z-10 px-5 md:px-20 lg:px-20 py-20 md:pt-30 md:pb-25">
+        <div className="grid grid-cols-12 gap-y-10 md:gap-y-12 md:gap-x-12">
+          <div className="col-span-12 md:col-span-5 flex flex-col gap-4 md:gap-6">
             <span className="subtitle-04 text-gray-13">
               {t("contact_us_label")}
             </span>
-            <h2 className="headline-03 text-gray-13">
+            <h2 className="headline-04 text-gray-13">
               {t("contact_heading")}
             </h2>
-            <p className="body-03 text-gray-11">
+            <p className="body-01 text-gray-11">
               {t("contact_subtitle")}
             </p>
           </div>
-          <div className="col-span-12 md:col-span-6 md:col-start-7 flex flex-col gap-6">
+
+          <div className="col-span-12 md:col-span-6 md:col-start-7 flex flex-col gap-8 md:gap-6">
             <TextField
               variant="standard"
               label={t("full_name_placeholder")}
