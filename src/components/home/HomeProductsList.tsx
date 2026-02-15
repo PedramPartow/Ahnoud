@@ -28,7 +28,7 @@ const HomeProductsList = () => {
   const t = useTranslations();
 
   return (
-    <div className="grid grid-cols-12 gap-0 md:gap-8 -mx-5">
+    <div className="grid grid-cols-12 gap-0 md:gap-6 lg:gap-8">
       {products.map((product, index) => (
         <div key={index} className="col-span-12 md:col-span-6 xl:col-span-4 flex flex-col">
           <div className="relative w-full overflow-hidden aspect-[375/500] md:aspect-[555/720]">
@@ -40,7 +40,7 @@ const HomeProductsList = () => {
               className="object-cover w-full h-full brightness-50"
             />
 
-            <div className="hidden md:flex absolute inset-0 z-10 flex-col justify-between p-10">
+            <div className="hidden md:flex absolute inset-0 z-10 flex-col justify-between p-6 lg:p-10">
               <h3 className="text-center headline-05 text-gray-1">
                 {product.title}
               </h3>
@@ -54,7 +54,7 @@ const HomeProductsList = () => {
                 <h3 className="headline-05 text-gray-1">
                   {product.title}
                 </h3>
-                <p className="body-02 text-gray-1">
+                <p className="body-01 text-gray-1">
                   {product.description}
                 </p>
               </div>

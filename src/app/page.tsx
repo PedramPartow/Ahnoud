@@ -21,7 +21,7 @@ export default function HomePage() {
         <div className="absolute inset-0 -z-10">
           <Image
             src="/images/home-production.png"
-            alt=""
+            alt="productions cover"
             fill
             priority
             sizes="100vw"
@@ -34,7 +34,7 @@ export default function HomePage() {
       </section>
 
       <section className="min-h-screen snap-start snap-always relative overflow-hidden bg-gray-13">
-        <div className="relative z-10 w-full block px-5 md:px-10 lg:px-20">
+        <div className="relative z-10 w-full block md:px-10 lg:px-20">
           <HomeBrandFeaturesSection />
         </div>
       </section>

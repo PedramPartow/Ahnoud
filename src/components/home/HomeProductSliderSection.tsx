@@ -48,7 +48,7 @@ const HomeProductSliderSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="w-full min-h-screen flex flex-col items-center justify-center pt-10 pb-20 md:py-20">
+    <div className="w-full min-h-screen flex flex-col items-center justify-center pt-10 pb-34 md:py-14 lg:py-55">
       <div className="w-full flex justify-between items-center md:hidden mb-18">
         <span className="text-gray-1 subtitle-04">{t('our_products_label')}</span>
         <span className="text-gray-1 subtitle-04">{t('our_pride_label')}</span>
@@ -62,13 +62,13 @@ const HomeProductSliderSection = () => {
           autoplay={{ delay: 5000, disableOnInteraction: false }}
           speed={600}
           loop
-          className="px-4! md:px-10! py-4! md:py-10! w-full bg-gray-1 col-span-12 md:col-span-6 md:col-start-4 lg:col-span-5 lg:col-start-5"
+          className="px-4! md:px-6! lg:px-10! py-6! lg:py-10! w-full lg:w-5/12 bg-gray-1 col-span-12 md:col-span-6 md:col-start-4 lg:col-span-12 lg:col-start-1 lg:mx-auto"
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
         >
           {products.map((product) => (
             <SwiperSlide key={product.id}>
-              <div className="flex flex-col items-center gap-4! md:gap-8! relative">
+              <div className="flex flex-col items-center gap-4! md:gap-6! lg:gap-8! relative">
                 <div className="flex items-center justify-center">
                   <span className="body-03 text-gray-13">
                     {String(activeIndex + 1).padStart(2, "0")}

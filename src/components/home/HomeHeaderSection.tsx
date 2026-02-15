@@ -36,11 +36,11 @@ const HomeHeaderSection = () => {
                     width={40}
                     height={48}
                 />
-                <div className="flex items-center gap-4 md:gap-10">
-                    <div className="hidden md:flex items-center gap-8">
-                        <Button className="dark sm-md" href="/home">
+                <div className="flex items-center gap-4 md:gap-6 lg:gap-10">
+                    <div className="hidden md:flex items-center gap-4 lg:gap-8">
+                        {/* <Button className="dark sm-md" href="/home">
                             {t("home_label")}
-                        </Button>
+                        </Button> */}
                         <Button className="dark sm-md">
                             {t("products_label")}
                             <ArrowDownIcon />
@@ -63,7 +63,7 @@ const HomeHeaderSection = () => {
                     </div>
                 </div>
             </div>
-            <div className="w-fit mx-auto relative my-25 md:mt-24 md:mb-40">
+            <div className="w-fit mx-auto relative my-25 md:mt-[90px] md:mb-28 lg:mb-40">
                 <span className="headline-01 text-gray-1 absolute top-[-20%] md:top-[10%] z-10 w-max left-1/2 -translate-x-1/2 text-center md:text-start md:left-[max(-450px,calc(-50vw_+_300px))] md:translate-x-0">
                     {t.rich('luxury_section_label', {
                         br: () => <br />
@@ -85,17 +85,20 @@ const HomeHeaderSection = () => {
             </div>
             <div 
                 className="flex flex-col items-center md:flex-row md:items-start md:absolute 
-                md:translate-x-0 md:left-20 md:top-[60%] gap-2 mb-16 md:mb-0"
+                md:translate-x-0 md:left-10 lg:left-20 md:top-[75%] lg:top-[60%] gap-2 mb-16 md:mb-0"
             >
                 <span className="caption-01 text-gray-1 text-center md:text-start">{t.rich('scroll_to_learn_more_label', {
                     br: () => <br />
                 })}</span>
                 <ArrowDownTailIcon size={24} color="var(--color-gray-1)" />
             </div>
-            <div className="w-full grid grid-cols-12 mb-12 md:mb-40">
-                <span className="col-span-12 md:col-span-9 col-start-1 md:col-start-3 subtitle-01 text-gray-10 text-start md:text-center md:text-start">{t.rich('hero_subtitle', {
-                    brand: (chunks) => <span className="text-gray-1">{chunks}</span>
-                })}</span>
+            <div className="w-full mb-12 md:mb-20 lg:mb-40 text-start md:max-w-6xl mx-auto">
+                <span className="col-span-12 md:col-span-9 col-start-1 md:col-start-3 subtitle-01 text-gray-10">
+                    <Image src="/images/Star.svg" width={45} height={45} alt="star" className="inline-block align-middle mr-2 w-6 h-6 md:w-[45px] md:h-[45px]" />
+                    {t.rich('hero_subtitle', {
+                        brand: (chunks) => <span className="text-gray-1 subtitle-01">{chunks}</span>
+                    })}
+                </span>
             </div>
         </>
     );

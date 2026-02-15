@@ -20,7 +20,7 @@ const HomeFaqSection = () => {
   };
 
   return (
-    <div className="w-full grid grid-cols-12 gap-y-12 md:gap-y-0">
+    <div className="px-5 md:px-0 w-full grid grid-cols-12 gap-y-12 md:gap-y-0">
       <div className="col-span-12 md:col-span-6 flex flex-col md:flex-row items-start gap-6">
         <span className="subtitle-04 text-gray-1 shrink-0">
           {t("faqs_label")}
@@ -36,7 +36,7 @@ const HomeFaqSection = () => {
           return (
             <div
               key={index}
-              className="border-b border-b-tertiary-13 [&:not(:first-child)]:pt-4 [&:not(:first-child)]:md:pt-8"
+              className="border-b border-b-tertiary-13 [&:not(:first-child)]:pt-4 [&:not(:first-child)]:md:pt-6 [&:not(:first-child)]:lg:pt-8"
             >
               <button
                 type="button"

@@ -25,10 +25,10 @@ const HomeBrandFeaturesSection = () => {
   const t = useTranslations();
 
   return (
-    <div className="w-full flex flex-col justify-center py-16 md:py-40 gap-20 md:gap-25">
+    <div className="w-full flex flex-col justify-center py-16 md:py-28 lg:py-40 gap-20 md:gap-25">
       <div className="w-full grid grid-cols-12 gap-y-12 md:gap-y-0">
-        <div className="col-span-12 md:col-span-6">
-            <div className="flex flex-col md:flex-row items-start w-full gap-6">
+        <div className="col-span-12 md:col-span-6 px-5 md:px-0">
+            <div className="flex flex-col xl:flex-row items-start w-full gap-6">
                 <span className="subtitle-04 text-gray-1">
                     {t("ahnoud_features_label")}
                 </span>
@@ -37,14 +37,14 @@ const HomeBrandFeaturesSection = () => {
                 </h2>
             </div>
         </div>
-        <div className="col-span-12 md:col-span-6 md:col-start-7 flex flex-col md:gap-12">
+        <div className="col-span-12 md:col-span-6 md:col-start-7 flex flex-col md:gap-8 lg:gap-12">
           {features.map((feature, index) => (
             <div 
                 key={index} 
-                className="flex items-end justify-between md:justify-start md:items-center flex-row-reverse py-6 md:py-0
+                className="px-5 md:px-0 flex items-end justify-between md:justify-start md:items-center flex-row-reverse py-6 md:py-0
                 md:flex-row gap-5 md:gap-6 border-t border-t-tertiary-13 last:border-b last:border-b-tertiary-13 md:border-t-0 md:last:border-b-0"
             >
-              <div className="shrink-0 w-[80px] h-[80px] md:w-[220px] md:h-[220px] relative">
+              <div className="shrink-0 w-[80px] h-[80px] md:w-[160px] md:h-[160px] lg:w-[220px] lg:h-[220px] relative">
                 <Image
                   src={feature.image}
                   alt={t(feature.titleKey)}
@@ -65,8 +65,8 @@ const HomeBrandFeaturesSection = () => {
           ))}
         </div>
       </div>
-      <div className="w-full grid grid-cols-12 gap-y-6 md:gap-y-0 items-center">
-        <div className="col-span-12 md:col-span-4 flex flex-col gap-6 md:gap-12">
+      <div className="w-full px-5 md:px-0 grid grid-cols-12 gap-y-6 md:gap-y-0 items-center">
+        <div className="col-span-12 md:col-span-5 xl:col-span-4 flex flex-col gap-6 md:gap-8 lg:gap-12">
           <span className="subtitle-04 text-gray-1">
             {t("global_reach_label")}
           </span>
@@ -74,8 +74,7 @@ const HomeBrandFeaturesSection = () => {
             {t("delivering_luxury_worldwide")}
           </h2>
         </div>
-
-        <div className="col-span-12 md:col-span-3 md:col-start-6 flex items-center justify-center">
+        <div className="col-span-12 md:col-span-7 xl:col-span-3 xl:col-start-6 flex items-center justify-center">
           <div className="relative w-[335px] h-[335px]">
             <Image
               src="/images/Frame-1.svg"
@@ -86,16 +85,16 @@ const HomeBrandFeaturesSection = () => {
             />
           </div>
         </div>
-        <div className="col-span-12 md:col-span-4 md:col-start-9 flex items-center">
+        <div className="md:mt-6 xl:mt-0 col-span-12 md:col-span-12 xl:col-span-4 md:col-start-1 xl:col-start-9 flex items-center">
           <p className="subtitle-03 text-gray-1">
             {t("global_reach_desc")}
           </p>
         </div>
       </div>
-      <div className="-mx-5 md:-mx-10 lg:-mx-20 h-[1px] bg-tertiary-11"></div>
+      <div className="md:-mx-10 lg:-mx-20 h-[1px] bg-tertiary-11"></div>
       <HomeFaqSection />
       <div className="products">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 md:mb-16">
+        <div className="px-5 md:px-0 flex flex-col md:flex-row items-start md:items-center justify-between mb-12 md:mb-16">
           <span className="subtitle-04 text-gray-1">{t('overview_products_label')}</span>
           <span className="subtitle-04 text-gray-1">{t('discover_their_details_label')}</span>
         </div>

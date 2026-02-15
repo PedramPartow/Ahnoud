@@ -8,7 +8,27 @@ const HomeFooter = () => {
   const t = useTranslations();
 
   return (
-    <div className="w-full bg-gray-11 md:pb-12 md:pt-25 lg:px-20">
+    <div className="w-full bg-gray-11 md:pb-12 md:px-10 md:pt-16 lg:px-20 lg:pt-25 relative">
+      <div className="absolute md:hidden top-0 left-5 w-[335px] h-[335px] translate-y-[-14%] opacity-10">
+        <Image
+          src="/images/vector-1.png"
+          alt=""
+          fill
+          sizes="(min-width: 768px) 335px, 200px"
+          className="object-contain"
+          aria-hidden="true"
+        />
+      </div>
+      <div className="hidden absolute md:block top-0 left-[15%] w-[450px] h-[450px] lg:w-[600px] lg:h-[600px] md:translate-y-[-14%] opacity-10">
+        <Image
+          src="/images/vector-1.png"
+          alt=""
+          fill
+          sizes="(min-width: 768px) 600px, 200px"
+          className="object-contain"
+          aria-hidden="true"
+        />
+      </div>
       <div className="flex items-center justify-center py-16 md:py-0 border-b border-b-gray-13 md:border-none">
         <h2 className="headline-01 text-gray-1 text-center">
           {t.rich('tagline', {
@@ -16,8 +36,8 @@ const HomeFooter = () => {
           })}
         </h2>
       </div>
-      <div className="block w-full md:pt-25">
-        <div className="grid grid-cols-12 md:gap-x-8">
+      <div className="block w-full md:pt-16 lg:pt-25">
+        <div className="grid grid-cols-12 md:gap-x-6 lg:gap-x-8">
           <div className="col-span-12 md:col-span-3 flex items-end gap-3 order-3 md:order-none px-5 md:px-0 pb-6 md:pb-0 border-t border-t-gray-13 md:border-none pt-10 md:pt-0">
             <div className="relative w-8 h-16 md:w-10 md:h-20">
               <Image
