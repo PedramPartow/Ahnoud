@@ -104,7 +104,7 @@ const HomeProductSliderSection = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className="hidden md:block absolute right-0 top-1/2 -translate-x-[120%] -translate-y-1/2 z-10">
+        <div className="hidden md:block absolute end-[12%] lg:end-[20%] top-1/2 -translate-y-1/2 z-10">
           <Button className="blur-gray sm-md" href="/">
             {t('discover_more_button')}
             <ArrowRightUpIcon />

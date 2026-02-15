@@ -65,6 +65,10 @@ const HomeFooter = () => {
           <div className="col-span-6 md:col-span-3 lg:col-span-2 lg:col-start-10 flex flex-col gap-4 md:gap-2 order-2 md:order-none border-e border-e-gray-13 md:border-none px-5 md:px-0 py-4 md:py-0">
             <Link
               href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                document.querySelector(".snap-y")?.scrollTo({ top: 0, behavior: "smooth" });
+              }}
               className="button-01 text-gray-1!"
             >
               {t("home_label")}
