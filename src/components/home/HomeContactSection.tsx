@@ -30,25 +30,22 @@ const HomeContactSection = () => {
           aria-hidden="true"
         />
       </div>
-
       <div className="relative z-10 px-5 md:px-10 lg:px-20 py-20 md:py-25">
-        <div className="grid grid-cols-12 gap-y-10 md:gap-y0">
-          <div className="grid grid-cols-12 md:col-span-6 xl:col-span-7 gap-6">
-            <div className="col-span-12 md:col-span-2">
-              <span className="subtitle-04 text-gray-13">
-                {t("contact_us_label")}
-              </span>
-            </div>
-            <div className="col-span-12 md:col-span-10 flex flex-col gap-3 md:gap-6 lg:gap-8">
-              <h2 className="headline-04 text-gray-13">
-                {t("contact_heading")}
-              </h2>
-              <p className="body-01 text-gray-13">
-                {t("contact_subtitle")}
-              </p>
-            </div>
+        <div className="grid grid-cols-12 gap-y-10 md:gap-y-0">
+          <div className="col-span-12 md:col-span-2">
+            <span className="subtitle-04 text-gray-13">
+              {t("contact_us_label")}
+            </span>
           </div>
-          <div className="md:mt-50 col-span-12 md:col-span-6 xl:col-span-5 flex flex-col gap-8 md:gap-6">
+          <div className="col-span-12 md:col-span-4 xl:col-span-5 flex flex-col gap-3 md:gap-6 lg:gap-8">
+            <h2 className="headline-04 text-gray-13">
+              {t("contact_heading")}
+            </h2>
+            <p className="body-01 text-gray-13">
+              {t("contact_subtitle")}
+            </p>
+          </div>
+          <div className="col-span-12 md:col-span-5 md:col-start-8 xl:col-span-4 xl:col-start-9 md:mt-50 flex flex-col gap-8 md:gap-6">
             <div className="grid grid-cols-1 xl:grid-cols-2">
               <TextField
                 variant="standard"
