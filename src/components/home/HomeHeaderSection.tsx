@@ -7,8 +7,9 @@ import ShoppingBagIcon from "@/icons/ShoppingBagIcon";
 import UserCircleIcon from "@/icons/UserCircleIcon";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { useSyncExternalStore } from "react";
+import { useState, useSyncExternalStore } from "react";
 import Button from "../general/Button";
+import MenuOverlay from "../general/MenuOverlay";
 
 function getAuthToken(): string | undefined {
     if (typeof document === "undefined") return undefined;
@@ -26,8 +27,11 @@ const HomeHeaderSection = () => {
         () => false
     );
 
+    const [menuOpen, setMenuOpen] = useState(false);
+
     return (
         <>
+            <MenuOverlay isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
             <div className="flex items-center justify-between">
                 <Image
                     src="/images/Logo.svg"
@@ -57,7 +61,7 @@ const HomeHeaderSection = () => {
                                 <Button className="md:hidden! primary sm-md"><UserCircleIcon size={24} /></Button>
                             </>
                         )}
-                        <Button className="outline-gray sm-md">
+                        <Button className="outline-gray sm-md" onClick={() => setMenuOpen(true)}>
                             <MenuIcon />
                         </Button>
                     </div>
