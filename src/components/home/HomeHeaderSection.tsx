@@ -13,7 +13,7 @@ import MenuOverlay from "../general/MenuOverlay";
 
 function getAuthToken(): string | undefined {
     if (typeof document === "undefined") return undefined;
-    const match = document.cookie.match(/(?:^|;\s*)auth_token=([^;]*)/);
+    const match = document.cookie.match(/(?:^|;\s*)token=([^;]*)/);
     return match ? decodeURIComponent(match[1]) : undefined;
 }
 
@@ -28,10 +28,17 @@ const HomeHeaderSection = () => {
     );
 
     const [menuOpen, setMenuOpen] = useState(false);
+    const [cartCount, setCartCount] = useState(9);
+
+    const handleLogout = () => {
+        document.cookie = "token=;path=/;max-age=0";
+        setMenuOpen(false);
+        window.location.reload();
+    };
 
     return (
         <>
-            <MenuOverlay isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
+            <MenuOverlay isOpen={menuOpen} onLogout={handleLogout} cartCount={cartCount} onClose={() => setMenuOpen(false)} />
             <div className="flex items-center justify-between">
                 <Image
                     src="/images/Logo.svg"

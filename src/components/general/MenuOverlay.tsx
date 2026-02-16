@@ -1,48 +1,77 @@
 "use client";
 
 import { CloseIcon } from "@/icons/CloseIcon";
-import { MailIcon as EarthIcon } from "@/icons/EarthIcon";
+import EarthIcon from "@/icons/EarthIcon";
+import LogoutIcon from "@/icons/LogoutIcon";
+import ShoppingBagIcon from "@/icons/ShoppingBagIcon";
+import UserCircleIcon from "@/icons/UserCircleIcon";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useSyncExternalStore } from "react";
+import { usePathname } from "next/navigation";
+import { useCallback, useEffect, useSyncExternalStore } from "react";
 import Button from "./Button";
 
-const products = [
-  { image: "/images/Pistachios.png", title: "Pistachios" },
-  { image: "/images/Saffron.png", title: "Saffron" },
-  { image: "/images/Dates.png", title: "Dates" },
-] as const;
+function getAuthToken(): string | undefined {
+  if (typeof document === "undefined") return undefined;
+  const match = document.cookie.match(/(?:^|;\s*)token=([^;]*)/);
+  return match ? decodeURIComponent(match[1]) : undefined;
+}
+
+const emptySubscribe = () => () => {};
 
 const navLinks = [
-  { href: "/", labelKey: "home_label", active: true },
-  { href: "/about", labelKey: "about_us_label", active: false },
-  { href: "/contact", labelKey: "contact_us_nav_label", active: false },
+  { href: "/", labelKey: "home_label" },
+  { href: "/about", labelKey: "about_us_label" },
+  { href: "/contact", labelKey: "contact_us_nav_label" },
+] as const;
+
+const products = [
+  { image: "/images/Pistachios.png", title: "pistachios_label" },
+  { image: "/images/Saffron.png", title: "saffron_label" },
+  { image: "/images/Dates.png", title: "dates_label" },
 ] as const;
 
 interface MenuOverlayProps {
   isOpen: boolean;
   onClose: () => void;
+  onLogout?: () => void;
+  cartCount?: number;
 }
 
-const MenuOverlay = ({ isOpen, onClose }: MenuOverlayProps) => {
+const MenuOverlay = ({ isOpen, onClose, onLogout, cartCount = 0 }: MenuOverlayProps) => {
   const t = useTranslations();
+  const pathname = usePathname();
   const locale = useSyncExternalStore(
-    () => () => {},
+    emptySubscribe,
     () => document.documentElement.lang || "en",
     () => "en"
+  );
+  const isLoggedIn = useSyncExternalStore(
+    emptySubscribe,
+    () => !!getAuthToken(),
+    () => false
+  );
+
+  const handleEscapeKey = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    },
+    [onClose]
   );
 
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
+      document.addEventListener("keydown", handleEscapeKey);
     } else {
       document.body.style.overflow = "";
     }
     return () => {
       document.body.style.overflow = "";
+      document.removeEventListener("keydown", handleEscapeKey);
     };
-  }, [isOpen]);
+  }, [isOpen, handleEscapeKey]);
 
   const handleSwitchLocale = () => {
     const newLocale = locale === "ar" ? "en" : "ar";
@@ -56,130 +85,124 @@ const MenuOverlay = ({ isOpen, onClose }: MenuOverlayProps) => {
         className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-300
           ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
         onClick={onClose}
+        role="button"
+        tabIndex={-1}
+        aria-label={t("close_menu_label")}
       />
-      {/* <div
-        className={`md:hidden fixed inset-0 z-50 bg-gray-13 flex flex-col transition-transform duration-500 ease-in-out
+      <div
+        role="dialog"
+        aria-modal="true"
+        className={`overflow-y-auto md:hidden fixed inset-0 z-50 bg-gray-13 flex flex-col transition-transform duration-500 ease-in-out
           ${isOpen ? "translate-x-0" : "ltr:-translate-x-full rtl:translate-x-full"}`}
       >
-        <div className="flex items-center justify-between px-5 pt-2">
-          <Image
-            src="/images/Logo.svg"
-            alt="ahnoud logo"
-            className="w-[33px] h-[40px]"
-            width={40}
-            height={48}
-          />
-          <div className="flex items-center gap-4">
-            <Button className="primary sm-md" href="/auth" onClick={onClose}>
-              {t("join_or_login_button")}
-            </Button>
-            <button type="button" onClick={onClose} className="text-gray-1 cursor-pointer">
-              <CloseIcon size={24} />
-            </button>
-          </div>
-        </div>
-
-        <nav className="flex flex-col gap-6 px-5 mt-16 flex-1">
-          {navLinks.map((link) => (
-            <Link
-              key={link.labelKey}
-              href={link.href}
-              onClick={onClose}
-              className={`headline-03 transition-colors ${
-                link.active ? "text-gray-1" : "text-gray-7"
-              }`}
-            >
-              {link.active && (
-                <Image
-                  src="/images/Star.svg"
-                  width={24}
-                  height={24}
-                  alt=""
-                  className="inline-block align-middle me-2 w-5 h-5"
-                />
-              )}
-              {t(link.labelKey)}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="px-5 pb-8 flex flex-col gap-4">
-          <button
-            type="button"
-            onClick={handleSwitchLocale}
-            className="flex items-center gap-2 text-gray-1 button-01 cursor-pointer w-fit border border-gray-7 rounded-full px-3 py-1.5"
-          >
-            <EarthIcon size={18} />
-            <span>{locale === "ar" ? "English" : "العربي"}</span>
-          </button>
-          <div className="flex items-center gap-6">
-            <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="button-01 text-gray-1!">
-              {t("instagram_label")}
-            </Link>
-            <Link href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="button-01 text-gray-1!">
-              {t("facebook_label")}
-            </Link>
-            <Link href="https://x.com" target="_blank" rel="noopener noreferrer" className="button-01 text-gray-1!">
-              {t("x_label")}
-            </Link>
-          </div>
-        </div>
-      </div> */}
-      <div
-        className={` hidden md:flex fixed inset-0 z-50 bg-gray-13 flex-row transition-transform duration-500 ease-in-out
-          ${isOpen ? "translate-y-0" : "-translate-y-full"}`}
-      >
-          <div className="z-20 flex items-center justify-between w-full fixed top-6 left-0 right-0 px-20">
+        <div className="flex flex-col gap-6 px-5 pt-2">
+          <div className="flex items-center justify-between">
             <Image
               src="/images/Logo.svg"
               alt="ahnoud logo"
-              className="w-[40px] h-[48px]"
-              width={40}
-              height={48}
+              className="w-[33px] h-[40px]"
+              width={33}
+              height={40}
             />
-            <div className="flex items-center gap-4 lg:gap-10">
-              <Button className="primary sm-md" href="/auth" onClick={onClose}>
-                {t("join_or_login_button")}
-              </Button>
+            <div className="flex items-center gap-4">
+              {isLoggedIn && cartCount > 0 && (
+                <Button className="primary sm-md" href="/product" onClick={onClose}>
+                  <ShoppingBagIcon size={20} />
+                  <span className="button-01">{cartCount}</span>
+                </Button>
+              )}
               <Button onClick={onClose} className="outline-gray sm-md">
-                <CloseIcon size={24} />
+                <CloseIcon />
               </Button>
             </div>
           </div>
-        <div className="flex flex-col w-1/2 px-10 lg:px-20 pt-6 ">
-          <nav className="flex flex-col gap-6 lg:gap-8 mt-16 lg:mt-24 flex-1">
-            {navLinks.map((link) => (
+          {!isLoggedIn && (
+            <Button className="primary sm-md w-full justify-center" href="/auth" onClick={onClose}>
+              <UserCircleIcon size={20} />
+              <span className="button-01">{t("join_or_login_button")}</span>
+            </Button>
+          )}
+        </div>
+
+        <nav className="flex flex-col gap-6 px-5 my-20 flex-1">
+          {navLinks.slice(0, 1).map((link) => {
+            const isActive = pathname === link.href;
+            return (
               <Link
                 key={link.labelKey}
                 href={link.href}
                 onClick={onClose}
-                className={`headline-03 transition-colors ${
-                  link.active ? "text-gray-1" : "text-gray-7"
-                }`}
+                className="transition-colors flex items-center"
               >
-                {link.active && (
+                {isActive && (
                   <Image
                     src="/images/Star.svg"
-                    width={24}
-                    height={24}
+                    width={20}
+                    height={20}
                     alt=""
-                    className="inline-block align-middle me-2 w-5 h-5 lg:w-6 lg:h-6"
+                    className="inline-block align-middle me-2 w-5 h-5"
                   />
                 )}
-                {t(link.labelKey)}
+                <span className={`headline-06 ${isActive ? "text-gray-1" : "text-gray-7"}`}>{t(link.labelKey)}</span>
               </Link>
-            ))}
-          </nav>
-          <div className="pb-10 flex flex-col gap-4">
-            <button
+            );
+          })}
+          {products.map((product) => (
+            <Link
+              key={product.title}
+              href="#"
+              onClick={onClose}
+              className="transition-colors flex items-center"
+            >
+              <span className="headline-06 text-gray-7">{t(product.title)}</span>
+            </Link>
+          ))}
+          {navLinks.slice(1).map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.labelKey}
+                href={link.href}
+                onClick={onClose}
+                className="transition-colors flex items-center"
+              >
+                {isActive && (
+                  <Image
+                    src="/images/Star.svg"
+                    width={20}
+                    height={20}
+                    alt=""
+                    className="inline-block align-middle me-2 w-5 h-5"
+                  />
+                )}
+                <span className={`headline-06 ${isActive ? "text-gray-1" : "text-gray-7"}`}>{t(link.labelKey)}</span>
+              </Link>
+            );
+          })}
+        </nav>
+
+        <div className="px-5 py-6 flex flex-col gap-5">
+          <div className="flex items-center gap-3">
+            {isLoggedIn && (
+              <Button
+                type="button"
+                onClick={onLogout}
+                className="outline-gray sm-md w-fit"
+              >
+                <LogoutIcon />
+                <span>{t("Logout_label")}</span>
+              </Button>
+            )}
+            <Button
               type="button"
               onClick={handleSwitchLocale}
-              className="flex items-center gap-2 text-gray-1 button-01 cursor-pointer w-fit border border-gray-7 rounded-full px-3 py-1.5"
+              className="outline-gray sm-md w-fit"
             >
               <EarthIcon size={18} />
-            <span>{locale === "ar" ? "English" : "العربي"}</span>
-          </button>
-          <div className="flex items-center gap-6">
+              <span>{locale === "ar" ? "English" : "العربي"}</span>
+            </Button>
+          </div>
+          <div className="flex items-center gap-10">
             <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="button-01 text-gray-1!">
               {t("instagram_label")}
             </Link>
@@ -192,18 +215,111 @@ const MenuOverlay = ({ isOpen, onClose }: MenuOverlayProps) => {
           </div>
         </div>
       </div>
+      <div
+        role="dialog"
+        aria-modal="true"
+        className={`hidden md:flex fixed inset-0 z-50 bg-gray-13 flex-row transition-transform duration-500 ease-in-out
+          ${isOpen ? "translate-y-0" : "-translate-y-full"}`}
+      >
+        <div className="z-20 flex items-center justify-between w-full fixed top-6 left-0 right-0 px-10 xl:px-20">
+          <Image
+            src="/images/Logo.svg"
+            alt="ahnoud logo"
+            className="w-[40px] h-[48px]"
+            width={40}
+            height={48}
+          />
+          <div className="flex items-center gap-4 lg:gap-10">
+            {isLoggedIn ? (
+              <>
+                {cartCount > 0 && (
+                  <Button className="primary sm-md" href="/product" onClick={onClose}>
+                    <ShoppingBagIcon size={24} />
+                    <span className="button-01 text-gray-13">{cartCount}</span>
+                  </Button>
+                )}
+              </>
+            ) : (
+              <Button className="primary sm-md" href="/auth" onClick={onClose}>
+                {t("join_or_login_button")}
+              </Button>
+            )}
+            <Button onClick={onClose} className="outline-gray sm-md">
+              <CloseIcon size={24} />
+            </Button>
+          </div>
+        </div>
+        <div className="flex flex-col w-1/2 px-10 xl:px-20 pt-6">
+          <nav className="flex flex-col pt-12 gap-8 lg:gap-12 flex-1 justify-center">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.labelKey}
+                  href={link.href}
+                  onClick={onClose}
+                  className="flex items-center transition-colors"
+                >
+                  {isActive && (
+                    <Image
+                      src="/images/Star.svg"
+                      width={45}
+                      height={45}
+                      alt=""
+                      className="inline-block align-middle me-2 w-[45px] h-[45px]"
+                    />
+                  )}
+                  <span className={`headline-03 ${isActive ? "text-gray-1" : "text-gray-7"}`}>{t(link.labelKey)}</span>
+                </Link>
+              );
+            })}
+          </nav>
+          <div className="pb-10 flex flex-col gap-10">
+            <div className="flex items-center gap-4">
+              {isLoggedIn && (
+                <Button
+                  type="button"
+                  onClick={onLogout}
+                  className="outline-gray sm-md"
+                >
+                  <LogoutIcon />
+                  <span>{t("Logout_label")}</span>
+                </Button>
+              )}
+              <Button
+                type="button"
+                onClick={handleSwitchLocale}
+                className="outline-gray sm-md"
+              >
+                <EarthIcon />
+                <span>{locale === "ar" ? "English" : "العربي"}</span>
+              </Button>
+            </div>
+            <div className="flex items-center gap-10">
+              <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="button-01 text-gray-1!">
+                {t("instagram_label")}
+              </Link>
+              <Link href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="button-01 text-gray-1!">
+                {t("facebook_label")}
+              </Link>
+              <Link href="https://x.com" target="_blank" rel="noopener noreferrer" className="button-01 text-gray-1!">
+                {t("x_label")}
+              </Link>
+            </div>
+          </div>
+        </div>
         <div className="w-1/2 grid grid-rows-3 h-full">
           {products.map((product) => (
             <div key={product.title} className="relative w-full h-full overflow-hidden">
               <Image
                 src={product.image}
-                alt={product.title}
+                alt={t(product.title)}
                 fill
                 sizes="50vw"
                 className="object-cover brightness-50"
               />
-              <span className="absolute flex items-center justify-start bottom-10 left-10 headline-03 text-gray-7 z-10">
-                {product.title}
+              <span className="absolute flex items-center justify-start bottom-10 start-10 headline-03 text-gray-7 z-10">
+                {t(product.title)}
               </span>
             </div>
           ))}
