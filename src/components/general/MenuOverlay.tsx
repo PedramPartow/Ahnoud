@@ -9,7 +9,7 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useCallback, useEffect, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useRef, useSyncExternalStore } from "react";
 import Button from "./Button";
 
 function getAuthToken(): string | undefined {
@@ -53,6 +53,9 @@ const MenuOverlay = ({ isOpen, onClose, onLogout, cartCount = 0 }: MenuOverlayPr
     () => false
   );
 
+  const mobileRef = useRef<HTMLDivElement>(null);
+  const desktopRef = useRef<HTMLDivElement>(null);
+
   const handleEscapeKey = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -73,6 +76,33 @@ const MenuOverlay = ({ isOpen, onClose, onLogout, cartCount = 0 }: MenuOverlayPr
     };
   }, [isOpen, handleEscapeKey]);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const mobile = mobileRef.current;
+    const desktop = desktopRef.current;
+    const isRtl = document.documentElement.dir === "rtl";
+
+    if (mobile) {
+      mobile.style.transform = isRtl ? "translateX(100%)" : "translateX(-100%)";
+      mobile.style.display = "";
+      mobile.getBoundingClientRect();
+      mobile.style.transform = "";
+    }
+    if (desktop) {
+      desktop.style.transform = "translateY(-100%)";
+      desktop.style.display = "";
+      desktop.getBoundingClientRect();
+      desktop.style.transform = "";
+    }
+  }, [isOpen]);
+
+  const handleTransitionEnd = () => {
+    if (!isOpen) {
+      if (mobileRef.current) mobileRef.current.style.display = "none";
+      if (desktopRef.current) desktopRef.current.style.display = "none";
+    }
+  };
+
   const handleSwitchLocale = () => {
     const newLocale = locale === "ar" ? "en" : "ar";
     document.cookie = `locale=${newLocale};path=/;max-age=31536000`;
@@ -90,8 +120,11 @@ const MenuOverlay = ({ isOpen, onClose, onLogout, cartCount = 0 }: MenuOverlayPr
         aria-label={t("close_menu_label")}
       />
       <div
+        ref={mobileRef}
         role="dialog"
         aria-modal="true"
+        style={{ display: "none" }}
+        onTransitionEnd={handleTransitionEnd}
         className={`overflow-y-auto md:hidden fixed inset-0 z-50 bg-gray-13 flex flex-col transition-transform duration-500 ease-in-out
           ${isOpen ? "translate-x-0" : "ltr:-translate-x-full rtl:translate-x-full"}`}
       >
@@ -216,12 +249,15 @@ const MenuOverlay = ({ isOpen, onClose, onLogout, cartCount = 0 }: MenuOverlayPr
         </div>
       </div>
       <div
+        ref={desktopRef}
         role="dialog"
         aria-modal="true"
-        className={`hidden md:flex fixed inset-0 z-50 bg-gray-13 flex-row transition-transform duration-500 ease-in-out
+        style={{ display: "none" }}
+        onTransitionEnd={handleTransitionEnd}
+        className={`hidden md:flex overflow-y-auto fixed inset-0 z-50 bg-gray-13 flex-row transition-transform duration-500 ease-in-out
           ${isOpen ? "translate-y-0" : "-translate-y-full"}`}
       >
-        <div className="z-20 flex items-center justify-between w-full fixed top-6 left-0 right-0 px-10 xl:px-20">
+        <div className="z-20 flex items-center justify-between w-full absolute top-6 left-0 right-0 px-10 xl:px-20">
           <Image
             src="/images/Logo.svg"
             alt="ahnoud logo"

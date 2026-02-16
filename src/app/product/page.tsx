@@ -21,6 +21,8 @@ export default function ProductPage() {
         </div>
         <div className="relative z-10 w-full block px-5 md:px-10 lg:px-20">
           <ProductHeaderSection />
+          {/* <span className="headline-06 text-gary-1 absolute top-0 inset-x-0">{t('pistachios_label')}</span>
+          <span className="headline-06 text-gary-1 absolute inset-0">{t('pistachios_label')}</span> */}
         </div>
       </section>
 
