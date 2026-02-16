@@ -12,14 +12,15 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // TODO: replace "auth_token" with whatever cookie / mechanism you use
-  const token = request.cookies.get("auth_token")?.value;
+  const token = request.cookies.get("token")?.value;
   const isLoggedIn = !!token;
 
   const isAuthRoute = isPublicAuthPath(pathname);
 
-  // Example: treat "/app" and "/dashboard" as protected app areas
   const isProtectedRoute =
-    pathname.startsWith("/app") || pathname.startsWith("/dashboard");
+    pathname.startsWith("/app") ||
+    pathname.startsWith("/dashboard") ||
+    pathname.startsWith("/product");
 
   // 1) Block anonymous users from protected routes
   if (!isLoggedIn && isProtectedRoute) {
@@ -45,6 +46,7 @@ export const config = {
     "/register",
     "/app/:path*",
     "/dashboard/:path*",
+    "/product/:path*",
   ],
 };
 
