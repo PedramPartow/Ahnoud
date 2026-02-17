@@ -8,6 +8,7 @@ import Image from "next/image";
 import { useState, useSyncExternalStore } from "react";
 import Button from "../general/Button";
 import MenuOverlay from "../general/MenuOverlay";
+import ProductCard, { type Product } from "./ProductCard";
 
 function getAuthToken(): string | undefined {
     if (typeof document === "undefined") return undefined;
@@ -17,14 +18,13 @@ function getAuthToken(): string | undefined {
 
 const emptySubscribe = () => () => {};
 
+const products: Product[] = [
+    { id: 1, name: "Imperial Reserve", category: "Royal", price: 149, image: "/images/Pistachios.png" },
+    { id: 2, name: "Golden Heritage", category: "Premium", price: 129, image: "/images/product2.png" },
+    { id: 3, name: "Imperial Reserve", category: "Royal", price: 149, image: "/images/product3.png" },
+];
+
 const ProductHeaderSection = () => {
-    // const products: Product[] = [
-    //     { id: 1, name: "Imperial Reserve", category: "Royal", price: 149, image: "/images/product3.png" },
-    //     { id: 2, name: "Golden Heritage", category: "Premium", price: 129, image: "/images/product2.png" },
-    //     { id: 3, name: "Imperial Reserve", category: "Royal", price: 149, image: "/images/product3.png" },
-    //     { id: 4, name: "Golden Heritage", category: "Premium", price: 129, image: "/images/product2.png" },
-    // ];
-    
     const t = useTranslations();
     const isLoggedIn = useSyncExternalStore(
         emptySubscribe,
@@ -84,6 +84,17 @@ const ProductHeaderSection = () => {
                         br: () => <br />
                     })}
                 </span>
+            </div>
+            <div className="flex flex-col gap-6 md:mb-20">
+                <div className="flex justify-between items-center">
+                    <span className="subtitle-04 text-gray-1">{t('packaging_label')}</span>
+                    <span className="subtitle-04 text-gray-1">{t('choices_label')}</span>
+                </div>
+                <div className="grid grid-cols-1 gap-6 xl:grid-cols-2 2xl:grid-cols-3">
+                    {products.map((product) => (
+                        <ProductCard key={product.id} product={product} />
+                    ))}
+                </div>
             </div>
         </div>
     );
