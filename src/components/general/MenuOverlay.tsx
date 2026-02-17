@@ -1,6 +1,6 @@
 "use client";
 
-import { CloseIcon } from "@/icons/CloseIcon";
+import CloseIcon from "@/icons/CloseIcon";
 import EarthIcon from "@/icons/EarthIcon";
 import LogoutIcon from "@/icons/LogoutIcon";
 import ShoppingBagIcon from "@/icons/ShoppingBagIcon";

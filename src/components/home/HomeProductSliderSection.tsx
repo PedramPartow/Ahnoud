@@ -29,14 +29,14 @@ const products: Product[] = [
   {
     id: 2,
     name: "Saffron",
-    image: "/images/home-production.png",
+    image: "/images/product2.png",
     description:
       "Premium saffron threads carefully sourced and selected for their rich aroma, vibrant color, and exceptional flavor that elevates every dish.",
   },
   {
     id: 3,
     name: "Dates",
-    image: "/images/home-production.png",
+    image: "/images/product3.png",
     description:
       "Handpicked premium dates from the finest farms, offering natural sweetness and rich texture in every luxurious bite.",
   },

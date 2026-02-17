@@ -18,12 +18,19 @@ function getAuthToken(): string | undefined {
 const emptySubscribe = () => () => {};
 
 const ProductHeaderSection = () => {
+    // const products: Product[] = [
+    //     { id: 1, name: "Imperial Reserve", category: "Royal", price: 149, image: "/images/product3.png" },
+    //     { id: 2, name: "Golden Heritage", category: "Premium", price: 129, image: "/images/product2.png" },
+    //     { id: 3, name: "Imperial Reserve", category: "Royal", price: 149, image: "/images/product3.png" },
+    //     { id: 4, name: "Golden Heritage", category: "Premium", price: 129, image: "/images/product2.png" },
+    // ];
+    
     const t = useTranslations();
     const isLoggedIn = useSyncExternalStore(
         emptySubscribe,
         () => !!getAuthToken(),
         () => false
-    );
+    ); 
 
     const [menuOpen, setMenuOpen] = useState(false);
     const [cartCount, setCartCount] = useState(9);
@@ -35,7 +42,7 @@ const ProductHeaderSection = () => {
     };
 
     return (
-        <>
+        <div className="w-full block px-5 md:px-10 lg:px-20">
             <MenuOverlay isOpen={menuOpen} onLogout={handleLogout} cartCount={cartCount} onClose={() => setMenuOpen(false)} />
             <div className="flex items-center justify-between">
                 <Image
@@ -68,7 +75,17 @@ const ProductHeaderSection = () => {
                     </div>
                 </div>
             </div>
-        </>
+            <div className="flex items-center justify-center mt-8 md:mt-4">
+                <span className="headline-06 text-gray-1">{t('pistachios_label')}</span>
+            </div>
+            <div className="flex items-center justify-center mt-16 mb-30 md:mt-50 md:mb-50">
+                <span className="headline-01 text-gray-1">
+                    {t.rich('pistachios_description_label', {
+                        br: () => <br />
+                    })}
+                </span>
+            </div>
+        </div>
     );
 };
 

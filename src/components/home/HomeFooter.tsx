@@ -36,7 +36,7 @@ const HomeFooter = () => {
           })}
         </h2>
       </div>
-      <div className="block w-full md:pt-16 lg:pt-25">
+      <div className="z-20 block w-full md:pt-16 lg:pt-25">
         <div className="grid grid-cols-12 md:gap-x-6 lg:gap-x-8">
           <div className="col-span-12 md:col-span-3 flex items-end gap-3 order-3 md:order-none px-5 md:px-0 pb-6 md:pb-0 border-t border-t-gray-13 md:border-none pt-10 md:pt-0">
             <div className="relative w-8 h-16 md:w-10 md:h-20">
@@ -62,7 +62,7 @@ const HomeFooter = () => {
               {t("footer_address_line2")}
             </p>
           </div>
-          <div className="z-20 col-span-6 md:col-span-3 lg:col-span-2 lg:col-start-10 flex flex-col gap-4 md:gap-2 order-2 md:order-none border-e border-e-gray-13 md:border-none px-5 md:px-0 py-4 md:py-0">
+          <div className="col-span-6 md:col-span-3 lg:col-span-2 lg:col-start-10 flex flex-col gap-4 md:gap-2 order-2 md:order-none border-e border-e-gray-13 md:border-none px-5 md:px-0 py-4 md:py-0">
             <Link
               href="/"
               onClick={(e) => {
