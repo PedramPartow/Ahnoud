@@ -32,7 +32,7 @@ const ProductDescriptionSlider = () => {
     }, []);
 
     return (
-        <div className="w-full flex items-center overflow-hidden">
+        <div className="w-full flex items-center overflow-hidden pb-20">
             <Swiper
                 key={gap}
                 modules={[Autoplay, FreeMode]}
@@ -40,9 +40,10 @@ const ProductDescriptionSlider = () => {
                 spaceBetween={gap}
                 freeMode={{ enabled: true, momentum: false }}
                 loop
-                autoplay={{ delay: 0, disableOnInteraction: false }}
-                speed={10000}
-                className="product-marquee w-full"
+                allowTouchMove={false}
+                autoplay={{ delay: 0, disableOnInteraction: false, pauseOnMouseEnter: false }}
+                speed={5000}
+                className="product-marquee w-full pointer-events-none"
             >
                 {slides.map((slide, i) => (
                     <SwiperSlide key={i} className="!w-auto">

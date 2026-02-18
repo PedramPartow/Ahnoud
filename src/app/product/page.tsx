@@ -2,6 +2,8 @@
 
 import HomeContactSection from "@/components/home/HomeContactSection";
 import HomeFooter from "@/components/home/HomeFooter";
+import LuxuryPackagingSection from "@/components/product/LuxuryPackagingSection";
+import PackagesSection from "@/components/product/PackagesSection";
 import ProductDescriptionSection from "@/components/product/ProductDescriptionSection";
 import ProductDescriptionSlider from "@/components/product/ProductDescriptionSlider";
 import ProductHeaderSection from "@/components/product/ProductHeaderSection";
@@ -26,6 +28,12 @@ export default function ProductPage() {
       <section className="min-h-screen snap-start snap-always bg-gray-13">
         <ProductDescriptionSection />
         <ProductDescriptionSlider />
+      </section>
+      <section className="min-h-screen snap-start snap-always">
+        <PackagesSection />
+      </section>
+      <section className="min-h-screen snap-start snap-always">
+        <LuxuryPackagingSection />
       </section>
       <section className="min-h-screen snap-start snap-always flex flex-col">
         <HomeContactSection />

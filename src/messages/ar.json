@@ -87,5 +87,21 @@
   "packaging_label": "التعبئة والتغليف لدينا",
   "choices_label": "اختياراتك",
   "add_to_cart_label": "أضف إلى السلة",
-  "quantity_label": "<brand>منتقى بعناية لضمان الجودة الفائقة والنكهة الغنية واللون الزاهي،</brand> فستق أهنود يقدم تجربة طعم لا مثيل لها، أناقة في كل لقمة."
+  "quantity_label": "<brand>منتقى بعناية لضمان الجودة الفائقة والنكهة الغنية واللون الزاهي،</brand> فستق أهنود يقدم تجربة طعم لا مثيل لها، أناقة في كل لقمة.",
+  "packages_title": "ثلاث عبوات،<br></br> تجربة لا تُضاهى",
+  "net_weight_label": "الوزن الصافي",
+  "packaging_dimensions_label": "أبعاد العبوة",
+  "volume_spec_label": "الحجم",
+  "shell_type_label": "نوع القشرة",
+  "best_for_label": "الأفضل لـ",
+  "packaging_description" : "<brand>تغليف أهنود الفاخر يجسد الأناقة والتميز،</brand> بتصميم راقٍ ومواد فاخرة لتجربة استثنائية.",
+  "luxury_packaging_label": "التغليف الفاخر",
+  "why_ahnoud_label": "لماذا أهنود؟",
+  "ordinary_description": "ما هو أبعد من العادي، أبعد<br></br> من التوقعات",
+  "unmatched_quality_title": "جودة لا تُضاهى",
+  "unmatched_quality_description": "أجود المكونات المختارة بعناية لمذاق مثالي.",
+  "exquisite_packaging_title": "تغليف فاخر",
+  "exquisite_packaging_description": "أناقة في كل تفصيلة، من الداخل والخارج.",
+  "global_prestige_title": "مكانة عالمية",
+  "global_prestige_description": "فخامة تصل للذوّاقين حول العالم."
 }

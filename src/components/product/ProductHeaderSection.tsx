@@ -78,7 +78,7 @@ const ProductHeaderSection = () => {
             <div className="flex items-center justify-center mt-8 md:mt-4">
                 <span className="headline-06 text-gray-1">{t('pistachios_label')}</span>
             </div>
-            <div className="flex items-center justify-center mt-16 mb-30 md:mt-50 md:mb-50">
+            <div className="flex items-center justify-center mt-16 mb-30 md:mt-50 md:mb-50 text-center">
                 <span className="headline-01 text-gray-1">
                     {t.rich('pistachios_description_label', {
                         br: () => <br />

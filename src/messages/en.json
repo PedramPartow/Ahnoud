@@ -87,5 +87,21 @@
   "packaging_label": "Our Packaging",
   "choices_label": "Your Choices",
   "add_to_cart_label": "Add to Cart",
-  "quantity_label": "<brand>Handpicked for superior quality, rich flavor, and vibrant color,</brand> our pistachios deliver an unmatched taste experience, elegance in every bite."
+  "quantity_label": "<brand>Handpicked for superior quality, rich flavor, and vibrant color,</brand> our pistachios deliver an unmatched taste experience, elegance in every bite.",
+  "packages_title": "Three Packages,<br></br> One Unmatched Experience",
+  "net_weight_label": "Net Weight",
+  "packaging_dimensions_label": "Packaging Dimensions",
+  "volume_spec_label": "Volume",
+  "shell_type_label": "Shell Type",
+  "best_for_label": "Best For",
+  "packaging_description" : "<brand>Ahnoud’s luxury packaging embodies elegance</brand> and exclusivity, crafted with premium materials for a refined experience.",
+  "luxury_packaging_label": "Luxury Packaging",
+  "why_ahnoud_label": "Why Ahnoud?",
+  "ordinary_description": "Beyond Ordinary,<br></br> Beyond Expectations",
+  "unmatched_quality_title": "Unmatched Quality",
+  "unmatched_quality_description": "Finest handpicked ingredients for perfect taste.",
+  "exquisite_packaging_title": "Exquisite Packaging",
+  "exquisite_packaging_description": "Elegance in every detail, inside and out.",
+  "global_prestige_title": "Global Prestige",
+  "global_prestige_description": "Luxury that reaches connoisseurs worldwide."
 }
