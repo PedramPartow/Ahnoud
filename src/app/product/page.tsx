@@ -2,6 +2,8 @@
 
 import HomeContactSection from "@/components/home/HomeContactSection";
 import HomeFooter from "@/components/home/HomeFooter";
+import ProductDescriptionSection from "@/components/product/ProductDescriptionSection";
+import ProductDescriptionSlider from "@/components/product/ProductDescriptionSlider";
 import ProductHeaderSection from "@/components/product/ProductHeaderSection";
 import Image from "next/image";
 
@@ -20,6 +22,10 @@ export default function ProductPage() {
           />
         </div>
         <ProductHeaderSection />
+      </section>
+      <section className="min-h-screen snap-start snap-always bg-gray-13">
+        <ProductDescriptionSection />
+        <ProductDescriptionSlider />
       </section>
       <section className="min-h-screen snap-start snap-always flex flex-col">
         <HomeContactSection />

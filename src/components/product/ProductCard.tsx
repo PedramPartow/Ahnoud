@@ -28,8 +28,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const decrement = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
 
   return (
-    <div className="bg-gray-1 overflow-hidden flex flex-col">
-      <div className="flex gap-4 p-4">
+    <div className="bg-gray-1 overflow-hidden flex flex-col p-4 gap-4">
+      <div className="flex gap-4">
         <div className="relative w-[104px] h-[104px] md:w-[160px] md:h-[160px] flex-shrink-0 overflow-hidden">
           <Image
             src={product.image}
@@ -39,7 +39,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             className="object-cover"
           />
         </div>
-        <div className="flex flex-col justify-center gap-1">
+        <div className="flex flex-col justify-start items-start gap-1">
           <span className="subtitle-03 text-gray-13">
             {product.name}
           </span>
@@ -47,32 +47,32 @@ const ProductCard = ({ product }: ProductCardProps) => {
           <span className="body-01 text-gray-13">
             ${product.price}
           </span>
-          <div className="flex items-center gap-3">
-            <div className="flex items-center bg-gray-13">
-              <Button
-                onClick={decrement}
-                className="outline-gray sm"
-              >
-                <RemoveIcon />
-              </Button>
-              <div className="w-12 text-center">
-                <span className="text-gray-1 body-03">
-                  {quantity}
-                </span>
-              </div>
-              <Button
-                onClick={increment}
-                className="outline-gray sm"
-                >
-                <AddIcon />
-              </Button>
-            </div>
-            <Button className="primary sm">
-              <AddToCartIcon />
-              <span className="button-01 text-gray-13">{t("add_to_cart_label")}</span>
-            </Button>
-          </div>
         </div>
+      </div>
+      <div className="flex items-center gap-3 ">
+        <div className="flex items-center bg-gray-13 w-[104px] md:w-[160px]">
+          <Button
+            onClick={decrement}
+            className="outline-gray sm-md"
+          >
+            <RemoveIcon />
+          </Button>
+          <div className="w-full text-center">
+            <span className="text-gray-1 body-03">
+              {quantity}
+            </span>
+          </div>
+          <Button
+            onClick={increment}
+            className="outline-gray sm-md"
+            >
+            <AddIcon />
+          </Button>
+        </div>
+        <Button className="primary sm-md">
+          <AddToCartIcon />
+          <span className="button-01 text-gray-13">{t("add_to_cart_label")}</span>
+        </Button>
       </div>
     </div>
   );

@@ -144,3 +144,8 @@ select {
 input:-webkit-autofill {
   transition: background-color 5000s ease-in-out 0s;
 }
+
+.product-marquee .swiper-wrapper {
+  transition-timing-function: linear !important;
+  align-items: flex-start;
+}
