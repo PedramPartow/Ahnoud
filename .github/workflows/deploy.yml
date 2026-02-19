@@ -43,4 +43,5 @@ jobs:
             docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GHCR_TOKEN }}
             cd ${{ secrets.APP_DIR }}
             docker compose pull
+            docker compose down
             docker compose up -d
