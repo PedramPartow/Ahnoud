@@ -6,6 +6,7 @@ import LuxuryPackagingSection from "@/components/product/LuxuryPackagingSection"
 import PackagesSection from "@/components/product/PackagesSection";
 import ProductDescriptionSection from "@/components/product/ProductDescriptionSection";
 import ProductDescriptionSlider from "@/components/product/ProductDescriptionSlider";
+import OtherProductsSection from "@/components/product/OtherProductsSection";
 import ProductHeaderSection from "@/components/product/ProductHeaderSection";
 import Image from "next/image";
 
@@ -32,8 +33,11 @@ export default function ProductPage() {
       <section className="min-h-screen snap-start snap-always">
         <PackagesSection />
       </section>
-      <section className="min-h-screen snap-start snap-always">
+      <section className="min-h-screen snap-start snap-always bg-gray-13">
         <LuxuryPackagingSection />
+      </section>
+      <section className="min-h-screen snap-start snap-always bg-gray-13">
+        <OtherProductsSection />
       </section>
       <section className="min-h-screen snap-start snap-always flex flex-col">
         <HomeContactSection />
