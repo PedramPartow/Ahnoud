@@ -10,7 +10,7 @@ export default function CheckoutPage() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div ref={scrollRef} className="h-screen overflow-y-auto bg-gray-13">
+    <div ref={scrollRef} className="h-screen overflow-y-auto overflow-x-hidden bg-gray-13">
       <StickyNav scrollContainerRef={scrollRef} variant="home" />
       <div className="w-full block pt-2 md:pt-6 pb-20 md:pb-40">
         <CheckoutHeaderSection />
