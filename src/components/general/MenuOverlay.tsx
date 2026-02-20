@@ -112,7 +112,7 @@ const MenuOverlay = ({ isOpen, onClose, onLogout, cartCount = 0 }: MenuOverlayPr
   return (
     <>
       <div
-        className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-300
+        className={`fixed inset-0 bg-black/50 z-100 transition-opacity duration-300
           ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
         onClick={onClose}
         role="button"
@@ -125,7 +125,7 @@ const MenuOverlay = ({ isOpen, onClose, onLogout, cartCount = 0 }: MenuOverlayPr
         aria-modal="true"
         style={{ display: "none" }}
         onTransitionEnd={handleTransitionEnd}
-        className={`overflow-y-auto md:hidden fixed inset-0 z-50 bg-gray-13 flex flex-col transition-transform duration-500 ease-in-out
+        className={`overflow-y-auto md:hidden fixed inset-0 z-100 bg-gray-13 flex flex-col transition-transform duration-500 ease-in-out
           ${isOpen ? "translate-x-0" : "ltr:-translate-x-full rtl:translate-x-full"}`}
       >
         <div className="flex flex-col gap-6 px-5 pt-2">
@@ -254,7 +254,7 @@ const MenuOverlay = ({ isOpen, onClose, onLogout, cartCount = 0 }: MenuOverlayPr
         aria-modal="true"
         style={{ display: "none" }}
         onTransitionEnd={handleTransitionEnd}
-        className={`hidden md:flex overflow-y-auto fixed inset-0 z-50 bg-gray-13 flex-row transition-transform duration-500 ease-in-out
+        className={`hidden md:flex overflow-y-auto fixed inset-0 z-100 bg-gray-13 flex-row transition-transform duration-500 ease-in-out
           ${isOpen ? "translate-y-0" : "-translate-y-full"}`}
       >
         <div className="z-20 flex items-center justify-between w-full absolute top-6 left-0 right-0 px-10 xl:px-20">

@@ -104,5 +104,10 @@
   "exquisite_packaging_title": "تغليف فاخر",
   "exquisite_packaging_description": "أناقة في كل تفصيلة، من الداخل والخارج.",
   "global_prestige_title": "مكانة عالمية",
-  "global_prestige_description": "فخامة تصل للذوّاقين حول العالم."
+  "global_prestige_description": "فخامة تصل للذوّاقين حول العالم.",
+  "cart_label": "السلة",
+  "subtotal_label": "المجموع",
+  "checkout_label": "الدفع",
+  "empty_cart_title": "سلة التسوق فارغة",
+  "empty_cart_subtitle": "اكتشف الفخامة، واملأ سلتك بأرقى المنتجات."
 }

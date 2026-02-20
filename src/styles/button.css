@@ -10,35 +10,35 @@
 /* sizes */
 .btn.sm {
     width: 100%;
-    height: 40px;
+    height: 40px !important;
     gap: 6px;
     padding: 8px;
 }
   
 .btn.md {
     width: 100%;
-    height: 48px;
+    height: 48px !important;
     gap: 8px;
     padding: 12px;
 }
   
 .btn.lg {
     width: 100%;
-    height: 64px;
+    height: 64px !important;
     gap: 8px;
     padding: 20px 24px;
 }
 
 .btn.sm-md {
     width: 100%;
-    height: 40px;
+    height: 40px !important;
     gap: 6px;
     padding: 8px;
 }
 
 @media (min-width: 768px) {
     .btn.sm-md {
-        height: 48px;
+        height: 48px !important;
         gap: 8px;
         padding: 12px;
     }
@@ -75,14 +75,12 @@
 
 .btn.outline-gray {
     background-color: var(--color-gray-13);
-    /* background-color: transparent; */
     color: var(--color-gray-1);
     border: 1px solid var(--color-gray-10) !important;
 }
 
 .btn.outline-gray:not(:disabled):hover {
     background-color: var(--color-gray-11);
-    /* background-color: transparent; */
     color: var(--color-gray-1);
     border: 1px solid var(--color-tertiary-11) !important;
 }
@@ -91,11 +89,10 @@
 .btn.disabled {
   opacity: 0.48;
   cursor: not-allowed;
-  /* pointer-events: none; */
 }
 
 .btn.block {
-    width: 100%;
+    width: 100% !important;
 }
 
 .btn:focus-visible {

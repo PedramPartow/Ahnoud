@@ -81,16 +81,14 @@ const HomeProductSliderSection = () => {
                 <h2 className="headline-05 text-gray-13 text-center">
                   {product.name}
                 </h2>
-                <div className="w-full h-full">
-                  <Image
+                <Image
                     src={product.image}
                     alt={product.name}
                     width={489}
                     height={275}
                     sizes="(max-width: 768px) 100vw, 489px"
-                    className="object-cover w-full h-full md:w-[489px] md:h-[275px]"
+                    className="object-cover w-full h-[275px] md:w-[489px]"
                   />
-                </div>
                 <p className="body-02 text-gray-13 text-center">
                   {product.description}
                 </p>

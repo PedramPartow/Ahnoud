@@ -104,5 +104,10 @@
   "exquisite_packaging_title": "Exquisite Packaging",
   "exquisite_packaging_description": "Elegance in every detail, inside and out.",
   "global_prestige_title": "Global Prestige",
-  "global_prestige_description": "Luxury that reaches connoisseurs worldwide."
+  "global_prestige_description": "Luxury that reaches connoisseurs worldwide.",
+  "cart_label": "Cart",
+  "subtotal_label": "Subtotal",
+  "checkout_label": "Checkout",
+  "empty_cart_title": "Your cart is empty",
+  "empty_cart_subtitle": "Add products to your cart to get started."
 }

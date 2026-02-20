@@ -2,6 +2,7 @@
 
 import HomeContactSection from "@/components/home/HomeContactSection";
 import HomeFooter from "@/components/home/HomeFooter";
+import StickyNav from "@/components/general/StickyNav";
 import LuxuryPackagingSection from "@/components/product/LuxuryPackagingSection";
 import PackagesSection from "@/components/product/PackagesSection";
 import ProductDescriptionSection from "@/components/product/ProductDescriptionSection";
@@ -9,10 +10,14 @@ import ProductDescriptionSlider from "@/components/product/ProductDescriptionSli
 import OtherProductsSection from "@/components/product/OtherProductsSection";
 import ProductHeaderSection from "@/components/product/ProductHeaderSection";
 import Image from "next/image";
+import { useRef } from "react";
 
 export default function ProductPage() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
   return (
-    <div className="h-screen overflow-y-auto snap-y snap-mandatory">
+    <div ref={scrollRef} className="h-screen overflow-y-auto snap-y snap-mandatory">
+      <StickyNav scrollContainerRef={scrollRef} variant="product" />
       <section className="min-h-screen snap-start snap-always pt-2 md:pt-6 relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <Image

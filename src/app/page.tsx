@@ -1,14 +1,20 @@
+"use client";
+
 import HomeBrandFeaturesSection from "@/components/home/HomeBrandFeaturesSection";
 import HomeContactSection from "@/components/home/HomeContactSection";
 import HomeFooter from "@/components/home/HomeFooter";
 import HomeHeaderSection from "@/components/home/HomeHeaderSection";
 import HomeProductSliderSection from "@/components/home/HomeProductSliderSection";
+import StickyNav from "@/components/general/StickyNav";
 import Image from "next/image";
+import { useRef } from "react";
 
 export default function HomePage() {
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="h-screen overflow-y-auto snap-y snap-mandatory">
+    <div ref={scrollRef} className="h-screen overflow-y-auto snap-y snap-mandatory">
+      <StickyNav scrollContainerRef={scrollRef} variant="home" />
       <section 
         className="min-h-screen snap-start snap-always bg-gray-13 pt-2 md:pt-6 overflow-hidden"
       >

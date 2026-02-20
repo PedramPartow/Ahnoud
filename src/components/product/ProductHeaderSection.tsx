@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useState, useSyncExternalStore } from "react";
 import Button from "../general/Button";
+import CartOverlay from "../general/CartOverlay";
 import MenuOverlay from "../general/MenuOverlay";
 import ProductCard, { type Product } from "./ProductCard";
 
@@ -33,6 +34,7 @@ const ProductHeaderSection = () => {
     ); 
 
     const [menuOpen, setMenuOpen] = useState(false);
+    const [cartOpen, setCartOpen] = useState(false);
     const [cartCount, setCartCount] = useState(9);
 
     const handleLogout = () => {
@@ -44,6 +46,7 @@ const ProductHeaderSection = () => {
     return (
         <div className="w-full block px-5 md:px-10 lg:px-20">
             <MenuOverlay isOpen={menuOpen} onLogout={handleLogout} cartCount={cartCount} onClose={() => setMenuOpen(false)} />
+            <CartOverlay isOpen={cartOpen} onClose={() => setCartOpen(false)} />
             <div className="flex items-center justify-between">
                 <Image
                     src="/images/Logo.svg"
@@ -60,7 +63,7 @@ const ProductHeaderSection = () => {
                     </div>
                     <div className="flex items-center justify-center gap-4">
                         {isLoggedIn ? (
-                            <Button className="outline-gray sm-md">
+                            <Button className="outline-gray sm-md" onClick={() => setCartOpen(true)}>
                                 <ShoppingBagIcon />
                             </Button>
                         ) : (
