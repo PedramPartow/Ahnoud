@@ -9,11 +9,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const slides = [
     { src: "/images/product2.png", alt: "Premium packaging" },
-    { src: "/images/Pistachios.png", alt: "Luxury gift box" },
     { src: "/images/product3.png", alt: "Special edition" },
-    { src: "/images/Dates.png", alt: "Pistachio selection" },
-    { src: "/images/Saffron.png", alt: "Saffron collection" },
-    { src: "/images/product2.png", alt: "Gift set" },
+    { src: "/images/Pistachios.png", alt: "Luxury gift box" },
+    { src: "/images/pistachio.png", alt: "Pistachio selection" },
 ];
 
 const ProductDescriptionSlider = () => {

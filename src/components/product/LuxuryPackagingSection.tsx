@@ -12,21 +12,21 @@ const LuxuryPackagingSection = () => {
     return (
         <>
             <div className="px-5 md:px-10 lg:px-20 py-10 md:py-20">
-                <div className="grid grid-cols-12 gap-6">
+                <div className="grid grid-cols-12 gap-8 md:gap-16">
                     <div className="col-span-12 md:col-span-2">
                         <h2 className="subtitle-04 text-gray-1">{t('luxury_packaging_label')}</h2>
                     </div>
-                    <div className="col-span-12 md:col-span-10 flex flex-col xl:flex-row items-center gap-8 md:gap-16">
-                        <div className="w-[208px] h-[293px] md:w-[380px] md:h-[536px] lg:w-[570px] lg:h-[804px] relative -rotate-12 shrink-0">
+                    <div className="col-span-12 md:col-span-10 flex flex-col xl:flex-row items-center gap-8 md:gap-16 lg:gap-24 xl:gap-32">
+                        <div className="w-[208px] h-[293px] md:w-[380px] md:h-[536px] lg:w-[460px] lg:h-[650px] relative -rotate-12 shrink-0">
                             <Image
                                 src="/images/product3.png"
                                 alt="Luxury Packaging"
                                 fill
-                                sizes="(max-width: 768px) 208px, (max-width: 1024px) 380px, 570px"
+                                sizes="(max-width: 768px) 208px, (max-width: 1024px) 380px, 460px"
                                 className="object-cover"
                             />
                         </div>
-                        <p className="subtitle-01 text-gray-10">
+                        <p className="subtitle-01 text-gray-10 relative z-10">
                             <Image
                                 src="/images/Star.svg"
                                 width={45}
@@ -49,7 +49,7 @@ const LuxuryPackagingSection = () => {
                         br: () => <br />
                     })}
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 mt-10 md:mt-20">
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 md:gap-6 mt-10 md:mt-20">
                     {features.map((feature) => (
                         <div key={feature.titleKey} className="flex items-start gap-6">
                             <Image

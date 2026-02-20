@@ -13,7 +13,7 @@ import Image from "next/image";
 export default function ProductPage() {
   return (
     <div className="h-screen overflow-y-auto snap-y snap-mandatory">
-      <section className="min-h-screen snap-start snap-always pt-2 md:pt-6 overflow-hidden relative">
+      <section className="min-h-screen snap-start snap-always pt-2 md:pt-6 relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <Image
             src="/images/home-production.png"
@@ -24,16 +24,18 @@ export default function ProductPage() {
             className="object-cover brightness-50"
           />
         </div>
-        <ProductHeaderSection />
+        <div className="relative z-10 w-full block">
+          <ProductHeaderSection />
+        </div>
       </section>
       <section className="min-h-screen snap-start snap-always bg-gray-13">
         <ProductDescriptionSection />
         <ProductDescriptionSlider />
       </section>
-      <section className="min-h-screen snap-start snap-always">
+      <section className="min-h-screen snap-start snap-always bg-gray-13 relative overflow-hidden">
         <PackagesSection />
       </section>
-      <section className="min-h-screen snap-start snap-always bg-gray-13">
+      <section className="min-h-screen snap-start snap-always bg-gray-13 relative overflow-hidden">
         <LuxuryPackagingSection />
       </section>
       <section className="min-h-screen snap-start snap-always bg-gray-13">

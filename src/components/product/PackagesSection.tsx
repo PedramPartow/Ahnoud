@@ -46,13 +46,13 @@ const PackagesSection = () => {
     const t = useTranslations();
 
     return (
-        <div className="bg-gray-13 px-5 md:px-10 lg:px-20 pb-10 md:pt-20 md:pb-15">
+        <div className="px-5 md:px-10 lg:px-20 pt-10 pb-10 md:pt-20 md:pb-15">
             <h2 className="headline-04 text-gray-1 text-center mb-12 md:mb-20">
                 {t.rich("packages_title", {
                     br: () => <br />,
                 })}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12 md:gap-10 lg:gap-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 md:gap-10 lg:gap-20">
                 {packages.map((pkg) => (
                     <PackageCard key={pkg.id} pkg={pkg} />
                 ))}
