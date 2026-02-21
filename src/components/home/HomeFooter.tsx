@@ -80,7 +80,7 @@ const HomeFooter = () => {
               {t("about_us_label")}
             </Link>
             <Link
-              href="/contact"
+              href="/contact-us"
               className="button-01 text-gray-1!"
             >
               {t("contact_us_nav_label")}

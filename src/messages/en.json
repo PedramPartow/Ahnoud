@@ -135,5 +135,14 @@
   "pay_and_place_order_label": "Pay and Place Order",
   "terms_agreement_text": "By continuing, I confirm that I have read and accept the <terms>Terms and Conditions</terms>, and the <privacy>Privacy Policy</privacy>.",
   "items_label": "Items",
-  "qty_label": "Quantity"
+  "qty_label": "Quantity",
+  "contact_page_title": "We're Here<br></br>for You",
+  "contact_page_subtitle": "Let us know how we can help you with your luxury experience.",
+  "contact_details_title": "Our Contact<br></br>Details",
+  "contact_mail_label": "Mail",
+  "contact_office_label": "Office",
+  "contact_office_phone": "+971 4 123 4567",
+  "contact_whatsapp_label": "WhatsApp",
+  "contact_whatsapp_phone": "+971 4 321 7654",
+  "contact_address_label": "Address"
 }

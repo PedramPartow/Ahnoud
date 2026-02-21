@@ -69,7 +69,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             <AddIcon />
           </Button>
         </div>
-        <Button className="primary sm-md">
+        <Button className="primary sm-md" href="/checkout">
           <AddToCartIcon />
           <span className="button-01 text-gray-13">{t("add_to_cart_label")}</span>
         </Button>

@@ -1,5 +1,6 @@
 "use client";
 
+import ArrowDownIcon from "@/icons/ArrowDownIcon";
 import ArrowUpTailIcon from "@/icons/ArrowUpTailIcon";
 import MenuIcon from "@/icons/MenuIcon";
 import ShoppingBagIcon from "@/icons/ShoppingBagIcon";
@@ -90,6 +91,7 @@ const StickyNav = ({ scrollContainerRef, variant }: StickyNavProps) => {
                             {variant === "home" ? (
                                 <Button className="dark sm-md" href="/product">
                                     {t("products_label")}
+                                    <ArrowDownIcon />
                                 </Button>
                             ) : (
                                 <Button className="dark sm-md" href="/">

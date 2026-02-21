@@ -85,7 +85,7 @@ const PackageCard = ({ pkg }: PackageCardProps) => {
                         <AddIcon />
                     </Button>
                 </div>
-                <Button className="primary sm-md flex-1">
+                <Button className="primary sm-md flex-1" href="/checkout">
                     <AddToCartIcon />
                     <span className="button-01 text-gray-13">{t("add_to_cart_label")}</span>
                 </Button>

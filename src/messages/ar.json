@@ -135,5 +135,14 @@
   "pay_and_place_order_label": "الدفع وتأكيد الطلب",
   "terms_agreement_text": "بالمتابعة، أؤكد أنني قرأت وأوافق على <terms>الشروط والأحكام</terms>، و<privacy>سياسة الخصوصية</privacy>.",
   "items_label": "عناصر",
-  "qty_label": "الكمية"
+  "qty_label": "الكمية",
+  "contact_page_title": "نحن هنا<br></br>من أجلك",
+  "contact_page_subtitle": "أخبرنا كيف يمكننا مساعدتك في تجربتك الفاخرة.",
+  "contact_details_title": "تفاصيل<br></br>الاتصال",
+  "contact_mail_label": "البريد",
+  "contact_office_label": "المكتب",
+  "contact_office_phone": "٤٥٦٧ ١٢٣ ٤ ٩٧١+",
+  "contact_whatsapp_label": "واتساب",
+  "contact_whatsapp_phone": "٧٦٥٤ ٣٢١ ٤ ٩٧١+",
+  "contact_address_label": "العنوان"
 }

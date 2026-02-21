@@ -151,3 +151,7 @@ input:-webkit-autofill {
   transition-timing-function: linear !important;
   align-items: flex-start;
 }
+
+.leaflet-container {
+  z-index: 0 !important;
+}

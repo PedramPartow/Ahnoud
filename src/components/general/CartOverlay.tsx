@@ -181,7 +181,7 @@ const CartOverlay = ({ isOpen, onClose }: CartOverlayProps) => {
 
                         <div className="w-full flex flex-col gap-2 mt-12 md:mt-20">
                             {productSuggestions.map((product) => (
-                                <Button key={product.label} onClick={onClose} className="outline-gray sm-md block flex! justify-between!">
+                                <Button key={product.label} href="/product" className="outline-gray sm-md block flex! justify-between!">
                                     {t(product.label)}
                                     <ArrowRightTailIcon className="rtl:rotate-180" />
                                 </Button>
