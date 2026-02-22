@@ -22,7 +22,7 @@ const emptySubscribe = () => () => {};
 
 const navLinks = [
   { href: "/", labelKey: "home_label" },
-  { href: "/about", labelKey: "about_us_label" },
+  { href: "/about-us", labelKey: "about_us_label" },
   { href: "/contact-us", labelKey: "contact_us_nav_label" },
 ] as const;
 

@@ -144,5 +144,18 @@
   "contact_office_phone": "+971 4 123 4567",
   "contact_whatsapp_label": "WhatsApp",
   "contact_whatsapp_phone": "+971 4 321 7654",
-  "contact_address_label": "Address"
+  "contact_address_label": "Address",
+  "modern_luxury_label": "Where heritage meets modern luxury",
+  "modern_luxury_description": "Ahnoud blends heritage with modern luxury, crafting each product with unmatched quality for a unique global experience.",
+  "not_found_title": "Page Not Found",
+  "not_found_subtitle": "The page you're looking for doesn't exist or has been moved.",
+  "not_found_button": "Back to Home",
+  "our_story_title": "Our Story",
+  "our_story_description_first": "Founded on excellence and passion, Ahnoud began its journey in Dubai, where heritage meets modern luxury.",
+  "our_story_description_second": "Today, our commitment to quality and innovation delivers unparalleled experiences to discerning connoisseurs worldwide.",
+  "our_value_promise_label": "Our Value & Promise",
+  "vision_feature_1": "Premium Quality & Unmatched Excellence",
+  "vision_feature_2": "Exquisite Packaging & Crafted to Perfection",
+  "vision_feature_3": "Global reach, personalized service.",
+  "vision_feature_4": "Every product reflects our commitment to excellence."
 }

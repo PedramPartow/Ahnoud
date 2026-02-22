@@ -66,8 +66,8 @@ const ContactUsSection = () => {
       />
 
       <section aria-label="Contact Us" className="w-full px-5 md:px-10 lg:px-20 pt-10 md:pt-16 pb-16 md:pb-25">
-        <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div className="flex flex-col gap-6 md:gap-16 col-span-1 lg:col-span-4 lg:col-span-4 lg:col-start-2">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <div className="flex flex-col gap-6 md:gap-16 col-span-6 xl:col-span-4 xl:col-start-2">
             <header>
               <h1 className="headline-01 text-gray-1">
                 {t.rich("contact_page_title", { br: () => <br /> })}
@@ -94,7 +94,7 @@ const ContactUsSection = () => {
           <div className="hidden lg:block absolute top-0 left-1/2 h-full w-px -translate-x-1/2 border-l border-gray-1-alpha-20" />
           <div className="lg:hidden -mx-5 md:-mx-10 h-px bg-gray-1-alpha-20" />
 
-          <aside aria-label="Contact details" className="flex flex-col gap-10 md:mt-25 grid-cols-1 lg:grid-cols-12 lg:col-span-4 lg:col-start-8">
+          <aside aria-label="Contact details" className="flex flex-col gap-10 lg:mt-25 col-span-6 xl:col-span-4 xl:col-start-8">
             <h2 className="headline-06 text-gray-1">
               {t.rich("contact_details_title", { br: () => <br /> })}
             </h2>
@@ -149,7 +149,7 @@ const ContactUsSection = () => {
               </div>
             </address>
 
-            <div className="w-full h-[335px] md:h-[632px] md:w-[570px] overflow-hidden md:mt-10" role="img" aria-label="Office location on map">
+            <div className="w-full h-[335px] md:h-[632px]  overflow-hidden md:mt-10" role="img" aria-label="Office location on map">
               <ContactMap lat={25.2048} lng={55.2708} />
             </div>
           </aside>

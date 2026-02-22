@@ -19,7 +19,7 @@ const HomeFooter = () => {
           aria-hidden="true"
         />
       </div>
-      <div className="hidden absolute md:block top-0 left-[15%] w-[450px] h-[450px] lg:w-[600px] lg:h-[600px] md:translate-y-[-14%] opacity-10">
+      <div className="hidden absolute md:block top-0 left-[15%] w-[450px] h-[450px] lg:w-[600px] lg:h-[600px] md:translate-y-[-13.5%] opacity-10">
         <Image
           src="/images/vector-1.png"
           alt=""
