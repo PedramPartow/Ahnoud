@@ -21,7 +21,7 @@ export default function ProductPage() {
       <section className="min-h-screen snap-start snap-always pt-2 md:pt-6 relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <Image
-            src="/images/home-production.png"
+            src="/images/pistachios.png"
             alt="productions cover"
             fill
             priority

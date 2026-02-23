@@ -26,7 +26,7 @@ export default function HomePage() {
       <section className="min-h-screen snap-start snap-always relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <Image
-            src="/images/home-production.png"
+            src="/images/pistachios.png"
             alt="productions cover"
             fill
             priority

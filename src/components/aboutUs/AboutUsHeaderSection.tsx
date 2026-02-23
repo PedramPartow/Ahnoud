@@ -16,7 +16,7 @@ const collageImages = [
     rotate: "-rotate-7",
   },
   {
-    src: "/images/saffron.png",
+    src: "/images/Saffron.png",
     alt: "Premium saffron packaging",
     width: 160,
     height: 224,
@@ -36,7 +36,7 @@ const collageImages = [
     rotate: "-rotate-5",
   },
   {
-    src: "/images/dates.png",
+    src: "/images/Dates.png",
     alt: "Premium dates packaging",
     width: 190,
     height: 254,
