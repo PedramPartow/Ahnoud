@@ -58,6 +58,7 @@ const collageImages = [
 ];
 
 const AboutUsHeaderSection = () => {
+  
   const t = useTranslations();
 
   return (
