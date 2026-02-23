@@ -113,7 +113,6 @@ const HomeFooter = () => {
               rel="noopener noreferrer"
               className="button-01 text-gray-1!"
             >
-              
               {t("facebook_label")}
             </Link>
           </div>
