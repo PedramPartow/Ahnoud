@@ -220,10 +220,10 @@ const CheckoutFormSection = () => {
                         <p className="caption-01 text-gray-7 text-center">
                             {t.rich("terms_agreement_text", {
                                 terms: (chunks) => (
-                                    <a href="#" className="text-gray-1 underline">{chunks}</a>
+                                    <a href="/privasy-policy" className="text-gray-1 underline">{chunks}</a>
                                 ),
                                 privacy: (chunks) => (
-                                    <a href="#" className="text-gray-1 underline">{chunks}</a>
+                                    <a href="/privasy-policy" className="text-gray-1 underline">{chunks}</a>
                                 ),
                             })}
                         </p>
@@ -305,10 +305,10 @@ const CheckoutFormSection = () => {
                         <p className="caption-01 text-gray-7 text-center">
                             {t.rich("terms_agreement_text", {
                                 terms: (chunks) => (
-                                    <a href="#" className="text-gray-1 underline">{chunks}</a>
+                                    <a href="/privasy-policy" className="text-gray-1 underline">{chunks}</a>
                                 ),
                                 privacy: (chunks) => (
-                                    <a href="#" className="text-gray-1 underline">{chunks}</a>
+                                    <a href="/privasy-policy" className="text-gray-1 underline">{chunks}</a>
                                 ),
                             })}
                         </p>
