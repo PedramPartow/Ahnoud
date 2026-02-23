@@ -4,6 +4,7 @@ import { cookies } from 'next/headers';
 import { env } from "process";
 import "../styles/globals.css";
 import MuiProvider from './mui-provider';
+import QueryProvider from './query-provider';
 
 export const metadata: Metadata = {
   title: "Ahnoud",
@@ -21,11 +22,13 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       <body>
-        <MuiProvider direction={locale === 'ar' ? 'rtl' : 'ltr'}>
-          <NextIntlClientProvider>
-            {children}
-          </NextIntlClientProvider>
-        </MuiProvider>
+        <QueryProvider>
+          <MuiProvider direction={locale === 'ar' ? 'rtl' : 'ltr'}>
+            <NextIntlClientProvider>
+              {children}
+            </NextIntlClientProvider>
+          </MuiProvider>
+        </QueryProvider>
       </body>
     </html>
   );
