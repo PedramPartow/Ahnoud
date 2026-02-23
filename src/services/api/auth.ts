@@ -1,6 +1,6 @@
 import { apiClient } from './client';
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://Api.ahnoudnuts.com';
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || '';
 
 export const authApi = {
   register(data: any) {

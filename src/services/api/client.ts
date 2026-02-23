@@ -1,13 +1,28 @@
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://187.77.66.238:8080';
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || '';
 
+   
 function buildUrl(path: string, params?: Record<string, any>): string {
-  const url = new URL(path, BASE_URL);
-  if (params) {
-    Object.entries(params).forEach(([key, value]) => {
-      url.searchParams.set(key, String(value));
-    });
+  let url: string;
+
+  if (BASE_URL) {
+    const fullUrl = new URL(path, BASE_URL);
+    if (params) {
+      Object.entries(params).forEach(([key, value]) => {
+        fullUrl.searchParams.set(key, String(value));
+      });
+    }
+    return fullUrl.toString();
   }
-  return url.toString();
+
+  url = path;
+  if (params) {
+    const searchParams = new URLSearchParams();
+    Object.entries(params).forEach(([key, value]) => {
+      searchParams.set(key, String(value));
+    });
+    url += `?${searchParams.toString()}`;
+  }
+  return url;
 }
 
 function getAuthHeaders(token?: string | null): HeadersInit {

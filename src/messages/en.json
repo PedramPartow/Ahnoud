@@ -189,5 +189,7 @@
   "privacy_section_6_item_3": "Withdraw consent at any time",
   "privacy_section_6_item_4": "Opt out of marketing communications",
   "privacy_section_7_title": "7. Policy Updates",
-  "privacy_section_7_text": "We may update this Privacy Policy occasionally. Any changes will be posted on this page with an updated effective date."
+  "privacy_section_7_text": "We may update this Privacy Policy occasionally. Any changes will be posted on this page with an updated effective date.",
+  "loading_label": "loading...",
+  "generic_error": "Something went wrong. Please try again."
 }
