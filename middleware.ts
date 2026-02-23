@@ -1,52 +1,56 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { getToken } from "next-auth/jwt";
 
-// Adjust these to your real auth routes
 const PUBLIC_AUTH_PATHS = ["/auth"];
 
 function isPublicAuthPath(pathname: string) {
   return PUBLIC_AUTH_PATHS.includes(pathname);
 }
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // TODO: replace "auth_token" with whatever cookie / mechanism you use
-  const token = request.cookies.get("token")?.value;
-  const isLoggedIn = !!token;
+  // --- Admin routes: require next-auth JWT with role === "admin" ---
+  if (pathname.startsWith("/admin")) {
+    const token = await getToken({ req: request, secret: process.env.NEXTAUTH_SECRET });
 
+    if (!token || token.role !== "admin") {
+      const loginUrl = new URL("/login", request.url);
+      loginUrl.searchParams.set("from", pathname);
+      return NextResponse.redirect(loginUrl);
+    }
+    return NextResponse.next();
+  }
+
+  // --- Existing cookie-based auth for user-facing protected routes ---
+  const cookieToken = request.cookies.get("token")?.value;
+  const isLoggedIn = !!cookieToken;
   const isAuthRoute = isPublicAuthPath(pathname);
 
   const isProtectedRoute =
     pathname.startsWith("/app") ||
-    pathname.startsWith("/dashboard") ||
-    pathname.startsWith("/product");
+    pathname.startsWith("/dashboard");
 
-  // 1) Block anonymous users from protected routes
   if (!isLoggedIn && isProtectedRoute) {
-    const loginUrl = new URL("/login", request.url);
+    const loginUrl = new URL("/auth", request.url);
     loginUrl.searchParams.set("from", pathname);
     return NextResponse.redirect(loginUrl);
   }
 
-  // 2) Prevent logged‑in users from visiting auth pages
   if (isLoggedIn && isAuthRoute) {
-    const appUrl = new URL("/dashboard", request.url); // or "/app"
-    return NextResponse.redirect(appUrl);
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
   return NextResponse.next();
 }
 
-// Only run the middleware on relevant paths.
-// Update these matchers when you add actual routes under (auth) and (app).
 export const config = {
   matcher: [
+    "/admin/:path*",
     "/login",
-    "/register",
+    "/auth",
     "/app/:path*",
     "/dashboard/:path*",
-    "/product/:path*",
   ],
 };
-
