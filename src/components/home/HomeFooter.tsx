@@ -3,9 +3,11 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const HomeFooter = () => {
   const t = useTranslations();
+  const pathname = usePathname();
 
   return (
     <div className="w-full bg-gray-11 md:pb-12 md:px-10 md:pt-16 lg:px-20 lg:pt-25 relative">
@@ -66,15 +68,17 @@ const HomeFooter = () => {
             <Link
               href="/"
               onClick={(e) => {
-                e.preventDefault();
-                document.querySelector(".snap-y")?.scrollTo({ top: 0, behavior: "smooth" });
+                if (pathname === "/") {
+                  e.preventDefault();
+                  document.querySelector(".snap-y")?.scrollTo({ top: 0, behavior: "smooth" });
+                }
               }}
               className="button-01 text-gray-1!"
             >
               {t("home_label")}
             </Link>
             <Link
-              href="/about"
+              href="/about-us"
               className="button-01 text-gray-1!"
             >
               {t("about_us_label")}
@@ -109,6 +113,7 @@ const HomeFooter = () => {
               rel="noopener noreferrer"
               className="button-01 text-gray-1!"
             >
+              
               {t("facebook_label")}
             </Link>
           </div>

@@ -183,7 +183,7 @@ const MenuOverlay = ({ isOpen, onClose, onLogout, cartCount = 0 }: MenuOverlayPr
           {products.map((product) => (
             <Link
               key={product.title}
-              href="#"
+              href="/product"
               onClick={onClose}
               className="transition-colors flex items-center"
             >

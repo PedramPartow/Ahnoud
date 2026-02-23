@@ -1,6 +1,9 @@
 "use client";
 
-import ArrowDownIcon from "@/icons/ArrowDownIcon";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -43,6 +46,8 @@ const RadioDot = ({ selected }: { selected: boolean }) => (
 
 const CheckoutFormSection = () => {
     const t = useTranslations();
+    const [phoneCode, setPhoneCode] = useState("+971");
+    const [country, setCountry] = useState("");
     const [deliveryMethod, setDeliveryMethod] = useState<"standard" | "express">("standard");
     const [paymentMethod, setPaymentMethod] = useState<"credit_card" | "paypal" | "apple_pay" | "google_pay">("credit_card");
 
@@ -77,10 +82,23 @@ const CheckoutFormSection = () => {
                                 type="email"
                             />
                             <div className="flex gap-3 items-end">
-                                <div className="flex items-center gap-1 pb-4 border-b border-[var(--color-gray-1-alpha-20)] shrink-0 cursor-pointer">
-                                    <span className="body-03 text-gray-7">+971</span>
-                                    <ArrowDownIcon size={16} color="var(--color-gray-7)" />
-                                </div>
+                                <FormControl variant="standard" sx={{ minWidth: 90, shrink: 0 }}>
+                                    <Select
+                                        value={phoneCode}
+                                        onChange={(e) => setPhoneCode(e.target.value)}
+                                    >
+                                        <MenuItem value="+971">+971</MenuItem>
+                                        <MenuItem value="+966">+966</MenuItem>
+                                        <MenuItem value="+968">+968</MenuItem>
+                                        <MenuItem value="+974">+974</MenuItem>
+                                        <MenuItem value="+973">+973</MenuItem>
+                                        <MenuItem value="+965">+965</MenuItem>
+                                        <MenuItem value="+1">+1</MenuItem>
+                                        <MenuItem value="+44">+44</MenuItem>
+                                        <MenuItem value="+33">+33</MenuItem>
+                                        <MenuItem value="+49">+49</MenuItem>
+                                    </Select>
+                                </FormControl>
                                 <TextField
                                     fullWidth
                                     autoComplete="tel"
@@ -95,10 +113,25 @@ const CheckoutFormSection = () => {
                     <div className="flex flex-col gap-6 md:gap-8">
                         <h2 className="subtitle-03 text-gray-1">{t("shipping_information_label")}</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="flex items-center justify-between pb-4 border-b border-[var(--color-gray-1-alpha-20)] cursor-pointer">
-                                <span className="body-03 text-gray-7">{t("country_region_label")}</span>
-                                <ArrowDownIcon size={16} color="var(--color-gray-7)" />
-                            </div>
+                            <FormControl variant="standard" fullWidth>
+                                <InputLabel>{t("country_region_label")}</InputLabel>
+                                <Select
+                                    value={country}
+                                    onChange={(e) => setCountry(e.target.value)}
+                                    label={t("country_region_label")}
+                                >
+                                    <MenuItem value="AE">UAE</MenuItem>
+                                    <MenuItem value="SA">Saudi Arabia</MenuItem>
+                                    <MenuItem value="OM">Oman</MenuItem>
+                                    <MenuItem value="QA">Qatar</MenuItem>
+                                    <MenuItem value="BH">Bahrain</MenuItem>
+                                    <MenuItem value="KW">Kuwait</MenuItem>
+                                    <MenuItem value="US">United States</MenuItem>
+                                    <MenuItem value="GB">United Kingdom</MenuItem>
+                                    <MenuItem value="FR">France</MenuItem>
+                                    <MenuItem value="DE">Germany</MenuItem>
+                                </Select>
+                            </FormControl>
                             <TextField
                                 fullWidth
                                 label={t("city_label")}

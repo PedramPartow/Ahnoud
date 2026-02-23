@@ -93,7 +93,7 @@ const HomeProductSliderSection = () => {
                   {product.description}
                 </p>
                 <div className="flex md:hidden justify-center w-full">
-                  <Button className="dark sm-md" href="/">
+                  <Button className="dark sm-md" href="/product">
                     {t('discover_more_button')}
                     <ArrowRightUpIcon />
                   </Button>
@@ -103,7 +103,7 @@ const HomeProductSliderSection = () => {
           ))}
         </Swiper>
         <div className="hidden md:block absolute end-[12%] lg:end-[20%] top-1/2 -translate-y-1/2 z-10">
-          <Button className="blur-gray sm-md" href="/">
+          <Button className="blur-gray sm-md" href="/product">
             {t('discover_more_button')}
             <ArrowRightUpIcon />
           </Button>

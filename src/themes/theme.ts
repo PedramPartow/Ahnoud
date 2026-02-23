@@ -5,6 +5,87 @@ export const getTheme = (direction: 'ltr' | 'rtl' = 'ltr') =>
     direction,
 
     components: {
+      MuiSelect: {
+        styleOverrides: {
+          root: {
+            color: 'var(--color-gray-7)',
+            fontSize: 'var(--body-03-size)',
+            lineHeight: 'var(--body-03-line)',
+            fontWeight: 'var(--body-03-weight)',
+
+            '&:before': {
+              borderBottomColor: 'var(--color-gray-1-alpha-20)',
+            },
+            '&:hover:not(.Mui-disabled):before': {
+              borderBottomColor: 'var(--color-gray-1-alpha-20)',
+            },
+            '&:after': {
+              borderBottomColor: 'var(--color-gray-1-alpha-20)',
+            },
+          },
+          select: {
+            padding: '0 0 16px 0',
+          },
+          icon: {
+            color: 'var(--color-gray-7)',
+            right: direction === 'rtl' ? 'unset' : 0,
+            left: direction === 'rtl' ? 0 : 'unset',
+          },
+        },
+      },
+      MuiInputLabel: {
+        styleOverrides: {
+          root: {
+            color: 'var(--color-gray-7)',
+            fontSize: 'var(--body-03-size)',
+            lineHeight: 'var(--body-03-line)',
+            fontWeight: 'var(--body-03-weight)',
+            transformOrigin: direction === 'rtl' ? 'top right' : 'top left',
+
+            '&.Mui-focused': {
+              color: 'var(--color-gray-7)',
+              fontSize: 'var(--caption-01-size)',
+              lineHeight: 'var(--caption-01-line)',
+              fontWeight: 'var(--caption-01-weight)',
+            },
+            '&.MuiInputLabel-shrink': {
+              color: 'var(--color-gray-7)',
+              fontSize: 'var(--caption-01-size)',
+              lineHeight: 'var(--caption-01-line)',
+              fontWeight: 'var(--caption-01-weight)',
+            },
+          },
+        },
+      },
+      MuiMenuItem: {
+        styleOverrides: {
+          root: {
+            color: 'var(--color-gray-7)',
+            fontSize: 'var(--body-03-size)',
+            lineHeight: 'var(--body-03-line)',
+            fontWeight: 'var(--body-03-weight)',
+            '&.Mui-selected': {
+              color: 'var(--color-gray-1)',
+              backgroundColor: 'var(--color-gray-11)',
+            },
+            '&.Mui-selected:hover': {
+              backgroundColor: 'var(--color-gray-10)',
+            },
+            '&:hover': {
+              backgroundColor: 'var(--color-gray-11)',
+            },
+          },
+        },
+      },
+      MuiMenu: {
+        styleOverrides: {
+          paper: {
+            backgroundColor: 'var(--color-gray-12)',
+            border: '1px solid var(--color-gray-10)',
+            maxHeight: '300px',
+          },
+        },
+      },
       MuiTextField: {
         styleOverrides: {
           root: {

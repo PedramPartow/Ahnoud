@@ -59,7 +59,7 @@ const HomeProductsList = () => {
                 </p>
               </div>
               <div className="block">
-                <Button className="dark sm-md" href="/">
+                <Button className="dark sm-md" href="/product">
                   {t("discover_more_button")}
                   <ArrowRightUpIcon />
                 </Button>
