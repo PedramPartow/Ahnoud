@@ -15,7 +15,11 @@ export const authOptions: NextAuthOptions = {
 
         const res = await fetch(`${process.env.BACKEND_URL}/auth/login`, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            Lang: process.env.LANG || "en",
+            "Accept-Language": process.env.LANG || "en",
+          },
           body: JSON.stringify({
             email: credentials.email,
             password: credentials.password,

@@ -32,7 +32,7 @@ export default function Register({ setVerifyRegister }: RegisterProps) {
     setLoading(true);
 
     try {
-      await authApi.register({ fullName, email, password });
+      await authApi.register({ full_name:fullName, email, password });
       setVerifyRegister(true);
     } catch (err) {
       if (err instanceof ApiError) {
@@ -51,20 +51,30 @@ export default function Register({ setVerifyRegister }: RegisterProps) {
         <TextField
           autoComplete="nope"
           id="FullName"
+          slotProps={{
+            htmlInput: { minLength: 2 },
+          }}
           label={t('full_name_label')}
           variant="standard"
           value={fullName}
           onChange={(e) => setFullName(e.target.value)}
           disabled={loading}
+          error={!!error}
+          helperText={error}
+          required
         />
         <TextField
           autoComplete="nope"
           id="Email"
+          type="email"
           label={t('email_label')}
           variant="standard"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           disabled={loading}
+          error={!!error}
+          helperText={error}
+          required
         />
         <TextField
           autoComplete="new-password"
@@ -73,22 +83,28 @@ export default function Register({ setVerifyRegister }: RegisterProps) {
           variant="standard"
           type={showPassword ? 'text' : 'password'}
           value={password}
+          slotProps={{
+            htmlInput: { minLength: 8 },
+            input: {
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    onClick={handleToggle}
+                    edge="end"
+                  >
+                    {showPassword ? <EyeIcon size={24} color={'var(--color-gray-5)'}/>
+                    : <EyeSlashIcon size={24} color={'var(--color-gray-5)'}
+                    />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            },
+          }}
           onChange={(e) => setPassword(e.target.value)}
           disabled={loading}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton
-                  onClick={handleToggle}
-                  edge="end"
-                >
-                  {showPassword ? <EyeIcon size={24} color={'var(--color-gray-5)'}/> 
-                  : <EyeSlashIcon size={24} color={'var(--color-gray-5)'}
-                  />}
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
+          required
+          error={!!error}
+          helperText={error}
         />
       </div>
       <Button type="submit" className="primary sm-md block" loading={loading}>
