@@ -5,6 +5,7 @@ import { env } from "process";
 import "../styles/globals.css";
 import MuiProvider from './mui-provider';
 import QueryProvider from './query-provider';
+import ToastProvider from "./toast-provider";
 
 export const metadata: Metadata = {
   title: "Ahnoud",
@@ -26,6 +27,7 @@ export default async function RootLayout({
           <MuiProvider direction={locale === 'ar' ? 'rtl' : 'ltr'}>
             <NextIntlClientProvider>
               {children}
+              <ToastProvider />
             </NextIntlClientProvider>
           </MuiProvider>
         </QueryProvider>

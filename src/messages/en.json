@@ -191,5 +191,11 @@
   "privacy_section_7_title": "7. Policy Updates",
   "privacy_section_7_text": "We may update this Privacy Policy occasionally. Any changes will be posted on this page with an updated effective date.",
   "loading_label": "loading...",
-  "generic_error": "Something went wrong. Please try again."
+  "generic_error": "Something went wrong. Please try again.",
+  "resend_error_message": "Unable to resend confirmation email. Please try again.",
+  "register_email_required_for_resend_error": "Please enter your email first.",
+  "register_full_name_min_error": "Full name must be at least 2 characters.",
+  "register_email_invalid_error": "Please enter a valid email address.",
+  "register_password_min_error": "Password must be at least 8 characters.",
+  "register_email_exists_error": "An account with this email already exists."
 }

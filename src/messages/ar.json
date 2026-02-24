@@ -191,5 +191,11 @@
   "privacy_section_7_title": "٧. تحديثات السياسة",
   "privacy_section_7_text": "قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر. سيتم نشر أي تغييرات على هذه الصفحة مع تاريخ سريان محدّث.",
   "loading_label": "جاري التحميل...",
-  "generic_error": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
+  "generic_error": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+  "resend_error_message": "تعذر إعادة إرسال رابط التحقق. يرجى المحاولة مرة أخرى.",
+  "register_email_required_for_resend_error": "يرجى إدخال البريد الإلكتروني أولاً.",
+  "register_full_name_min_error": "يجب أن يتكون الاسم الكامل من حرفين على الأقل.",
+  "register_email_invalid_error": "يرجى إدخال بريد إلكتروني صالح.",
+  "register_password_min_error": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل.",
+  "register_email_exists_error": "يوجد حساب بهذا البريد الإلكتروني بالفعل."
 }

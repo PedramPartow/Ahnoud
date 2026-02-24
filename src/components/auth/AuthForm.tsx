@@ -17,13 +17,20 @@ const AuthForm = () => {
   const [activeTab, setActiveTab] = useState<"register" | "login">("register");
   const [verifyRegister, setVerifyRegister] = useState<boolean>(false);
   const [resetPassword, setResetPassword] = useState(false);
+  const [registerEmail, setRegisterEmail] = useState('');
 
   if (verifyRegister) {
     return (
         <div className="flex flex-col gap-4 my-6 md:my-16">
             <Button className="blur-gray sm-md md:w-12!" onClick={() => setVerifyRegister((prev) => !prev)}><ArrowLeftTailIcon size={24}/><span className="md:hidden">{t("back_label")}</span></Button>
             <div className="flex flex-col md:p-16 bg-gray-13">
-                <VerifyEmail />
+                <VerifyEmail
+                  email={registerEmail}
+                  onResendSuccess={() => {
+                    setActiveTab("login");
+                    setVerifyRegister(false);
+                  }}
+                />
             </div>
         </div>
     );
@@ -59,7 +66,7 @@ const AuthForm = () => {
                 {activeTab === "login" ? (
                     <Login setResetPassword={setResetPassword} />
                 ) : (
-                    <Register setVerifyRegister={setVerifyRegister} />
+                    <Register setVerifyRegister={setVerifyRegister} email={registerEmail} setEmail={setRegisterEmail} />
                 )}
                 <div className="relative flex items-center justify-center">
                     <span className="absolute h-px w-full bg-gray-1-alpha-20" aria-hidden />
