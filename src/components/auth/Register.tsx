@@ -11,20 +11,10 @@ import { authApi } from '@/services/api/auth';
 import { ApiError } from '@/services/api/client';
 import Button from '../general/Button';
 
-interface RegisterProps {
-  setVerifyRegister: (value: boolean) => void;
-  email: string;
-  setEmail: (value: string) => void;
-}
+type FieldErrors = any;
+type AnyValue = any;
 
-type FieldErrors = {
-  fullName: string;
-  email: string;
-  password: string;
-  form: string;
-};
-
-export default function Register({ setVerifyRegister, email, setEmail }: RegisterProps) {
+export default function Register({ setVerifyRegister, email, setEmail }: any) {
   const t = useTranslations();
   const [showPassword, setShowPassword] = useState(false);
   const [fullName, setFullName] = useState('');
@@ -40,7 +30,7 @@ export default function Register({ setVerifyRegister, email, setEmail }: Registe
   const handleToggle = () => setShowPassword((prev) => !prev);
 
   const clearError = (field: keyof FieldErrors) => {
-    setErrors((prev) => ({ ...prev, [field]: '', form: '' }));
+    setErrors((prev: AnyValue) => ({ ...prev, [field]: '', form: '' }));
   };
 
   const validateClientSide = (): FieldErrors => {
@@ -121,7 +111,7 @@ export default function Register({ setVerifyRegister, email, setEmail }: Registe
         const apiErrors = parseApiErrors(err.message);
         const hasMappedErrors = Object.values(apiErrors).some(Boolean);
 
-        setErrors((prev) => ({
+        setErrors((prev: AnyValue) => ({
           ...prev,
           fullName: apiErrors.fullName || '',
           email: apiErrors.email || '',
@@ -129,7 +119,7 @@ export default function Register({ setVerifyRegister, email, setEmail }: Registe
           form: hasMappedErrors ? '' : t('generic_error'),
         }));
       } else {
-        setErrors((prev) => ({ ...prev, form: t('generic_error') }));
+        setErrors((prev: AnyValue) => ({ ...prev, form: t('generic_error') }));
       }
     } finally {
       setLoading(false);

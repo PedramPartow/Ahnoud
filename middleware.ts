@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const TOKEN_COOKIE_KEY = "token";
+const SUPPORTED_LOCALES = new Set(["en", "ar"]);
 const API_ORIGIN = (
   process.env.BACKEND_URL ||
   process.env.NEXT_PUBLIC_API_URL ||
@@ -49,7 +50,9 @@ async function getIsAdmin(token: string, lang: string): Promise<boolean> {
 
 function redirectToAdminLogin(request: NextRequest) {
   const loginUrl = request.nextUrl.clone();
-  loginUrl.pathname = "/admin-login";
+  const parts = request.nextUrl.pathname.split("/").filter(Boolean);
+  const localePrefix = parts[0] && SUPPORTED_LOCALES.has(parts[0]) ? `/${parts[0]}` : "";
+  loginUrl.pathname = `${localePrefix}/admin-login`;
   loginUrl.search = "";
   loginUrl.searchParams.set("from", `${request.nextUrl.pathname}${request.nextUrl.search}`);
   const response = NextResponse.redirect(loginUrl);
@@ -59,14 +62,28 @@ function redirectToAdminLogin(request: NextRequest) {
 
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
-  const isAdminRoute = pathname.startsWith("/admin");
-  const isAdminLoginRoute = pathname === "/admin-login";
+  const parts = pathname.split("/").filter(Boolean);
+  const hasLocalePrefix = parts[0] ? SUPPORTED_LOCALES.has(parts[0]) : false;
+  const routeIndex = hasLocalePrefix ? 1 : 0;
+  const route = parts[routeIndex] || "";
+  const localePrefix = hasLocalePrefix ? `/${parts[0]}` : "";
+
+  const isAuthRoute = route === "auth";
+  const isAdminRoute = route === "admin";
+  const isAdminLoginRoute = route === "admin-login";
+  const token = request.cookies.get(TOKEN_COOKIE_KEY)?.value;
+
+  if (isAuthRoute && token) {
+    const homeUrl = request.nextUrl.clone();
+    homeUrl.pathname = `${localePrefix}/` || "/";
+    homeUrl.search = "";
+    return NextResponse.redirect(homeUrl);
+  }
 
   if (!isAdminRoute && !isAdminLoginRoute) {
     return NextResponse.next();
   }
 
-  const token = request.cookies.get(TOKEN_COOKIE_KEY)?.value;
   if (!token) {
     return isAdminRoute ? redirectToAdminLogin(request) : NextResponse.next();
   }
@@ -80,7 +97,7 @@ export async function middleware(request: NextRequest) {
 
   if (isAdminLoginRoute) {
     const adminUrl = request.nextUrl.clone();
-    adminUrl.pathname = "/admin";
+    adminUrl.pathname = `${localePrefix}/admin`;
     adminUrl.search = "";
     return NextResponse.redirect(adminUrl);
   }
@@ -89,5 +106,12 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/admin-login"],
+  matcher: [
+    "/auth/:path*",
+    "/admin/:path*",
+    "/admin-login",
+    "/:locale/auth/:path*",
+    "/:locale/admin/:path*",
+    "/:locale/admin-login",
+  ],
 };

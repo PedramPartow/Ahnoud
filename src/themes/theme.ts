@@ -157,6 +157,10 @@ export const getTheme = (direction: 'ltr' | 'rtl' = 'ltr') =>
 
             /* LABEL – shrunk */
             '& .MuiInputLabel-root.MuiInputLabel-shrink': {
+              '&.Mui-error': {
+                color: '#d32f2f',
+                borderBottomColor: '#d32f2f',
+              },
               color: 'var(--color-gray-7)',
               fontSize: 'var(--caption-01-size)',
               lineHeight: 'var(--caption-01-line)',

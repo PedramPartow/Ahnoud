@@ -2,14 +2,15 @@
 
 import EyeIcon from '@/icons/EyeIcon';
 import EyeSlashIcon from '@/icons/EyeSlashIcon';
-import { setAuthSession } from '@/services/auth/session';
 import { authApi } from '@/services/api/auth';
 import { ApiError } from '@/services/api/client';
+import { setAuthSession } from '@/services/auth/session';
+import { toastUtils } from '@/services/toast';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
-import { toastUtils } from "@/services/toast";
 import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
 import Button from '../general/Button';
 
@@ -17,26 +18,14 @@ interface ResetProps {
   setResetPassword: (value: boolean) => void;
 }
 
-type FieldErrors = {
-  email: string;
-  password: string;
-  form: string;
-};
-
-type LoginResponse = {
-  token?: string;
-  user?: {
-    is_admin?: boolean;
-  };
-};
-
 export default function Login({ setResetPassword }: ResetProps) {
   const t = useTranslations();
+  const router = useRouter();
   const [loginShowPassword, setLoginShowPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState<FieldErrors>({
+  const [errors, setErrors] = useState({
     email: '',
     password: '',
     form: '',
@@ -48,12 +37,12 @@ export default function Login({ setResetPassword }: ResetProps) {
     setResetPassword(true);
   };
 
-  const clearError = (field: keyof FieldErrors) => {
-    setErrors((prev) => ({ ...prev, [field]: '', form: '' }));
+  const clearError = (field: string) => {
+    setErrors((prev: any) => ({ ...prev, [field]: '', form: '' }));
   };
 
-  const validateClientSide = (): FieldErrors => {
-    const nextErrors: FieldErrors = {
+  const validateClientSide = () => {
+    const nextErrors = {
       email: '',
       password: '',
       form: '',
@@ -73,23 +62,6 @@ export default function Login({ setResetPassword }: ResetProps) {
     return nextErrors;
   };
 
-  const parseApiErrors = (message: string): Partial<FieldErrors> => {
-    const nextErrors: Partial<FieldErrors> = {};
-    const normalizedMessage = message.toLowerCase();
-
-    const emailValidationFailed = normalizedMessage.includes('email') && normalizedMessage.includes("failed on the 'email' tag");
-    if (emailValidationFailed) {
-      nextErrors.email = t('register_email_invalid_error');
-    }
-
-    const passwordValidationFailed = normalizedMessage.includes('password') && normalizedMessage.includes("failed on the 'min' tag");
-    if (passwordValidationFailed) {
-      nextErrors.password = t('register_password_min_error');
-    }
-
-    return nextErrors;
-  };
-
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const trimmedEmail = email.trim();
@@ -101,22 +73,31 @@ export default function Login({ setResetPassword }: ResetProps) {
 
     setLoading(true);
     try {
-      const response = (await authApi.login({ email: trimmedEmail, password })) as LoginResponse;
+      const response = await authApi.login({ email: trimmedEmail, password });
       setAuthSession(response);
       setErrors({ email: '', password: '', form: '' });
+      toastUtils.success(t('login_success_message'));
+      router.push('/');
     } catch (err) {
       if (err instanceof ApiError) {
-        toastUtils.error(err.message);
-        setErrors({ email: '', password: '', form: '' });
+        const normalizedMessage = err.message.toLowerCase();
 
-        const apiErrors = parseApiErrors(err.message);
-        const hasMappedErrors = Object.values(apiErrors).some(Boolean);
+        if (normalizedMessage.includes('please confirm your email before logging in')) {
+          toastUtils.error(err.message);
+          setErrors({ email: '', password: '', form: '' });
+          return;
+        }
 
-        setErrors({
-          email: apiErrors.email || '',
-          password: apiErrors.password || '',
-          form: apiErrors.form || (hasMappedErrors ? '' : err.message || t('generic_error')),
-        });
+        if (normalizedMessage.includes('invalid email or password')) {
+          setErrors({
+            email: err.message,
+            password: err.message,
+            form: '',
+          });
+          return;
+        }
+
+        setErrors({ email: '', password: '', form: err.message || t('generic_error') });
       } else {
         setErrors({
           email: '',
@@ -165,6 +146,7 @@ export default function Login({ setResetPassword }: ResetProps) {
               helperText={errors.password}
               required
               slotProps={{
+                htmlInput: { minLength: 8 }, 
                 input: {
                   endAdornment: (
                     <InputAdornment position="end">

@@ -191,6 +191,7 @@
   "privacy_section_7_title": "7. Policy Updates",
   "privacy_section_7_text": "We may update this Privacy Policy occasionally. Any changes will be posted on this page with an updated effective date.",
   "loading_label": "loading...",
+  "login_success_message": "You have been successfully logged in.",
   "generic_error": "Something went wrong. Please try again.",
   "resend_error_message": "Unable to resend confirmation email. Please try again.",
   "register_email_required_for_resend_error": "Please enter your email first.",
