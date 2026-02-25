@@ -1,11 +1,11 @@
 "use client";
 
 import Tabs from "@/components/general/Tabs";
-import { useTranslations } from "next-intl";
-import { useState } from "react";
 import AppleIcon from "@/icons/AppleIcon";
 import ArrowLeftTailIcon from "@/icons/ArrowLeftTailIcon";
 import GoogleIcon from "@/icons/GoogleIcon";
+import { useTranslations } from "next-intl";
+import { useState } from "react";
 import Button from "../general/Button";
 import Login from "./Login";
 import Register from "./Register";
@@ -22,7 +22,16 @@ const AuthForm = () => {
   if (verifyRegister) {
     return (
         <div className="flex flex-col gap-4 my-6 md:my-16">
-            <Button className="blur-gray sm-md md:w-12!" onClick={() => setVerifyRegister((prev) => !prev)}><ArrowLeftTailIcon size={24}/><span className="md:hidden">{t("back_label")}</span></Button>
+            <Button
+              className="blur-gray sm-md md:w-12!"
+              onClick={() => {
+                setVerifyRegister(false);
+                setActiveTab("login");
+              }}
+            >
+              <ArrowLeftTailIcon size={24}/>
+              <span className="md:hidden">{t("back_label")}</span>
+            </Button>
             <div className="flex flex-col md:p-16 bg-gray-13">
                 <VerifyEmail
                   email={registerEmail}
@@ -41,7 +50,7 @@ const AuthForm = () => {
         <div className="flex flex-col gap-4 my-6 md:my-16">
             <Button className="blur-gray sm-md md:w-12!" onClick={() => setResetPassword((prev) => !prev)}><ArrowLeftTailIcon size={24}/><span className="md:hidden">{t("back_label")}</span></Button>
             <div className="flex flex-col md:p-16 bg-gray-13">
-                <ResetPassword />
+                <ResetPassword setResetPassword={() => setResetPassword((prev) => !prev)} />
             </div>
         </div>
     );

@@ -4,15 +4,12 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import { useTranslations } from 'next-intl';
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import EyeIcon from '@/icons/EyeIcon';
 import EyeSlashIcon from '@/icons/EyeSlashIcon';
 import { authApi } from '@/services/api/auth';
 import { ApiError } from '@/services/api/client';
 import Button from '../general/Button';
-
-type FieldErrors = any;
-type AnyValue = any;
 
 export default function Register({ setVerifyRegister, email, setEmail }: any) {
   const t = useTranslations();
@@ -20,21 +17,25 @@ export default function Register({ setVerifyRegister, email, setEmail }: any) {
   const [fullName, setFullName] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState<FieldErrors>({
+  const [errors, setErrors] = useState<any>({
     fullName: '',
     email: '',
     password: '',
     form: '',
   });
 
+  useEffect(() => {
+    setEmail('');
+  }, [setEmail]);
+
   const handleToggle = () => setShowPassword((prev) => !prev);
 
-  const clearError = (field: keyof FieldErrors) => {
-    setErrors((prev: AnyValue) => ({ ...prev, [field]: '', form: '' }));
+  const clearError = (field: string) => {
+    setErrors((prev: any) => ({ ...prev, [field]: '', form: '' }));
   };
 
-  const validateClientSide = (): FieldErrors => {
-    const nextErrors: FieldErrors = {
+  const validateClientSide = (): any => {
+    const nextErrors: any = {
       fullName: '',
       email: '',
       password: '',
@@ -60,8 +61,8 @@ export default function Register({ setVerifyRegister, email, setEmail }: any) {
     return nextErrors;
   };
 
-  const parseApiErrors = (message: string): Partial<FieldErrors> => {
-    const nextErrors: Partial<FieldErrors> = {};
+    const parseApiErrors = (message: string): Partial<any> => {
+    const nextErrors: Partial<any> = {};
     const normalizedMessage = message.toLowerCase();
 
     if (normalizedMessage.includes('an account with this email already exists')) {
@@ -111,7 +112,7 @@ export default function Register({ setVerifyRegister, email, setEmail }: any) {
         const apiErrors = parseApiErrors(err.message);
         const hasMappedErrors = Object.values(apiErrors).some(Boolean);
 
-        setErrors((prev: AnyValue) => ({
+        setErrors((prev: any) => ({
           ...prev,
           fullName: apiErrors.fullName || '',
           email: apiErrors.email || '',
@@ -119,7 +120,7 @@ export default function Register({ setVerifyRegister, email, setEmail }: any) {
           form: hasMappedErrors ? '' : t('generic_error'),
         }));
       } else {
-        setErrors((prev: AnyValue) => ({ ...prev, form: t('generic_error') }));
+        setErrors((prev: any) => ({ ...prev, form: t('generic_error') }));
       }
     } finally {
       setLoading(false);

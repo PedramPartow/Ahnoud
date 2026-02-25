@@ -7,7 +7,7 @@ import ShoppingBagIcon from "@/icons/ShoppingBagIcon";
 import UserCircleIcon from "@/icons/UserCircleIcon";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { useEffect, useState, useSyncExternalStore, type RefObject } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore, type RefObject } from "react";
 import Button from "./Button";
 import CartOverlay from "./CartOverlay";
 import MenuOverlay from "./MenuOverlay";
@@ -31,6 +31,7 @@ const StickyNav = ({ scrollContainerRef, variant }: StickyNavProps) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [cartOpen, setCartOpen] = useState(false);
     const [cartCount] = useState(9);
+    const lastScrollTopRef = useRef(0);
 
     const isLoggedIn = useSyncExternalStore(
         emptySubscribe,
@@ -47,9 +48,15 @@ const StickyNav = ({ scrollContainerRef, variant }: StickyNavProps) => {
     useEffect(() => {
         const container = scrollContainerRef.current;
         if (!container) return;
+        lastScrollTopRef.current = container.scrollTop;
 
         const handleScroll = () => {
-            setVisible(container.scrollTop > window.innerHeight * 0.5);
+            const currentScrollTop = container.scrollTop;
+            const isScrollingDown = currentScrollTop > lastScrollTopRef.current;
+            const isPastThreshold = currentScrollTop > window.innerHeight * 0.5;
+
+            setVisible(isScrollingDown && isPastThreshold);
+            lastScrollTopRef.current = Math.max(currentScrollTop, 0);
         };
 
         container.addEventListener("scroll", handleScroll, { passive: true });
