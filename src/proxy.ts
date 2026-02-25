@@ -1,7 +1,9 @@
 import { type NextRequest } from "next/server";
-import { config, middleware } from "../middleware";
+import { middleware } from "../middleware";
 
-export { config };
+export const config = {
+  matcher: ["/:path*"],
+};
 
 export async function proxy(request: NextRequest) {
   return middleware(request);

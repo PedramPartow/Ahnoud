@@ -2,9 +2,7 @@
 
 import EyeIcon from '@/icons/EyeIcon';
 import EyeSlashIcon from '@/icons/EyeSlashIcon';
-import { authApi } from '@/services/api/auth';
 import { ApiError } from '@/services/api/client';
-import { setAuthSession } from '@/services/auth/session';
 import { toastUtils } from '@/services/toast';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -73,11 +71,21 @@ export default function Login({ setResetPassword }: ResetProps) {
 
     setLoading(true);
     try {
-      const response = await authApi.login({ email: trimmedEmail, password });
-      setAuthSession(response);
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: trimmedEmail, password }),
+      });
+      if (!response.ok) {
+        const payload = await response.json().catch(() => ({} as { error?: string }));
+        throw new ApiError(response.status, payload.error || t("generic_error"));
+      }
+
+      const payload = (await response.json().catch(() => null)) as { user?: { is_admin?: boolean } } | null;
+      const isAdmin = Boolean(payload?.user?.is_admin);
       setErrors({ email: '', password: '', form: '' });
       toastUtils.success(t('login_success_message'));
-      router.push('/');
+      router.push(isAdmin ? '/admin' : '/');
     } catch (err) {
       if (err instanceof ApiError) {
         const normalizedMessage = err.message.toLowerCase();

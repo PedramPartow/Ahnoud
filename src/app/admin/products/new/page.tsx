@@ -2,8 +2,11 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { adminProductsApi, ApiError } from "@/services/api";
 
 export default function NewProductPage() {
+  const router = useRouter();
   const [form, setForm] = useState({
     title: "",
     category: "Pistachios",
@@ -11,15 +14,31 @@ export default function NewProductPage() {
     stock: "",
     status: "draft",
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: replace with API call to /api/admin/products (POST)
-    alert(`Product created (static):\n${JSON.stringify(form, null, 2)}`);
+    setLoading(true);
+    setError("");
+    try {
+      await adminProductsApi.create({
+        title: form.title,
+        category: form.category,
+        price: Number(form.price),
+        stock: Number(form.stock),
+        status: form.status,
+      });
+      router.push("/admin/products");
+    } catch (err) {
+      setError(err instanceof ApiError ? err.message : "Failed to create product");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -28,6 +47,7 @@ export default function NewProductPage() {
         &larr; Back to Products
       </Link>
       <h1 className="headline-04 text-gray-1 mb-10 md:mb-16">New Product</h1>
+      {error && <p className="body-03 text-red-400 mb-6">{error}</p>}
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-6 max-w-[600px]">
         <div className="flex flex-col gap-2">
@@ -98,9 +118,10 @@ export default function NewProductPage() {
 
         <button
           type="submit"
+          disabled={loading}
           className="mt-6 py-4 bg-gray-1 text-gray-13 button-01 text-center cursor-pointer hover:bg-gray-3 transition-colors w-full md:w-auto md:px-12"
         >
-          Create Product
+          {loading ? "Creating..." : "Create Product"}
         </button>
       </form>
     </div>

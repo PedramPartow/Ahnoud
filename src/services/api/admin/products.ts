@@ -1,19 +1,23 @@
 import { apiClient } from '../client';
 
 export const adminProductsApi = {
-  list(token: string, params?: any) {
+  list(token?: string | null, params?: any) {
     return apiClient('/api/admin/products', { method: 'GET', params }, token);
   },
 
-  create(data: any, token: string) {
+  getById(productId: number, token?: string | null) {
+    return apiClient(`/api/admin/products/${productId}`, { method: 'GET' }, token);
+  },
+
+  create(data: any, token?: string | null) {
     return apiClient('/api/admin/products', { method: 'POST', body: data }, token);
   },
 
-  update(productId: number, data: any, token: string) {
+  update(productId: number, data: any, token?: string | null) {
     return apiClient(`/api/admin/products/${productId}`, { method: 'PUT', body: data }, token);
   },
 
-  delete(productId: number, token: string) {
+  delete(productId: number, token?: string | null) {
     return apiClient(`/api/admin/products/${productId}`, { method: 'DELETE' }, token);
   },
 };

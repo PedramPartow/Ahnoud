@@ -14,8 +14,10 @@ import MenuOverlay from "./MenuOverlay";
 
 function getAuthToken(): string | undefined {
     if (typeof document === "undefined") return undefined;
-    const match = document.cookie.match(/(?:^|;\s*)token=([^;]*)/);
-    return match ? decodeURIComponent(match[1]) : undefined;
+    const sessionMatch = document.cookie.match(/(?:^|;\s*)logged_in=([^;]*)/);
+    if (sessionMatch) return decodeURIComponent(sessionMatch[1]);
+    const legacyMatch = document.cookie.match(/(?:^|;\s*)token=([^;]*)/);
+    return legacyMatch ? decodeURIComponent(legacyMatch[1]) : undefined;
 }
 
 const emptySubscribe = () => () => {};
@@ -38,12 +40,6 @@ const StickyNav = ({ scrollContainerRef, variant }: StickyNavProps) => {
         () => !!getAuthToken(),
         () => false
     );
-
-    const handleLogout = () => {
-        document.cookie = "token=;path=/;max-age=0";
-        setMenuOpen(false);
-        window.location.reload();
-    };
 
     useEffect(() => {
         const container = scrollContainerRef.current;
@@ -71,7 +67,6 @@ const StickyNav = ({ scrollContainerRef, variant }: StickyNavProps) => {
         <>
             <MenuOverlay
                 isOpen={menuOpen}
-                onLogout={handleLogout}
                 cartCount={cartCount}
                 onClose={() => setMenuOpen(false)}
             />

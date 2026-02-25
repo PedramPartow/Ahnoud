@@ -14,8 +14,14 @@ import Button from "./Button";
 
 function getAuthToken(): string | undefined {
   if (typeof document === "undefined") return undefined;
-  const match = document.cookie.match(/(?:^|;\s*)token=([^;]*)/);
-  return match ? decodeURIComponent(match[1]) : undefined;
+  const sessionMatch = document.cookie.match(/(?:^|;\s*)logged_in=([^;]*)/);
+  if (sessionMatch) return decodeURIComponent(sessionMatch[1]);
+
+  const hostTokenMatch = document.cookie.match(/(?:^|;\s*)__Host-token=([^;]*)/);
+  if (hostTokenMatch) return decodeURIComponent(hostTokenMatch[1]);
+
+  const legacyMatch = document.cookie.match(/(?:^|;\s*)token=([^;]*)/);
+  return legacyMatch ? decodeURIComponent(legacyMatch[1]) : undefined;
 }
 
 const emptySubscribe = () => () => {};
@@ -35,11 +41,10 @@ const products = [
 interface MenuOverlayProps {
   isOpen: boolean;
   onClose: () => void;
-  onLogout?: () => void;
   cartCount?: number;
 }
 
-const MenuOverlay = ({ isOpen, onClose, onLogout, cartCount = 0 }: MenuOverlayProps) => {
+const MenuOverlay = ({ isOpen, onClose, cartCount = 0 }: MenuOverlayProps) => {
   const t = useTranslations();
   const pathname = usePathname();
   const locale = useSyncExternalStore(
@@ -106,6 +111,27 @@ const MenuOverlay = ({ isOpen, onClose, onLogout, cartCount = 0 }: MenuOverlayPr
   const handleSwitchLocale = () => {
     const newLocale = locale === "ar" ? "en" : "ar";
     document.cookie = `locale=${newLocale};path=/;max-age=31536000`;
+    window.location.reload();
+  };
+
+  const handleLogout = () => {
+    if (typeof document !== "undefined") {
+      const cookies = document.cookie ? document.cookie.split(";") : [];
+      for (const cookie of cookies) {
+        const separatorIndex = cookie.indexOf("=");
+        const rawName = separatorIndex > -1 ? cookie.slice(0, separatorIndex) : cookie;
+        const name = rawName.trim();
+        if (!name) continue;
+        document.cookie = `${name}=;path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+      }
+    }
+
+    if (typeof window !== "undefined") {
+      window.localStorage.clear();
+      window.sessionStorage.clear();
+    }
+
+    onClose();
     window.location.reload();
   };
 
@@ -219,7 +245,7 @@ const MenuOverlay = ({ isOpen, onClose, onLogout, cartCount = 0 }: MenuOverlayPr
             {isLoggedIn && (
               <Button
                 type="button"
-                onClick={onLogout}
+                onClick={handleLogout}
                 className="outline-gray sm-md w-fit"
               >
                 <LogoutIcon />
@@ -315,7 +341,7 @@ const MenuOverlay = ({ isOpen, onClose, onLogout, cartCount = 0 }: MenuOverlayPr
               {isLoggedIn && (
                 <Button
                   type="button"
-                  onClick={onLogout}
+                  onClick={handleLogout}
                   className="outline-gray sm-md"
                 >
                   <LogoutIcon />

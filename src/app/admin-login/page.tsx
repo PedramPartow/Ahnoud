@@ -3,43 +3,107 @@
 import Button from "@/components/general/Button";
 import EyeIcon from "@/icons/EyeIcon";
 import EyeSlashIcon from "@/icons/EyeSlashIcon";
+import { ApiError } from "@/services/api/client";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
-import { signIn } from "next-auth/react";
+import { useTranslations } from "next-intl";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 export default function LoginPage() {
+  const t = useTranslations();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("from") || "/admin";
+  const rawCallbackUrl = searchParams.get("from");
+  const callbackUrl =
+    rawCallbackUrl && rawCallbackUrl !== "/admin-login"
+      ? rawCallbackUrl
+      : "/admin";
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState("");
+  const [loginShowPassword, setLoginShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({
+    email: "",
+    password: "",
+    form: "",
+  });
 
-  async function onSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setError("");
-    setLoading(true);
+  const handleToggle = () => setLoginShowPassword((prev) => !prev);
 
-    const result = await signIn("credentials", {
-      email,
-      password,
-      redirect: false,
-      callbackUrl,
-    });
+  const clearError = (field: "email" | "password") => {
+    setErrors((prev) => ({ ...prev, [field]: "", form: "" }));
+  };
 
-    setLoading(false);
+  const validateClientSide = () => {
+    const nextErrors = {
+      email: "",
+      password: "",
+      form: "",
+    };
 
-    if (result?.error) {
-      router.push(callbackUrl);
-    } else {
-      router.push(callbackUrl);
+    const trimmedEmail = email.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(trimmedEmail)) {
+      nextErrors.email = t("register_email_invalid_error");
     }
-  }
+
+    if (password.length < 8) {
+      nextErrors.password = t("register_password_min_error");
+    }
+
+    return nextErrors;
+  };
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const trimmedEmail = email.trim();
+    const clientErrors = validateClientSide();
+    setErrors(clientErrors);
+
+    if (Object.values(clientErrors).some(Boolean)) return;
+
+    setLoading(true);
+    try {
+      const response = await fetch("/api/admin-login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: trimmedEmail, password }),
+      });
+
+      if (!response.ok) {
+        const payload = await response.json().catch(() => ({} as { error?: string }));
+        throw new ApiError(response.status, payload.error || t("generic_error"));
+      }
+
+      setErrors({ email: "", password: "", form: "" });
+      router.push(callbackUrl);
+    } catch (err) {
+      if (err instanceof ApiError) {
+        const normalizedMessage = err.message.toLowerCase();
+        if (normalizedMessage.includes("invalid email or password")) {
+          setErrors({
+            email: err.message,
+            password: err.message,
+            form: "",
+          });
+          return;
+        }
+
+        setErrors({ email: "", password: "", form: err.message || t("generic_error") });
+      } else {
+        setErrors({
+          email: "",
+          password: "",
+          form: t("generic_error"),
+        });
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-13 flex items-center justify-center px-5">
@@ -49,47 +113,62 @@ export default function LoginPage() {
           <p className="body-01 text-gray-7">Sign in to access the admin panel.</p>
         </div>
 
-        {error && (
-          <p className="body-03 text-red-400 text-center">{error}</p>
+        {errors.form && (
+          <p className="body-03 text-red-400 text-center">{errors.form}</p>
         )}
 
         <form onSubmit={onSubmit} className="flex flex-col gap-12">
           <div className="flex flex-col gap-8">
             <TextField
-              fullWidth
-              autoComplete="email"
-              label="Email"
-              variant="standard"
+              autoComplete="nope"
+              id="Email"
               type="email"
+              label={t("email_label")}
+              variant="standard"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                clearError("email");
+              }}
+              disabled={loading}
+              error={!!errors.email}
+              helperText={errors.email}
               required
             />
             <TextField
-              fullWidth
-              autoComplete="current-password"
-              label="Password"
+              autoComplete="new-password"
+              id="Password"
+              label={t("password_label")}
               variant="standard"
-              type={showPassword ? "text" : "password"}
+              type={loginShowPassword ? "text" : "password"}
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                clearError("password");
+              }}
+              disabled={loading}
+              error={!!errors.password}
+              helperText={errors.password}
               required
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton onClick={() => setShowPassword((prev) => !prev)} edge="end">
-                      {showPassword
-                        ? <EyeIcon size={24} color="var(--color-gray-5)" />
-                        : <EyeSlashIcon size={24} color="var(--color-gray-5)" />
-                      }
-                    </IconButton>
-                  </InputAdornment>
-                ),
+              slotProps={{
+                htmlInput: { minLength: 8 },
+                input: {
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton onClick={handleToggle} edge="end">
+                        {loginShowPassword
+                          ? <EyeIcon size={24} color={"var(--color-gray-5)"} />
+                          : <EyeSlashIcon size={24} color={"var(--color-gray-5)"} />
+                        }
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                },
               }}
             />
           </div>
-          <Button type="submit" className="primary sm-md block" disabled={loading}>
-            {loading ? "Logging in..." : "Login"}
+          <Button type="submit" className="primary sm-md block" loading={loading}>
+            {t("login_button")}
           </Button>
         </form>
       </div>

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const TOKEN_COOKIE_KEY = "token";
+const PRIMARY_TOKEN_COOKIE_KEY = "__Host-token";
+const LEGACY_TOKEN_COOKIE_KEY = "token";
 const LOCALE_COOKIE_KEY = "locale";
 const DEFAULT_LOCALE = "en";
 const SUPPORTED_LOCALES = new Set(["en", "ar"]);
@@ -80,7 +81,9 @@ function redirectToAdminLogin(request: NextRequest) {
   loginUrl.search = "";
   loginUrl.searchParams.set("from", `${request.nextUrl.pathname}${request.nextUrl.search}`);
   const response = NextResponse.redirect(loginUrl);
-  response.cookies.delete(TOKEN_COOKIE_KEY);
+  response.cookies.delete(PRIMARY_TOKEN_COOKIE_KEY);
+  response.cookies.delete(LEGACY_TOKEN_COOKIE_KEY);
+  response.cookies.delete("logged_in");
   return response;
 }
 
@@ -112,7 +115,9 @@ export async function middleware(request: NextRequest) {
   const isAuthRoute = route === "auth";
   const isAdminRoute = route === "admin";
   const isAdminLoginRoute = route === "admin-login";
-  const token = request.cookies.get(TOKEN_COOKIE_KEY)?.value;
+  const token =
+    request.cookies.get(PRIMARY_TOKEN_COOKIE_KEY)?.value ||
+    request.cookies.get(LEGACY_TOKEN_COOKIE_KEY)?.value;
 
   if (isAuthRoute && token) {
     const homeUrl = request.nextUrl.clone();

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { cookies } from 'next/headers';
-import { env } from "process";
 import "../styles/globals.css";
 import MuiProvider from './mui-provider';
 import QueryProvider from './query-provider';

@@ -27,7 +27,50 @@ function copyRequestHeaders(request: NextRequest): Headers {
 
   headers.set("Lang", lang);
   headers.set("Accept-Language", lang);
+
+  const token =
+    request.cookies.get("__Host-token")?.value ||
+    request.cookies.get("token")?.value;
+  if (token && !headers.get("authorization")) {
+    headers.set("Authorization", `Bearer ${token}`);
+  }
+
   return headers;
+}
+
+function extractIsAdmin(payload: any): boolean {
+  return Boolean(
+    payload?.is_admin ??
+    payload?.user?.is_admin ??
+    payload?.data?.is_admin ??
+    payload?.data?.user?.is_admin
+  );
+}
+
+async function ensureAdmin(request: NextRequest): Promise<boolean> {
+  const token =
+    request.cookies.get("__Host-token")?.value ||
+    request.cookies.get("token")?.value;
+  if (!token || !API_ORIGIN) return false;
+
+  const lang = request.cookies.get("locale")?.value || "en";
+
+  try {
+    const meResponse = await fetch(`${API_ORIGIN}/api/me`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Lang: lang,
+        "Accept-Language": lang,
+      },
+      cache: "no-store",
+    });
+    if (!meResponse.ok) return false;
+    const payload = await meResponse.json().catch(() => null);
+    return extractIsAdmin(payload);
+  } catch {
+    return false;
+  }
 }
 
 async function handleProxy(request: NextRequest, context: { params: Promise<{ path: string[] }> }) {
@@ -39,6 +82,14 @@ async function handleProxy(request: NextRequest, context: { params: Promise<{ pa
   }
 
   const { path } = await context.params;
+  const isAdminPath = path[0] === "admin";
+  if (isAdminPath) {
+    const canAccessAdmin = await ensureAdmin(request);
+    if (!canAccessAdmin) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
+  }
+
   const targetUrl = buildTargetUrl(path, request);
   const method = request.method;
   const hasBody = !["GET", "HEAD"].includes(method);

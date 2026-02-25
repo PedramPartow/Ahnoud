@@ -2,44 +2,86 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { adminProductsApi, ApiError } from "@/services/api";
 
-const STATIC_PRODUCTS: Record<string, { title: string; category: string; price: number; stock: number; status: string }> = {
-  "1": { title: "Imperial Reserve Pistachios", category: "Pistachios", price: 149, stock: 84, status: "active" },
-  "2": { title: "Royal Saffron Threads", category: "Saffron", price: 259, stock: 32, status: "active" },
-  "3": { title: "Premium Medjool Dates", category: "Dates", price: 89, stock: 120, status: "active" },
-  "4": { title: "Golden Saffron Gift Box", category: "Saffron", price: 399, stock: 15, status: "draft" },
-  "5": { title: "Pistachio Luxury Collection", category: "Pistachios", price: 199, stock: 56, status: "active" },
-  "6": { title: "Heritage Date Selection", category: "Dates", price: 129, stock: 0, status: "draft" },
+type ProductForm = {
+  title: string;
+  category: string;
+  price: number;
+  stock: number;
+  status: string;
 };
 
 export default function EditProductPage() {
+  const router = useRouter();
   const { id } = useParams<{ id: string }>();
-  const product = STATIC_PRODUCTS[id];
+  const [form, setForm] = useState<ProductForm>({
+    title: "",
+    category: "Pistachios",
+    price: 0,
+    stock: 0,
+    status: "draft",
+  });
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState("");
 
-  const [form, setForm] = useState(
-    product ?? { title: "", category: "Pistachios", price: 0, stock: 0, status: "draft" }
-  );
+  useEffect(() => {
+    let isMounted = true;
+    const productId = Number(id);
+    if (!Number.isFinite(productId)) {
+      setError("Invalid product id");
+      setLoading(false);
+      return;
+    }
 
-  if (!product) {
-    return (
-      <div className="min-h-screen bg-gray-13 px-5 md:px-10 lg:px-20 py-10 lg:py-16">
-        <Link href="/admin/products" className="caption-01 text-gray-7 hover:text-gray-5 transition-colors">
-          &larr; Back to Products
-        </Link>
-        <p className="body-03 text-gray-7 mt-10">Product not found.</p>
-      </div>
-    );
-  }
+    const run = async () => {
+      setLoading(true);
+      setError("");
+      try {
+        const product = await adminProductsApi.getById(productId);
+        if (!isMounted) return;
+        setForm({
+          title: String(product?.title || product?.name || ""),
+          category: String(product?.category || "Pistachios"),
+          price: Number(product?.price || 0),
+          stock: Number(product?.stock || 0),
+          status: String(product?.status || "draft"),
+        });
+      } catch (err) {
+        if (!isMounted) return;
+        setError(err instanceof ApiError ? err.message : "Failed to load product");
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    };
+
+    run();
+    return () => {
+      isMounted = false;
+    };
+  }, [id]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: replace with API call to /api/admin/products/[id] (PUT)
-    alert(`Product updated (static):\n${JSON.stringify(form, null, 2)}`);
+    const productId = Number(id);
+    if (!Number.isFinite(productId)) return;
+    setSaving(true);
+    setError("");
+    try {
+      await adminProductsApi.update(productId, form);
+      router.push("/admin/products");
+    } catch (err) {
+      setError(err instanceof ApiError ? err.message : "Failed to update product");
+    } finally {
+      setSaving(false);
+    }
   };
 
   return (
@@ -48,6 +90,10 @@ export default function EditProductPage() {
         &larr; Back to Products
       </Link>
       <h1 className="headline-04 text-gray-1 mb-10 md:mb-16">Edit Product</h1>
+      {error && <p className="body-03 text-red-400 mb-6">{error}</p>}
+      {loading ? (
+        <p className="body-03 text-gray-7">Loading product...</p>
+      ) : (
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-6 max-w-[600px]">
         <div className="flex flex-col gap-2">
@@ -118,11 +164,13 @@ export default function EditProductPage() {
 
         <button
           type="submit"
+          disabled={saving}
           className="mt-6 py-4 bg-gray-1 text-gray-13 button-01 text-center cursor-pointer hover:bg-gray-3 transition-colors w-full md:w-auto md:px-12"
         >
-          Save Changes
+          {saving ? "Saving..." : "Save Changes"}
         </button>
       </form>
+      )}
     </div>
   );
 }
